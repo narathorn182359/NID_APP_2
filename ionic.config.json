@@ -1,0 +1,7 @@
+{
+  "name": "NID_APP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
