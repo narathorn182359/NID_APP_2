@@ -1,0 +1,50 @@
+
+
+
+<ion-content padding class="getstart">
+  <br><br>
+ <ion-card-title style="text-align:center;" >
+   <!--    <img src="/assets/imgsystem/NGG_Logo_Red.png" height="50px" >  -->  
+    </ion-card-title>
+
+   
+    <ion-card-title style="text-align:center;" >
+      <img src="/assets/imgsystem/Logo_NID.png" height="140px" >
+    </ion-card-title>
+    <br>  <br>  
+    <ion-row>
+      <ion-col size="1">
+      </ion-col>
+      <ion-col>
+        <ion-input type="text" [(ngModel)]="formLogin.name" placeholder="ผู้ใช้"></ion-input>
+      </ion-col>
+      <ion-col size="1"> 
+      </ion-col>
+    </ion-row>
+      <br>  
+      <ion-row>
+        <ion-col size="1">
+        </ion-col>
+        <ion-col>
+          <ion-input type="password" [(ngModel)]="formLogin.password" placeholder="รหัสผ่าน"></ion-input>
+        </ion-col>
+        <ion-col size="1"> 
+        </ion-col>
+      </ion-row>
+    <br>
+   
+<ion-row>
+  <ion-col size="1">
+  </ion-col>
+  <ion-col>
+    <ion-button   color="danger" expand="block" class="shadow-red" (click)="doLogin(formLogin)">เข้าระบบ</ion-button>
+  </ion-col>
+  <ion-col size="1"> 
+  </ion-col>
+</ion-row>
+ 
+ 
+
+  
+ 
+</ion-content>

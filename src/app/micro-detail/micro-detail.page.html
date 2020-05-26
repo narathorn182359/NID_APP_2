@@ -1,0 +1,65 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngFor="let p of data" defaultHref="/tabss/tabs/micro/{{p.mc}}"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <img src="/assets/imgsystem/Logo_NID.png" width="40" height="100%"/>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>รายละเอียด</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="loading" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+<!--   <ion-slides pager="true">
+    <ion-slide *ngFor="let l of imglist">
+  
+      <img src="http://18.138.58.132/nidapi/imgnew/{{l.name_img}}"  width="100%" />
+  
+    </ion-slide>
+</ion-slides>
+ -->
+  <ion-card *ngFor="let p of data">
+    <ion-card-header>
+      <ion-card-subtitle style="color: black;"><h2> {{p.subject}}</h2></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+     <p [innerHTML]="p.explain" style="color: black;"></p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>ความคิดเห็น</ion-label>
+        </ion-list-header>
+        <ion-item  *ngFor="let idea of (ideas | async)">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="http://18.140.109.247/nidapi/img/{{idea.img}}">
+            </ion-avatar>
+            <ion-label>
+              <h3>{{idea.name}}</h3>
+              <p>{{idea.date}} น.</p>
+              <h3>{{idea.notes}}</h3>
+            </ion-label>
+          </ion-item>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+  <ion-item>
+    <ion-textarea type="text" placeholder="แสดงความคิดเห็น" [(ngModel)]="idea.notes"></ion-textarea>
+  </ion-item>
+
+  <ion-button   color="danger" size="small"  (click)="addIdea()">ส่งความคิดเห็น</ion-button>
+</ion-card-content>
+</ion-card>
+</ion-content>

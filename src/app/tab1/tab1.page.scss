@@ -1,0 +1,107 @@
+.card-banner{
+    box-shadow:0px 10px 20px rgb(218, 216, 216);
+    border-radius: 20px;
+    border-color: rgb(192, 190, 190);
+    background-color:rgb(255, 255, 255);
+}
+
+
+
+.card-new{
+   margin: 1; 
+    box-shadow:0px 0px 0px rgb(218, 216, 216);
+    height: 110px;
+    border-width: 0.5px;
+    border-style: solid ;
+    border-color: rgb(192, 190, 190);
+    border-radius: 20px;
+    background-color:rgb(255, 255, 255);
+    box-shadow:0px 10px 10px rgb(240, 239, 239);
+   
+   
+}
+
+.title_new{
+  border-radius: 20px;
+  border: solid;
+  border-color: rgb(221, 89, 89);
+  background-color:rgb(221, 89, 89);
+  width: 9px;
+  height: 20px;
+
+
+}
+
+.newh{
+  padding: 10px;
+}
+
+
+
+  .spinner-container {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+.img{
+    border-radius: 20px;
+}
+
+.img-new
+{
+    
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        margin: 0 !important;
+
+   }
+
+.new
+{
+    padding-left: 8px;
+    
+}
+
+          .bg-image {
+            /* The image used */
+            /* Add the blur effect */
+            filter: blur(5px);
+       -webkit-filter: blur(5px);
+       -moz-filter: blur(5px);
+       -o-filter: blur(5px);
+       -ms-filter: blur(5px);
+            
+            /* Full height */
+            height: 200px; 
+            
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+          }
+
+          .bg-text 
+          {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+          
+            
+          }
+
+
+          @media screen and (max-width: 374px){
+            .title_br {
+              display: none !important;
+            }
+        }
+
+          

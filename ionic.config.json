@@ -1,7 +1,8 @@
 {
   "name": "NID_APP",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

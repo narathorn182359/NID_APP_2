@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <img src="/assets/imgsystem/Logo_NID.png" height="100%"/>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>PMS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="2">
+        <img  *ngIf="!!datainfouser"  src="http://18.140.109.247/nidapi/img/{{datainfouser.img}}"    style="width:100%" >
+      </ion-col>
+      <ion-col size="10">
+        <font *ngIf="!!datainfouser" color="black" style="font-size: 16px;">{{datainfouser.Name_Thai}}</font>
+      <br>  <font *ngIf="!!datainfouser" color="black" style="font-size: 16px;">{{datainfouser.Position}}</font> 
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <img  *ngIf="!!datainfouser"  src="assets/imgsystem/icon_kpi.png"    style="width:100%" >
+      </ion-col>
+      <ion-col size="5">
+        <font  color="black" style="font-size: 40px;">KPI</font>
+      </ion-col>
+      <ion-col size="5" >
+        <font  color="black" style="font-size: 40px; text-align: end;">75%</font>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <div *ngIf="searching" class="spinner-container">
+          <ion-spinner></ion-spinner>
+        </div>
+        <canvas id="canvas-kpi_detail" width="100%" ></canvas>
+      </ion-row>
+      
+    <div  *ngIf="!!datainfouser">
+     
+       <div *ngIf="datainfouser.id_group == 1">
+      
+          <ion-row>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="floating">วัน/เดือน/ปี</ion-label>
+                <ion-datetime displayFormat="D/MM/YYYY"  [(ngModel)]="mydate" (ionChange)="doSomething(this.mydate)"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button   color="secondary" expand="block" size="small"  class="shadow-red" (click)="showeall()">แสดงทั้งหมดในเดือนปัจจุบัน</ion-button>
+            </ion-col>
+          </ion-row>
+          <br>
+          <ion-row>
+            <ion-col size="6">
+              <b style="font-size: 17px;">  <font color="red">ยอดขาย</font> </b>  
+              <hr width="100%" size="60" color="red"> 
+            </ion-col>
+          </ion-row>
+          
+          <ion-row>
+            <ion-col size="6">
+              <b style="font-size: 17px;">  <font color="black">ยอดขายส่วนบุคคล</font> </b>  <br>
+              <font color="black" *ngIf="!!targtsales">{{targtsales.target_single}} บาท</font>
+            </ion-col>
+            <ion-col size="6">
+              <b style="font-size: 17px;">  <font color="black">ยอดรวมเดือนปัจจุบัน</font> </b>  <br>
+              <font color="black" *ngIf="!!targtdaily" >{{targtdaily}} บาท</font>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <b style="font-size: 17px;">  <font color="black">ยอดขายส่วนสาขา</font> </b>    <br>
+              <font color="black">- บาท</font>
+            </ion-col>
+          </ion-row>
+          <br>
+          <ion-row>
+            <ion-col size="6">
+              <b style="font-size: 17px;">  <font color="red">ค่าคอมมิชชั่น</font> </b>  
+              <hr width="100%" size="60" color="red"> 
+            </ion-col>
+            
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <b style="font-size: 15px;">  <font color="black">ทอง</font> </b> 
+            </ion-col>
+            <ion-col size="6">
+              <b style="font-size: 15px;">  <font color="black">เพชร</font> </b> 
+            </ion-col>
+          
+          
+          </ion-row>
+       </div>
+
+
+
+
+       <div *ngIf="datainfouser.id_group == 3">
+        <ion-row>
+          <ion-item>
+            <ion-label position="floating">MM/DD/YYYY</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" ></ion-datetime>
+          </ion-item>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-col size="6">
+            <b style="font-size: 17px;">  <font color="red">ผลการปฏิบัติงาน</font> </b>  
+            <hr width="100%" size="60" color="red"> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8">
+            <b style="font-size: 13px;">  <font color="black">ยอดขายส่วนสาขากกำกำกำก</font> </b> 
+          </ion-col>
+          <ion-col size="4">
+            <b style="font-size: 13px;">  <font color="black">10/10</font> </b> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8">
+            <b style="font-size: 13px;">  <font color="black">ยอดขายส่วนสาขากกำกำกำก</font> </b> 
+          </ion-col>
+          <ion-col size="4">
+            <b style="font-size: 13px;">  <font color="black">10/10</font> </b> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8">
+            <b style="font-size: 13px;">  <font color="black">ยอดขายส่วนสาขากกำกำกำก</font> </b> 
+          </ion-col>
+          <ion-col size="4">
+            <b style="font-size: 13px;">  <font color="black">10/10</font> </b> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8">
+            <b style="font-size: 13px;">  <font color="black">ยอดขายส่วนสาขากกำกำกำก</font> </b> 
+          </ion-col>
+          <ion-col size="4">
+            <b style="font-size: 13px;">  <font color="black">10/10</font> </b> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8">
+            <b style="font-size: 13px;">  <font color="black">ยอดขายส่วนสาขากกำกำกำก</font> </b> 
+          </ion-col>
+          <ion-col size="4">
+            <b style="font-size: 13px;">  <font color="black">10/10</font> </b> 
+          </ion-col>
+        </ion-row>
+       </div>
+    </div>
+    </ion-grid>
+
+
+    
+</ion-content>

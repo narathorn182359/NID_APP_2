@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss/tabs/chat"></ion-back-button>
+    </ion-buttons>
+    <ion-title>รายชื่อพนักงาน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list>
+    <ion-list-header>
+    ตำแหน่ง {{position}}
+    </ion-list-header>
+    <div *ngFor="let c of  showe" button  (click)="detail_staff(c.Code_Staff)" >
+      <ion-item> 
+        <ion-avatar slot="start">
+          <img src="http://18.140.109.247/nidapi/img/{{c.img}}" >
+        </ion-avatar>
+    
+        <ion-label>
+          <h2>{{c.Name_Thai  }}</h2>
+          <h3>{{c.Name_Eng}}</h3>
+          <p>{{c.Degree}}</p>
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+
+</ion-content>

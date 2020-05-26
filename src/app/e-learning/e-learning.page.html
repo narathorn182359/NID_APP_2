@@ -1,0 +1,13 @@
+<ion-header no-border>
+  <ion-toolbar >
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" color="danger">ปิด</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+  <iframe style="position: absolute; height: 100%; width:100%; border: none" [src]="url" id="newsframe"></iframe>
+</ion-content>

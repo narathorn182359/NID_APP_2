@@ -1,0 +1,52 @@
+<ion-header no-border>
+  <ion-toolbar >
+    <ion-buttons slot="secondary">
+      <ion-button>
+       <img src="/assets/imgsystem/Logo_NID.png" height="100%"/>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>อื่นๆ</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-content >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6"  *ngFor="let p of menulist"  (click)="ELearningModal()">
+          <ion-card style="text-align: center;">
+            <ion-card-content>
+             <img src="assets/imgsystem/{{p.icon}}" width="100%" >
+             <font color="black" style="font-size: 12px;" >{{p.name_menu}} </font>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-row>
+      <ion-col size="1">
+      </ion-col>
+      <ion-col>
+        <ion-button  color="warning" expand="block" class="shadow-red" (click)="change_password()">เปลี่ยนรหัสผ่าน</ion-button>
+      </ion-col>
+      <ion-col size="1"> 
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1">
+      </ion-col>
+      <ion-col>
+        <ion-button   color="danger" expand="block" class="shadow-red" (click)="logout()">ออกจากระบบ</ion-button>
+      </ion-col>
+      <ion-col size="1"> 
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+
+
+
+
+  </ion-content>
+

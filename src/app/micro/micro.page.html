@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="!!mc">หมวด{{mc.subject}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="!!mc" defaultHref="/tabss/tabs/list-new/{{mc.id_ad}}"></ion-back-button>
+    </ion-buttons>
+ 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content fullscreen>
+    <ion-list > 
+        <ion-item button  *ngFor="let p of micro"  (click) ="detail_new(p.id_ad,p.id)">
+          <ion-thumbnail slot="start" style="width: 100px; height:100px;">
+           <img src="http://18.140.109.247/nidapi/imgnew/{{p.img_ad}}"  />
+          </ion-thumbnail>
+      <div *ngIf="!!p.subject">
+        <ion-label >
+          <h3>{{p.subject}}</h3>
+          <p>
+            <img src="/assets/imgsystem/eye-outline.svg"  width="15"/> {{p.count_read}}
+        </p>
+        </ion-label>
+      </div>
+        </ion-item>
+    </ion-list>
+</ion-content>

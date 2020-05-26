@@ -1,0 +1,98 @@
+
+  <ion-toolbar >
+    <ion-title>เพิ่มพนักงาน</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settingstaff"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-content padding="true">
+  
+       
+              <form (ngSubmit)="onClickSubmit()" padding-right [formGroup]="loginForm">
+                
+                  <ion-label>Username<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="username_login"></ion-input>
+                  <br>
+                  <ion-label>Password<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="password"></ion-input>
+                  <br>
+                  <ion-label>คำนำหน้า<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="titel"></ion-input>
+                  <br>
+                  <ion-label>ชื่อ<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="name"></ion-input>
+                  <br>
+                  <ion-label>นามสกุล<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="lastname"></ion-input>
+                  <br>
+                  <ion-label>เพศ<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="sex"></ion-input>
+                  <br>
+                  <ion-label>ชื่อเล่น<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="nikname"></ion-input>
+                  <br>
+                  <ion-label>โทรศัพท์<ion-label  class="text-danger">*</ion-label></ion-label>
+                  <ion-input  formControlName="phone"></ion-input>
+                  <br>
+                  <ion-label position="floating">ที่อยู่</ion-label>
+                  <ion-textarea formControlName="address"></ion-textarea>
+                  <br>                  
+                    <ion-label>ฝ่าย<ion-label  class="text-danger">*</ion-label></ion-label>
+                    <ion-select value="" formControlName="department"    okText="ตกลง" cancelText="ยกเลิก">
+                      <ion-select-option  *ngFor="let  p of   listdepartment" value="{{p.id}}">{{p.name_department}}</ion-select-option>
+              
+                    </ion-select>
+                    <br>
+                    <ion-label>ตำแหน่ง<ion-label  class="text-danger">*</ion-label></ion-label>
+                    <ion-select value=""  formControlName="position"   okText="ตกลง" cancelText="ยกเลิก">
+                      <ion-select-option  *ngFor="let  p of   listposition" value="{{p.id}}">{{p.name_position}}</ion-select-option>
+                      
+                    </ion-select>
+                    <br>
+    
+                    <ion-label>บริษัท<ion-label  class="text-danger">*</ion-label></ion-label>
+                    <ion-select value=""  formControlName="company"  okText="ตกลง" cancelText="ยกเลิก">
+                      <ion-select-option  *ngFor="let  p of   listcompany" value="{{p.id}}">{{p.name_company_eng}}</ion-select-option>
+                      
+                    </ion-select>
+                     <br>
+                    <ion-label>ระดับ<ion-label  class="text-danger">*</ion-label></ion-label>
+                    <ion-select value=""  formControlName="brand"  okText="ตกลง" cancelText="ยกเลิก">
+                      <ion-select-option value="brown">Brown</ion-select-option>
+                      <ion-select-option value="blonde">Blonde</ion-select-option>
+                      <ion-select-option value="black">Black</ion-select-option>
+                      <ion-select-option value="red">Red</ion-select-option>
+                      <ion-select-option value="brown">Brown</ion-select-option>
+                      <ion-select-option value="blonde">Blonde</ion-select-option>
+                      <ion-select-option value="black">Black</ion-select-option>
+                      <ion-select-option value="red">Red</ion-select-option>
+                      <ion-select-option value="brown">Brown</ion-select-option>
+                      <ion-select-option value="blonde">Blonde</ion-select-option>
+                      <ion-select-option value="black">Black</ion-select-option>
+                      <ion-select-option value="red">Red</ion-select-option>
+                    </ion-select>
+                    <br>
+                    <ion-label>level</ion-label>
+                    <ion-select value=""    okText="ตกลง" cancelText="ยกเลิก">
+              
+                        <ion-select-option  *ngFor="let  p of   listlevel" value="{{p.id}}">{{p.name_lavel}}</ion-select-option>
+                      
+                     
+                    </ion-select>
+                    <br>
+                    <ion-label position="floating">กลุ่มงาน</ion-label>
+                    <ion-select value=""  okText="ตกลง" cancelText="ยกเลิก">
+                      <ion-select-option value="brown">Brown</ion-select-option>
+                      <ion-select-option value="blonde">Blonde</ion-select-option>
+                      <ion-select-option value="black">Black</ion-select-option>
+                      <ion-select-option value="red">Red</ion-select-option>
+                    </ion-select>
+                    <br>
+
+
+                  <ion-button size="default" slot="end" type="submit" color="danger" [disabled]="!loginForm.valid">บันทึก</ion-button>
+            
+                </form>
+           
+  </ion-content>

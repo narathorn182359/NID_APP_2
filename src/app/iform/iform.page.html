@@ -1,0 +1,36 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss"></ion-back-button>
+    </ion-buttons>
+    <ion-title>I-From</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <div *ngIf="data">
+    <ion-list >
+      <ion-list-header>
+        <ion-label>
+          ดาวโหลด I-Form
+        </ion-label>
+      </ion-list-header>
+      <div *ngFor="let d of data">
+        <ion-item >
+          <div slot="start">
+            <img src="/assets/imgsystem/pdficon.png"   width="30" >
+          </div>
+          <ion-label>
+            <h3>
+              {{ d.name }}
+            </h3>
+          </ion-label>
+          <div slot="end">
+            <img src="/assets/imgsystem/download-flat.png"   width="30" (click)="downloadPdf(d.name_file, d.name)">
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

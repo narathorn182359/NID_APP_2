@@ -1,0 +1,173 @@
+<!-- <ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss"></ion-back-button>
+    </ion-buttons>
+    <ion-title>รายละเอียด</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content> 
+  <div class="yourclass">
+    <ion-row  >
+      <div  id="cart-btn">
+        <ion-badge id="cart-badge" color="warning"  style="font-size: 27px;"  *ngIf="!!datainfouser"> {{datainfouser.brand}}</ion-badge>
+        <img  *ngFor="let a of datainfouser" src="http://18.140.109.247/nidapi/img/{{a.img}}" class="circle-pic"  >
+      </div>
+    </ion-row>
+    <br> <br>
+    <p text-center ><ion-label class="center" *ngFor="let a of datainfouser" class="text-white"> <h1>{{a.Name_Thai}} </h1>  <br> {{a.Position}}</ion-label>    </p>  
+
+    <br><br>  
+
+    <ion-grid *ngFor="let a of datainfouser">
+      <ion-row>
+        <ion-col size="6" align-self-start>
+          <img src="/assets/imgsystem/icon-personal.png" width="30px">
+        <b style="font-size: 17px;">  <font color="red">ข้อมูลส่วนตัว</font> </b>  
+        <hr width="100%" size="60" color="red"> 
+      </ion-col>
+      <ion-col size="6" >   
+      
+      
+      </ion-col> 
+      </ion-row>
+    
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 10px;" > รหัสพนักงาน <br>  <font color="black" style="font-size: 15px;">{{ a.Code_Staff}}</font>  </p>
+         <p>
+          
+         </p>
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;">  ชื่อเล่น  <br>  <font color="black" style="font-size: 15px;">-</font>   </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 12px;">ชื่อ-นามสกุล<br>  <font color="black" style="font-size: 15px;">{{ a.Name_Thai}}</font>  </p>
+  
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;">ชื่อ-นามสกุล (อังกฤษ) <br> <font color="black" style="font-size: 15px;">{{ a.Name_Eng}}</font> </p> 
+ 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 10px;">เบอร์โทร <br> <font color="black" style="font-size: 15px;">{{ a.TelephoneNumber}}</font></p>  
+       
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;"> เบอร์โต๊ะ <br> <font color="black" style="font-size: 15px;">-</font></p> 
+        
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 10px;">บริษัท <br>  <font color="black" style="font-size: 15px;">
+            {{datainfouser.name_company_eng}}
+            
+          </font> </p> 
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;">ฝ่าย <br> <font color="black" style="font-size: 15px;"> {{ a.Faction}}</font> <p>
+
+         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 10px;">แผนก <br> <font color="black" style="font-size: 15px;">{{ a.Department}}</font> </p> 
+         
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;">ตำแหน่ง <br> <font color="black" style="font-size: 15px;">{{ a.Position}}</font>  </p> 
+         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 10px;">ระดับพนักงาน <br>  <font color="black" style="font-size: 15px;">{{ a.Degree}}</font> </p>  
+        
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;">Brand <br>   <font color="black" style="font-size: 15px;">{{ a.JGStatus}}</font></p>  
+        
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 10px;">อายุงาน <br>  <font color="black" style="font-size: 15px;">{{  a.Yearsofservice}}</font> </p>  
+   
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;">จังหวัดตามที่สถาน  <br> <font color="black" style="font-size: 15px;">-</font></p> 
+       
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p style="font-size: 10px;">DIRECTREPFULL <br>  <font color="black" style="font-size: 15px;">-</font> </p>  
+   
+        </ion-col>
+        <ion-col size="6">
+          <p style="font-size: 10px;">DIRECTREPID  <br> <font color="black" style="font-size: 15px;">-</font></p> 
+       
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+  </div>
+   
+     
+</ion-content>
+ -->
+
+
+ <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/position-detail"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="owner_info">{{owner_info.Name_Thai}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content #content>
+ 
+  <ion-grid>
+    <ion-text color="medium" text-center>
+    </ion-text>
+    <ion-row *ngFor="let message of messages">
+ 
+      <ion-col size="9" *ngIf="message.user !== currentUser" class="message other-message">
+        <b>{{ message.user }}</b><br>
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'short' }}</div>
+      </ion-col>
+ 
+      <ion-col offset="3" size="9" *ngIf="message.user === currentUser" class="message my-message">
+        <b>{{ message.user }}</b><br>
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'short' }}</div>
+      </ion-col>
+ 
+    </ion-row>
+  </ion-grid>
+ 
+</ion-content>
+ 
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row align-items-center>
+      <ion-col size="10">
+        <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="message"></ion-textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn"
+          (click)="sendMessage()">
+          <ion-icon name="ios-send" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

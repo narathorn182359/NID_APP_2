@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/km360"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ความรู้สินค้า</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list > 
+      <ion-item button  *ngFor="let p of data"  (click) ="detail_pd(p.id)">
+        <ion-thumbnail slot="start" style="width: 100px;">
+         <img src="/assets/imgsystem/{{p.img}}"  />
+        </ion-thumbnail>
+    <div *ngIf="!!p.km_separat">
+      <ion-label >
+        <h3>{{p.km_separat}}</h3>
+      </ion-label>
+    </div>
+      </ion-item>
+  </ion-list>
+</ion-content>

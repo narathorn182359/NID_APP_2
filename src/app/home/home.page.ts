@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  segment: string = "login";
+  loading: any;
+  formLogin: any = {
+    name: '',
+    password: '',
+  };
   constructor() {}
 
 }

@@ -1,0 +1,113 @@
+
+
+ion-segment-button{
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  border: 0px;
+  border-radius: 0px;
+  --margin-bottom: 0
+ 
+}
+
+
+
+.segment-button-checked{
+  background: #FFF;
+  color: black;
+  font-size: 18px;
+  border: none !important;
+  .title_new{
+    border-radius: 20px;
+    border: solid;
+    border-color: rgb(221, 89, 89);
+    background-color:rgb(221, 89, 89);
+    width: 20px;
+    height: 10px;
+  
+  
+  }
+  
+}
+
+
+
+.card-img_em{
+  margin: 1; 
+  box-shadow:0px 0px 0px rgb(218, 216, 216);
+  height: 110px;
+  border-width: 0.5px;
+  border-style: solid ;
+  border-color: rgb(192, 190, 190);
+  border-radius: 20px;
+  background-color:rgb(255, 255, 255);
+  box-shadow:0px 10px 10px rgb(240, 239, 239);
+}
+
+
+.adjust-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+
+
+/* .card {
+  margin: 0 auto;
+  --background: none;
+  background-image: url('/assets/imgsystem/BG_personal.png');
+  
+  .header {
+      height: 200px;
+
+      .avatar {
+          width: 160px;
+          height: 160px;
+          position: relative;
+          margin: 0 auto;
+
+          img {
+              display: block;
+              border-radius: 50%;
+              position: absolute;
+              bottom: calc(-1*(80px + 4px));
+              border: 2px solid rgb(228, 224, 224);
+              background-color: #fff;
+          }
+      }
+  }
+} */
+
+/* .card-body {
+  background-color: #ffffff;
+  padding: 30px;
+  
+  
+
+  .user-meta {
+      padding-top: 40px;
+
+      .playername {
+          font-size: 24px;
+          font-weight: 600;
+          color: #303940;
+      }
+
+      .country {
+          font-size: 90%;
+          color: #949ea6;
+          text-transform: uppercase;
+          margin: 0 auto;
+      }
+  }
+} */
+ 
+
+.bg-pro{
+  --background: none;
+  background-image: url('/assets/imgsystem/bg_Profile.svg');
+  background-size: 100% ;
+  
+}

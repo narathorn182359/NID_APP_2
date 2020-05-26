@@ -1,0 +1,64 @@
+<ion-header no-border>
+  <ion-toolbar >
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <img src="/assets/imgsystem/Logo_NID.png" height="100%"/>
+       </ion-button>
+    </ion-buttons>
+    <ion-title>ค้นหาพนักงาน</ion-title>
+  </ion-toolbar>
+
+    <ion-searchbar 
+    [formControl]="searchControl"
+    (ionChange)="onSearchInput()">
+  
+  </ion-searchbar>
+
+</ion-header>
+ 
+
+<ion-content #pageTop>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-list-header>ตำแหน่ง</ion-list-header>
+    <div *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </div>
+  <!--   <div *ngIf="!!alluser"> 
+      <ion-item   *ngFor="let c of  alluser" button (click)="detail_staff(c.Code_Staff)">
+        <ion-avatar slot="start">
+      
+        </ion-avatar>
+          <ion-label> 
+            <h3>{{c.Name_Thai}}</h3>
+            <p> {{c.Position}}</p>
+          </ion-label>
+      </ion-item>
+    </div> -->
+  <!--   <div *ngIf="!!alluser_no"> 
+      <ion-item   *ngFor="let c of  alluser_no  " button  (click)="detail_staff(c.Code_Staff)"> 
+        <ion-avatar slot="start">
+        
+        </ion-avatar>
+          <ion-label> 
+            <h3>{{c.Name_Thai}}</h3>
+            <p> {{c.Position}}</p>
+          </ion-label>
+      </ion-item>
+    </div> -->
+    <ion-item   *ngFor="let c of  position" button  (click)="detail_position(c)"> 
+        <ion-label> 
+          <h3>{{c}}</h3>
+        </ion-label>
+    </ion-item>
+    
+  </ion-list>
+ <!--  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="โหลดข้อมูล...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+</ion-content>

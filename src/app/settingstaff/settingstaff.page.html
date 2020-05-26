@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>จัดการพนักงาน</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss"></ion-back-button>
+    </ion-buttons>
+        <ion-button slot="end" routerLink="/addstaff" >เพิ่ม</ion-button>
+  </ion-toolbar>
+
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list  > 
+    <ion-item button  *ngFor="let p of listdata">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>
+        <h3>{{p.title}} {{p.name}} {{p.lastname}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

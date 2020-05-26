@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{modalTitle}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" color="danger">ปิด</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div *ngFor="let a of data">
+      <ion-card>
+        <ion-card-content style="color: black;">
+          {{a.be_name}}   <div *ngIf="a.id_list_be == 3">
+            โรงบาล
+            </div>
+           {{a.be_detail}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+</ion-content>

@@ -24,3 +24,21 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import "~videogular2/fonts/videogular.css";
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+@import url('https://fonts.googleapis.com/css?family=Prompt&display=swap');
+
+*{
+    font-family: 'Prompt', sans-serif;
+ }
+
+ .my-custom-modal-css .modal-wrapper {
+    height: 20%;
+    top: 80%;
+    position: absolute; 
+    display: block;  
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+ }

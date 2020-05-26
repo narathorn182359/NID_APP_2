@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/km360"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ทรัพยากรบุคคล</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list > 
+    <ion-item button  *ngFor="let p of data"  (click) ="detail_pd(p.id)">
+      <ion-thumbnail slot="start" style="width: 100px;">
+       <p [innerHTML]="p.explain"></p>
+       <img src="/assets/imgsystem/logo.png"  />
+      </ion-thumbnail>
+ 
+    <ion-label >
+      <h3>{{p.name_km_hr}}</h3>
+    </ion-label>
+
+    </ion-item>
+</ion-list>
+</ion-content>

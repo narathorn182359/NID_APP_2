@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>PMS</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content >
+
+   
+      <ion-card class="card-banner bg-pro " *ngIf="!!datainfouser">
+        <ion-row>
+          <ion-col size="4">
+            <div style="margin-top: 8px; margin-left: 8px; margin-bottom: 8px;"> <img src="http://18.140.109.247/nidapi/img/{{datainfouser.img}}"   alt="" style= "border-radius: 16px; width: 100%; "></div>
+          </ion-col>
+          <ion-col>
+            <div style="margin-top: 10px;">
+              <b style="font-size: 18px;" class="adjust-text">{{ datainfouser.Name_Thai  }}</b>   
+              <b class="adjust-text">  {{ datainfouser.Name_Eng  }}</b>  
+                <font  style="font-size: 15px; color: rgb(0, 0, 0); " class="adjust-text">{{datainfouser.Position}}</font>
+              </div>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    
+
+  <div class="card-body" >
+   
+
+     
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" >
+              <ion-card  class="ion-card_in" style="text-align: center;" (click) ="detailkpi(datainfouser.username)">
+                <ion-card-content>
+                  <img   src="assets/imgsystem/icon_kpi.png"    style="width:100%" >
+                </ion-card-content>
+                <p class="my-label adjust-text">
+                  <font color="black" style="font-size: 20px;">KPI</font><br><font color="black" style="font-size: 30px;">75%</font>
+                 </p>
+              </ion-card>
+            </ion-col>
+
+            <ion-col size="6" >
+              <ion-card class="ion-card_in" style="text-align: center;" >
+                <ion-card-content>
+                  <img   src="/assets/imgsystem/icon_smart.png"    width="100%" >
+                </ion-card-content>
+                <p class="my-label adjust-text">
+                  <font color="black" style="font-size: 20px;">Core Values</font><br><font color="black" style="font-size: 30px;">80%</font>
+                 </p>
+              </ion-card>
+            </ion-col>
+
+
+            <ion-col size="6" >
+              <ion-card  class="ion-card_in" style="text-align: center;" >
+                <ion-card-content>
+                  <img   src="assets/imgsystem/icon_competency.png"    width="100%" >
+                </ion-card-content>
+                <p class="my-label adjust-text">
+                  <font color="black" style="font-size: 20px;">Competency</font><br><font color="black" style="font-size: 30px;">80%</font>
+                 </p>
+              </ion-card>
+            </ion-col>
+
+            <ion-col size="6" >
+              <ion-card  class="ion-card_in" style="text-align: center;" >
+                <ion-card-content>
+                  <img   src="assets/imgsystem/icon_time.png"    style="width:100%" >
+                </ion-card-content>
+                <p class="my-label adjust-text">
+                  <font color="black" style="font-size: 20px;">Time</font><br>
+                  <font color="black" style="font-size: 30px;">50%</font>
+                 </p>
+              </ion-card>
+            </ion-col>
+
+            <ion-col size="6" >
+              <ion-card  class="ion-card_in" style="text-align: center;" >
+                <ion-card-content>
+                  <img   src="assets/imgsystem/icon_kms.png"    style="width:100%" >
+                </ion-card-content>
+                <p class="my-label adjust-text">
+                  <font color="black" style="font-size: 20px;">KMS</font><br>
+                  <font color="black" style="font-size: 30px;">80%</font>
+                 </p>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6" >
+              <ion-card class="ion-card_in" style="text-align: center;" >
+                <ion-card-content>
+                  <img   src="assets/imgsystem/icon_kms.png"    style="width:100%" >
+                </ion-card-content>
+                <p class="my-label adjust-text">
+                  <font color="black" style="font-size: 20px;">History learning </font><br>
+                 
+                 </p>
+              </ion-card>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+  
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/km360"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ความรู้</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list-header>
+    <ion-label>เอกสาร</ion-label>
+  </ion-list-header>
+<div *ngFor="let item of data"  >
+  <ion-item (click) ="list_km360detail(item.id)"  button>
+  
+      <ion-thumbnail slot="start" style="width: 100px;">
+      
+        <img src="http://18.140.109.247/nidapi/imgnew/{{item.km_name_img}}"  />
+       </ion-thumbnail>
+
+    <ion-label>
+      <h2 [innerHTML]="item.km_title"></h2>
+    </ion-label>
+  </ion-item>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</ion-content>

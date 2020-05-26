@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/km360"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!!detail"> {{detail.km_title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  *ngIf="!!detail" padding>
+
+   <!-- <ion-slides pager="true">
+      <ion-slide *ngFor="let l of detail_img">
+    
+        <img src="http://18.138.58.132/nidapi/imgnew/{{l.km_name_img}}"  width="100%" />
+    
+      </ion-slide>
+  </ion-slides>
+ -->
+  
+ <div [innerHTML]="detail.km_important"></div>
+ <p>
+  {{detail.km_title}}
+   </p>
+ 
+
+
+<div *ngFor="let d of file">
+  <ion-list-header>
+   ไฟล์ดาวโหลด
+  </ion-list-header>
+  <ion-item >
+    <div slot="start">
+      <img src="/assets/imgsystem/pdficon.png"   width="30" >
+    </div>
+    <ion-label>
+      <h3>
+        {{ d.km_file_name }}
+      </h3>
+    </ion-label>
+    <div slot="end">
+      <img src="/assets/imgsystem/download-flat.png"   width="30" (click)="downloadPdf(d.km_file_name, d.km_file_name)">
+    </div>
+  </ion-item>
+</div>
+  
+ 
+  
+ 
+</ion-content>

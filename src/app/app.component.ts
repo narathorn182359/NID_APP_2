@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit,QueryList, ViewChildren  } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import {NavController ,Platform, ModalController, ActionSheetController, PopoverController, IonRouterOutlet, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from './api/auth.service';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +13,173 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  backButtonSubscription; 
+
+  lastTimeBackPress = 0;
+  timePeriodToExit = 2000;
+
+  @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
+
+
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private authService: AuthService,
+    public navCtrl: NavController, 
+    private router: Router,
+    private popoverCtrl: PopoverController,
+    public modalCtrl: ModalController,
+    private toast: ToastController,
+    private menu: MenuController,
+    private actionSheetCtrl: ActionSheetController,
   ) {
     this.initializeApp();
+    
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.statusBar.backgroundColorByName('white');
+      window["plugins"].PushbotsPlugin.initialize("5e5c7874a79d3e4c2b4f0402", {"android":{"sender_id":"135530068040"}});
+      this.checkAuthenticated();
+      this.backButtonEvent();
     });
+    
   }
+
+  async checkAuthenticated ()
+  {
+    try {
+      let isAuthenticated = await this.authService.checkIsAuthenticated();
+      if ( isAuthenticated == true) {
+      
+        this.navCtrl.navigateRoot('/tabss');
+        //window["plugins"].PushbotsPlugin.setAlias(this.formLogin.name);
+        console.log(isAuthenticated);
+      }else{
+      
+        this.navCtrl.navigateRoot('');
+      }
+    } catch (err) {
+      console.log(err);
+   
+    }
+  }
+  ngOnInit() { }
+ /*  ngAfterViewInit() {
+   
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(666666,() => {
+
+   
+
+    if(this.router.url == "/tabss/tabs/tab1" || 
+    this.router.url == "/tabss/tabs/tab2" || 
+    this.router.url == "/tabss/tabs/tab3"){
+      if(window.confirm("ยืนยันออกจาก app"))
+      {
+        navigator['app'].exitApp();
+      }
+      
+    }
+    else
+    {
+      this.navCtrl.navigateRoot('/tabss');
+    }
+    
+   
+
+
+
+   }); 
+  } */
+
+  ngOnDestroy() {
+   /*  this.backButtonSubscription.unsubscribe(); */
+  }
+
+
+
+
+
+  backButtonEvent() {
+    this.platform.backButton.subscribe(async () => {
+        // close action sheet
+        try {
+            const element = await this.actionSheetCtrl.getTop();
+            if (element) {
+                element.dismiss();
+                return;
+            }
+        } catch (error) {
+        }
+
+        // close popover
+        try {
+            const element = await this.popoverCtrl.getTop();
+            if (element) {
+                element.dismiss();
+                return;
+            }
+        } catch (error) {
+        }
+
+        // close modal
+        try {
+            const element = await this.modalCtrl.getTop();
+            if (element) {
+                element.dismiss();
+                return;
+            }
+        } catch (error) {
+            console.log(error);
+
+        }
+
+        // close side menua
+        try {
+            const element = await this.menu.getOpen();
+            if (element) {
+                this.menu.close();
+                return;
+
+            }
+
+        } catch (error) {
+
+        }
+
+        this.routerOutlets.forEach(async (outlet: IonRouterOutlet) => {
+            if (outlet && outlet.canGoBack()) {
+                outlet.pop();
+
+            } else {
+
+              navigator['app'].exitApp();
+
+            }
+        });
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }
