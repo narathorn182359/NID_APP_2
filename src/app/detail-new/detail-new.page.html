@@ -55,13 +55,20 @@
     </ion-card-content>
   </ion-card>
  
-  <ion-card>
-    <ion-card-content>
-  <ion-item>
-    <ion-textarea type="text" placeholder="แสดงความคิดเห็น" [(ngModel)]="idea.notes"></ion-textarea>
-  </ion-item>
 
-  <ion-button   color="danger" size="small"  (click)="addIdea()">ส่งความคิดเห็น</ion-button>
-</ion-card-content>
-</ion-card>
 </ion-content>
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row align-items-center>
+      <ion-col size="10">
+        <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="idea.notes"></ion-textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="primary" [disabled]="idea.notes === ''" class="msg-btn"
+          (click)="addIdea()">
+          <ion-icon name="ios-send" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
