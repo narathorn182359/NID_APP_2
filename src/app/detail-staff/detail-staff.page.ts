@@ -21,7 +21,7 @@ export class DetailStaffPage implements OnInit {
   owner_info:any;
  
   @ViewChild('content',{read: ElementRef, static:true}) content: ElementRef;
-  dataroute: {  owner_room: any; chat_partner: any; };
+  dataroute: {  owner_room: any; chat_partner: any; img_s:any};
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
@@ -32,6 +32,7 @@ export class DetailStaffPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.scrollToBottomOnInit_2();
     this.socket.connect();
   
     let chat_partners: any =    this.route.snapshot.paramMap.get('id')
@@ -39,7 +40,8 @@ export class DetailStaffPage implements OnInit {
 
       this.dataroute = {
         'owner_room':params['owner_room'],
-        'chat_partner': params['chat_partner'],      
+        'chat_partner': params['chat_partner'],    
+        'img_s' :params['img_s'],  
 
       }
   
@@ -47,18 +49,14 @@ export class DetailStaffPage implements OnInit {
 
  });
     
-     
-    
-     
-        this.apidataService.get_chat(this.dataroute).then(async (response: any) => {
-
+         this.apidataService.get_chat(this.dataroute).then(async (response: any) => {
           this.messages =  response.dataall;
           this.owner_info = response.owner_info;
-          console.log( this.owner_info);
+        //  console.log( this.messages);
           })
          .catch(async err => {
           console.log(err);
-         })
+         }) 
   
          this.scrollToBottomOnInit();
       
@@ -79,8 +77,7 @@ export class DetailStaffPage implements OnInit {
     this.socket.fromEvent('message').subscribe(message => {
       this.scrollToBottomOnInit();
       this.messages.push(message);
-   
-      console.log(this.messages);
+      //console.log(this.messages);
     });
   }
  
@@ -88,23 +85,33 @@ export class DetailStaffPage implements OnInit {
    
     this.socket.emit('send-message', { 
       text: this.message,
+      img: this.dataroute.img_s,
       owner_room: this.dataroute.owner_room,
       chat_partner: this.dataroute.chat_partner
     });
+   
+ 
 
-    let save_message = {
-      msg: this.message,
-      owner_room: this.dataroute.owner_room,
-      chat_partner: this.dataroute.chat_partner,
-      createdAt: new Date()
+      let save_message = {
+        msg: this.messages,
+        owner_room: this.dataroute.owner_room,
+        chat_partner: this.dataroute.chat_partner,
+        createdAt: new Date()
+  
+      }
+      console.log(save_message.msg);
+      setTimeout(() => {
+       this.apidataService.save_chat(save_message).then(async (response: any) => {
+        console.log(response);
+        })
+       .catch(async err => {
+        console.log(err);
+       }) 
+       console.log("ok");
+   }, 1000);
 
-    }
-    this.apidataService.save_chat(save_message).then(async (response: any) => {
-      console.log(response);
-      })
-     .catch(async err => {
-      console.log(err);
-     })
+
+ 
     this.message = '';
     
   }
@@ -136,4 +143,11 @@ export class DetailStaffPage implements OnInit {
       this.content.nativeElement.scrollToBottom(500);
    }, 50);
   }
+  scrollToBottomOnInit_2() {
+    setTimeout(() => {
+      this.content.nativeElement.scrollToBottom(500);
+   }, 500);
+  }
+
+
 }

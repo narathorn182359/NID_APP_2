@@ -11,23 +11,18 @@ export class PositionDetailPage implements OnInit {
   showe: any;
   position: any;
   username: any;
-  data: { chat_partner: any; owner_room: any; };
+  data: { chat_partner: any; owner_room: any; img_s:any };
 
   constructor(private storage:Storage,
               private apidataService:ApidataService,
-              private router:Router,
-              
-    
-    ) { }
+              private router:Router,) { }
 
   async ngOnInit() {
-
     this.get_contact();
-    
   }
 
     async get_contact(){
-      
+
       this.position  = await this.storage.get('position')
       this.apidataService.get_contact( this.position)
       .then(async (response: any) => {
@@ -41,17 +36,17 @@ export class PositionDetailPage implements OnInit {
     }
 
     async detail_staff(id){
-    
-   
-        this.username = await this.storage.get('get_username')
-        this.data ={
 
+        this.username = await this.storage.get('get_username')
+        let img = await this.storage.get('get_img')
+        
+        this.data ={
           'chat_partner':id,
-          'owner_room':this.username
-       
+          'owner_room':this.username,
+          'img_s' :img,
         }
 
-      console.log(this.data);
+      console.log(img);
       
     
      this.router.navigate(['/detail-staff',this.data]);

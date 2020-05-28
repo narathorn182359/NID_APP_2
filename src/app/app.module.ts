@@ -16,7 +16,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken  } from '@angular/fire/firestore';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
+const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', options: {} };
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

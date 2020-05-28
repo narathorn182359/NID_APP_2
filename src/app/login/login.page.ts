@@ -83,6 +83,7 @@ export class LoginPage implements OnInit {
       if ( isAuthenticated == true) {
         //window["plugins"].PushbotsPlugin.setAlias(this.formLogin.name)
         this.storage.set('get_username',this.formLogin.name);
+        this.storage.set('get_img',this.formLogin.name+".jpg");
         console.log(isAuthenticated);
         this.navCtrl.navigateRoot('/tabss');
 
@@ -96,7 +97,5 @@ export class LoginPage implements OnInit {
    
     }
   }
-
-
 
 }
