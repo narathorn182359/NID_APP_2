@@ -33,17 +33,6 @@ const routes: Routes = [
     loadChildren: () => import('./attendance/attendance.module').then( m => m.AttendancePageModule)
   },
   {
-    path: 'pms',
-    loadChildren: () => import('./pms/pms.module').then( m => m.PMSPageModule)
-  },
-  {
-    path: 'kpi-detail/:id',
-    resolve:{
-      special: DataResolverService
-    },
-    loadChildren: () => import('./kpi-detail/kpi-detail.module').then( m => m.KpiDetailPageModule)
-  },
-  {
     path: 'corevalues',
     loadChildren: () => import('./corevalues/corevalues.module').then( m => m.CorevaluesPageModule)
   },
@@ -54,21 +43,6 @@ const routes: Routes = [
   {
     path: 'edit-profile',
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
-  },
-  {
-    path: 'km360',
-    loadChildren: () => import('./km360/km360.module').then( m => m.Km360PageModule)
-  },
-  {
-    path: 'detail-staff',
-    resolve:{
-      special: DataResolverService
-    },
-    loadChildren: () => import('./detail-staff/detail-staff.module').then( m => m.DetailStaffPageModule)
-  },
-  {
-    path: 'iform',
-    loadChildren: () => import('./iform/iform.module').then( m => m.IformPageModule)
   },
   {
     path: 'km360list/:id',
@@ -87,14 +61,6 @@ const routes: Routes = [
   {
     path: 'privileges',
     loadChildren: () => import('./privileges/privileges.module').then( m => m.PrivilegesPageModule)
-  }
-  ,
-{
-    path: 'detail-new/:id',
-    resolve:{
-      special: DataResolverService
-    },
-    loadChildren: () => import('./detail-new/detail-new.module').then( m => m.DetailNewPageModule)
   },{
         path:'micro-detail/:id',
         resolve:{
@@ -149,8 +115,9 @@ const routes: Routes = [
     loadChildren: () => import('./alert-daily/alert-daily.module').then( m => m.AlertDailyPageModule)
   },
   {
-    path: 'position-detail',
-    loadChildren: () => import('./position-detail/position-detail.module').then( m => m.PositionDetailPageModule)
+    path: 'detail-staff',
+    loadChildren: () => import('./detail-staff/detail-staff.module').then( m => m.DetailStaffPageModule)
+    
   }
 ];
 

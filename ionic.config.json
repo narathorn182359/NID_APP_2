@@ -1,5 +1,5 @@
 {
-  "name": "NID_APP",
+  "name": "myApp",
   "integrations": {
     "capacitor": {},
     "cordova": {}

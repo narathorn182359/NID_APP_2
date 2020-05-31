@@ -8,57 +8,120 @@
     <ion-title>ค้นหาพนักงาน</ion-title>
   </ion-toolbar>
 
+  <div *ngIf="segmentModel === 'ตำแหน่ง'">
     <ion-searchbar 
     [formControl]="searchControl"
     (ionChange)="onSearchInput()">
-  
+    </ion-searchbar>
+ </div>
+
+ <div *ngIf="segmentModel === 'สนทนา'">
+  <ion-searchbar 
+  [formControl]="searchControl_history_chat"
+  (ionChange)="onSearchInput()">
   </ion-searchbar>
+</div>
+
+<div *ngIf="segmentModel === 'ผู้คน'">
+  <ion-searchbar 
+  [formControl]="searchControl_em_chat"
+  (ionChange)="onSearchInput()">
+  </ion-searchbar>
+</div>
+
 
 </ion-header>
  
 
-<ion-content #pageTop>
+<ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list>
-    <ion-list-header>ตำแหน่ง</ion-list-header>
-    <div *ngIf="searching" class="spinner-container">
-      <ion-spinner></ion-spinner>
+  <div style="padding-left: 12px; padding-right: 12px; margin-top: 8px;">
+
+  <ion-segment   
+    value="สนทนา" 
+    scrollable="true"
+    [(ngModel)]="segmentModel" 
+    (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="สนทนา">
+        <ion-label>สนทนา</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="ผู้คน">
+        <ion-label>ผู้คน</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="ตำแหน่ง">
+        <ion-label>ตำแหน่ง</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div *ngIf="segmentModel === 'สนทนา'">
+  <ion-list lines="none">
+    <ion-list-header>
+      รายชื่อสนทนาล่าสุด
+    </ion-list-header>
+
+    <ion-item *ngFor="let c of  history_chat"  button (click)="chat(c.username)">
+      <ion-avatar slot="start">
+        <img src="http://18.140.109.247/nidapi/img/{{c.img}}">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{c.name_thai}}</h3>
+        <p>{{c.msg.msg}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  </div>
+
+
+  <div *ngIf="segmentModel === 'ผู้คน'">
+    <ion-list lines="none" style="margin-top: 8px;">
+      <ion-list-header>
+        รายชื่อพนักงาน {{getuserall.total}} คน
+      </ion-list-header>
+  
+      <ion-item *ngFor="let c of  username_all"  button >
+        <ion-avatar slot="start">
+          <img src="http://18.140.109.247/nidapi/img/{{c.img}}">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{c.Name_Thai}}</h3>
+          <p>{{c.Position}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_em($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="กำลังโหลดข้อมูล..">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
     </div>
-  <!--   <div *ngIf="!!alluser"> 
-      <ion-item   *ngFor="let c of  alluser" button (click)="detail_staff(c.Code_Staff)">
-        <ion-avatar slot="start">
-      
-        </ion-avatar>
-          <ion-label> 
-            <h3>{{c.Name_Thai}}</h3>
-            <p> {{c.Position}}</p>
-          </ion-label>
-      </ion-item>
-    </div> -->
-  <!--   <div *ngIf="!!alluser_no"> 
-      <ion-item   *ngFor="let c of  alluser_no  " button  (click)="detail_staff(c.Code_Staff)"> 
-        <ion-avatar slot="start">
-        
-        </ion-avatar>
-          <ion-label> 
-            <h3>{{c.Name_Thai}}</h3>
-            <p> {{c.Position}}</p>
-          </ion-label>
-      </ion-item>
-    </div> -->
-    <ion-item   *ngFor="let c of  position" button  (click)="detail_position(c)"> 
+
+  
+
+
+
+
+
+
+
+<div *ngIf="segmentModel === 'ตำแหน่ง'">
+  <ion-list style="margin-top: 8px;">
+    <ion-list-header>ตำแหน่ง</ion-list-header>
+    <ion-item   *ngFor="let c of  position" button  (click)="detail_position(c)" lines="none"> 
         <ion-label> 
           <h3>{{c}}</h3>
         </ion-label>
     </ion-item>
     
   </ion-list>
- <!--  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="โหลดข้อมูล...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll> -->
+</div>
+ 
 </ion-content>

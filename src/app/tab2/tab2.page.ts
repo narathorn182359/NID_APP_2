@@ -16,6 +16,7 @@ export class Tab2Page implements OnInit {
   public  datainfouser:any; 
   segmentModel: string = "ข้อมูลส่วนตัว";
   benefits: any;
+  history_chat:[];
 
   constructor(
     public navCtrl: NavController, 
@@ -35,7 +36,7 @@ export class Tab2Page implements OnInit {
     this.apidataService.get_list_benefits()
     .then(async (response: any) => {
     this.benefits = response;
-   console.log(response) 
+ 
    })
 
    this.checkAuthenticated();
@@ -48,7 +49,7 @@ export class Tab2Page implements OnInit {
       this.apidataService.get_list_benefits()
       .then(async (response: any) => {
       this.benefits = response;
-     console.log(response) 
+    
      })
   
      this.checkAuthenticated();
@@ -56,30 +57,14 @@ export class Tab2Page implements OnInit {
     }, 2000);
   }
 
-
-
-
   async checkAuthenticated ()
   {
     try {
       let isAuthenticated = await this.authService.checkIsAuthenticated();
       if ( isAuthenticated == true) {
-        const loading = await this.loadingController.create({
-          spinner: 'bubbles',
-          message: null, 
-        });
-        await loading.present();
-        this.apidataService.getuserInfo()
-        .then(async (response: any) => {
-          this.datainfouser = response;
-           console.log(response)
-           await loading.dismiss();
-          
-       })
-       .catch(async err => {
-        await loading.dismiss();
-        console.log(err)
-       })
+        
+        this.getuserInfo();
+      
 
       }else{
         this.navCtrl.navigateRoot('');
@@ -90,13 +75,9 @@ export class Tab2Page implements OnInit {
     }
   }
 
-
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
    
-    
-    
-  
   }
 
 
@@ -119,7 +100,27 @@ export class Tab2Page implements OnInit {
 
 
 
+  async getuserInfo(){
+    const loading = await this.loadingController.create({
+      spinner: 'bubbles',
+      message: null, 
+    });
 
+    await loading.present();
+
+    this.apidataService.getuserInfo()
+    .then(async (response: any) => {
+      this.datainfouser = response;
+      await loading.dismiss();
+      
+   })
+   .catch(async err => {
+    await loading.dismiss();
+    console.log(err)
+   })
+
+
+  }
 
 
 

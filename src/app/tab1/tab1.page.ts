@@ -105,7 +105,7 @@ export class Tab1Page implements OnInit {
 
    async list_new(id:any){
      
-    this.router.navigateByUrl('/tabss/tabs/list-new/'+id)
+    this.router.navigateByUrl('/tabss/tabs/tab1/list-new/'+id)
    
   }
 

@@ -81,12 +81,12 @@ export class LoginPage implements OnInit {
     try {
       let isAuthenticated = await this.authService.checkIsAuthenticated();
       if ( isAuthenticated == true) {
-        //window["plugins"].PushbotsPlugin.setAlias(this.formLogin.name)
+        
         this.storage.set('get_username',this.formLogin.name);
         this.storage.set('get_img',this.formLogin.name+".jpg");
         console.log(isAuthenticated);
         this.navCtrl.navigateRoot('/tabss');
-
+        window["plugins"].PushbotsPlugin.setAlias(this.formLogin.name)
       }else{
       
         this.navCtrl.navigateRoot('');

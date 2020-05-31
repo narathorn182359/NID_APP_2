@@ -44,7 +44,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.statusBar.backgroundColorByName('white');
-      window["plugins"].PushbotsPlugin.initialize("5e5c7874a79d3e4c2b4f0402", {"android":{"sender_id":"135530068040"}});
+      window["plugins"].PushbotsPlugin.initialize("5ed3e6512c9f8c1f8d3ed9c4", {"android":{"sender_id":"707863121412"}});
       this.checkAuthenticated();
       this.backButtonEvent();
     });

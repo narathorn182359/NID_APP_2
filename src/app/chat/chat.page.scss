@@ -9,3 +9,22 @@
     --ion-background-color:rgb(247, 247, 247);
 }
  
+ion-segment-button{
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  border: 5px;
+  border-radius: 18px;
+  --margin-bottom: 0
+ 
+}
+
+
+.segment-button-checked{
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  border: none !important;
+
+  
+}
+

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabss"></ion-back-button>
+      <ion-back-button defaultHref="/tabss/tabs/tab1"></ion-back-button>
     </ion-buttons>
     <ion-title  *ngFor="let item of advertise_head ">{{item.name_adver}}</ion-title>
   </ion-toolbar>
@@ -11,18 +11,11 @@
     <img *ngFor="let item of advertise_head " src="http://18.140.109.247/nidapi/imgnew/{{item.img}}"  width="80"  height="80"/>
     <div  *ngFor="let item of advertise_head ">{{item.name_adver}}</div>
   </div>
-  <div class="thumnails">
-    <div class="list-thumbnail">
-
-
-      </div>
-  </div>
-
 <!--  <div style="background-color: #f2f2f2 !important; height: 100; overflow: auto;"> -->
   <ion-list > 
 
   
-    <ion-item button  *ngFor="let p of advertise"  (click) ="detail_new(p.id_ad,p.id)">
+    <ion-item button lines="none" *ngFor="let p of advertise"  (click) ="detail_new(p.id_ad,p.id)">
       <ion-thumbnail slot="start" style="width: 100px; height:100px;">
              <div *ngIf="!!p.img_ad">
               <img src="http://18.140.109.247/nidapi/imgnew/{{p.img_ad}}"  />

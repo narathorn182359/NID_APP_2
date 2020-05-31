@@ -5,16 +5,17 @@ ion-segment-button{
   color: var(--ion-color-medium);
   border: 0px;
   border-radius: 0px;
-  --margin-bottom: 0
+  --margin-bottom: 0;
+ 
  
 }
 
 
 
 .segment-button-checked{
-  background: #FFF;
+  --background: rgb(184, 39, 39);
   color: black;
-  font-size: 18px;
+ 
   border: none !important;
   .title_new{
     border-radius: 20px;

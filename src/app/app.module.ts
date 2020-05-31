@@ -13,7 +13,6 @@ import { Badge } from '@ionic-native/badge/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule, FirestoreSettingsToken  } from '@angular/fire/firestore';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', options: {} };
@@ -28,7 +27,6 @@ const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', opt
     IonicStorageModule.forRoot(),
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [
@@ -36,8 +34,7 @@ const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', opt
     SplashScreen,
     Badge,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    InAppBrowser,
-    { provide: FirestoreSettingsToken, useValue: {}} ,
+    InAppBrowser ,
   ],
   bootstrap: [AppComponent]
 })

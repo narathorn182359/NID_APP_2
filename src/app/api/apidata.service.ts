@@ -697,7 +697,8 @@ async get_list_benefits()
   {
 
     let request = {
-      'value':value
+      'value':value,
+     
     }
     let auth: any = await this.storage.get('auth');
     let headers: HttpHeaders = new HttpHeaders({
@@ -768,11 +769,33 @@ async get_list_benefits()
   }
  
 
+  async get_history_chat(value:any)
+  {
+    let request = {
+      'value':value
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+    return this.http.post(`${Service.apiUrl}/get_history_chat`,request,{ headers }).toPromise()
+  }
 
+  
+  async get_username_all(value:any,page:any)
+  {
+    let request = {
+      'value':value,
+      'page':page
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
 
-
-
-
+      return this.http.post(`${Service.apiUrl}/get_username_all?page=`+page,request,{ headers }).toPromise()
+  }
+  
 
 
 

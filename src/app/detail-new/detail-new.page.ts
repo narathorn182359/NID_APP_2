@@ -59,11 +59,11 @@ public ideas: Observable<Idea[]>;
      }
 
   ngOnInit() {
-    this.checkAuthenticated();
-    this.onSearchInput();
+  
   }
   async ionViewWillEnter(){
-  
+    this.checkAuthenticated();
+    this.onSearchInput();
  
   }
 
@@ -152,11 +152,11 @@ showToast(msg) {
 
 
 
-ionViewWillLeave() {
+/* ionViewWillLeave() {
   console.log("ed");
   this.checkAuthenticated();
   this.onSearchInput();
- }
+ } */
 
 
 

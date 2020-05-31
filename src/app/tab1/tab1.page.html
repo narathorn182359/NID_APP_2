@@ -1,18 +1,11 @@
-
-  <ion-header >
+<ion-header >
     <ion-toolbar class="new">
       <img   src="/assets/imgsystem/Logo_NID.png" width="40" height="100%"/>
-     
     </ion-toolbar>
-  </ion-header>
+</ion-header>
  
-  
 <ion-content fullscreen  >
-
-
-  <div class="bg-image" [ngStyle]="{'background-image': 'url(http://18.140.109.247/nidapi/imgnew/'+img_banner+')'}">
-  
-  </div>
+  <div class="bg-image" [ngStyle]="{'background-image': 'url(http://18.140.109.247/nidapi/imgnew/'+img_banner+')'}"></div>
   <div class="bg-text">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
       <ion-refresher-content></ion-refresher-content>
@@ -23,16 +16,11 @@
           <a routerLink ="/detail-new/{{p.advertise_id}}" >
           <img class="img"     src="http://18.140.109.247/nidapi/imgnew/{{p.img}}"    width="100%"  style="height: 150px;"/>
         </a>
-       
         </ion-slide>
-    
     </ion-slides>
   </ion-card>
   </div>
-
     <br class="title_br"><br class="title_br">
-
-
     <div class="spinner-container">
       <ion-row>
         <ion-grid>
@@ -46,17 +34,16 @@
             </ion-col>
             <ion-col>
               <div>
-                <a routerLink ="/pms" >
+                <a routerLink ="/tabss/tabs/tab1/pms" >
                 <img src="/assets/imgsystem/icon_pms.svg" alt="" style="height: 30px; width: 100%;" >
                 </a>
-
                 <br> 
                 <p style="font-size: 11px;">  PMS </p>
               </div>
             </ion-col>
             <ion-col>
               <div>
-                <a routerLink ="/km360" >
+                <a routerLink ="/tabss/tabs/tab1/km360" >
                 <img src="/assets/imgsystem/icon_km.svg" alt="" style="height: 30px; width: 100%;">
                 </a>
                 <br> 
@@ -65,8 +52,8 @@
             </ion-col>
             <ion-col>
               <div>
-                
-                <a routerLink ="/iform" >
+      
+                <a routerLink ="/tabss/tabs/tab1/iform" >
                 <img src="/assets/imgsystem/icon_hr-service.svg" alt="" style="height: 30px; width: 100%;">
                 </a>
 

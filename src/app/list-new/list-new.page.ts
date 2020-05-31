@@ -88,10 +88,10 @@ export class ListNewPage implements OnInit {
      })
   
   
-      this.router.navigateByUrl('/detail-new/'+id);
+      this.router.navigateByUrl('/tabss/tabs/tab1/detail-new/'+id);
     }else{
       console.log(id_mc);
-      this.router.navigateByUrl('/tabss/tabs/micro/'+id_mc);
+      this.router.navigateByUrl('/tabss/tabs/tab1/micro/'+id_mc);
     }
     
   }

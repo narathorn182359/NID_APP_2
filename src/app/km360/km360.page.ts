@@ -41,7 +41,7 @@ export class Km360Page implements OnInit {
 
   ngOnInit() {
     this.setFilteredItems("");
-  
+    this.checkAuthenticated();
     this.searchControl.valueChanges
       .pipe(debounceTime(700))
       .subscribe(search => {
@@ -71,7 +71,7 @@ export class Km360Page implements OnInit {
 
 
   async ionViewWillEnter(){
-    this.checkAuthenticated();
+   
 
   }
 

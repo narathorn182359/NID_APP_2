@@ -13,9 +13,53 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
+          },
+          {
+            path:'list-new/:id',
+            loadChildren: () => import('../list-new/list-new.module').then( m => m.ListNewPageModule)
+          },
+          {
+            path:'micro/:id',
+            loadChildren: () => import('../list-new/list-new.module').then( m => m.ListNewPageModule)
+          },
+          {
+            path:'detail-new/:id',
+            loadChildren: () => import('../detail-new/detail-new.module').then( m => m.DetailNewPageModule)
+          },
+          {
+            path: 'km360',
+            loadChildren: () => import('../km360/km360.module').then( m => m.Km360PageModule)
+          },
+          {
+            path: 'iform',
+            loadChildren: () => import('../iform/iform.module').then( m => m.IformPageModule)
+            
+          },
+          {
+            path: 'iform',
+            loadChildren: () => import('../iform/iform.module').then( m => m.IformPageModule)
+            
+          },
+          {
+
+            path: 'pms',
+            loadChildren: () => import('../pms/pms.module').then( m => m.PMSPageModule)
+
+          },
+          {
+
+            path: 'kpi-detail/:id',
+            resolve:{
+              special: DataResolverService
+            },
+            loadChildren: () => import('../kpi-detail/kpi-detail.module').then( m => m.KpiDetailPageModule)
+            
           }
+         
         ]
-      },{
+      }
+      
+      ,{
         path: 'tab2',
         children: [
           {
@@ -38,6 +82,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../chat/chat.module#ChatPageModule'
+          },
+          {
+            path: 'position-detail',
+            loadChildren: () => import('../position-detail/position-detail.module').then( m => m.PositionDetailPageModule)
           }
         ]
       },{
@@ -46,30 +94,6 @@ const routes: Routes = [
           {
             path:'',
             loadChildren: '../time-attendance/time-attendance.module#TimeAttendancePageModule'
-          }
-        ]
-      },{
-        path:'list-new/:id',
-        resolve:{
-          special: DataResolverService
-        },
-        children:[
-          {
-            path: '',
-  
-            loadChildren: () => import('../list-new/list-new.module').then( m => m.ListNewPageModule)
-          }
-        ]
-      },{
-        path:'micro/:id',
-        resolve:{
-          special: DataResolverService
-        },
-        children:[
-          {
-            path: '',
-    
-            loadChildren: () => import('../micro/micro.module').then( m => m.MicroPageModule)
           }
         ]
       },

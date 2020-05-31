@@ -1,5 +1,5 @@
 {
-  "name": "NID_APP",
+  "name": "myApp",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~9.1.6",
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
-    "@capacitor/core": "2.1.0",
+    "@capacitor/core": "2.1.2",
     "@ionic-native/badge": "^5.26.0",
     "@ionic-native/core": "^5.0.7",
     "@ionic-native/in-app-browser": "^5.26.0",
@@ -31,8 +31,11 @@
     "@ionic/storage": "^2.2.0",
     "chart.js": "^2.9.3",
     "cordova-android": "8.1.0",
-    "firebase": "^7.14.4",
+    "file-saver": "^2.0.2",
+    "firebase": "^7.14.6",
+    "ngx-filesaver": "^9.0.0",
     "ngx-socket-io": "^3.0.1",
+    "pushbots-cordova-plugin": "^1.6.15-rc8",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -43,7 +46,7 @@
     "@angular/compiler": "~9.1.6",
     "@angular/compiler-cli": "~9.1.6",
     "@angular/language-service": "~9.1.6",
-    "@capacitor/cli": "2.1.0",
+    "@capacitor/cli": "2.1.2",
     "@ionic/angular-toolkit": "^2.1.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -53,7 +56,6 @@
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^4.2.1",
     "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -70,16 +72,17 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
+      "pushbots-cordova-plugin": {},
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ]
   }
 }

@@ -74,7 +74,7 @@ export class PMSPage implements OnInit {
   async detailkpi(id:any) {
 
 console.log(id);  
-this.router.navigateByUrl('/kpi-detail/'+id);
+this.router.navigateByUrl('/tabss/tabs/tab1/kpi-detail/'+id);
 
 }
 
