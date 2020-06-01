@@ -62,7 +62,10 @@ export class AppComponent {
         console.log(isAuthenticated);
       }else{
       
-        this.navCtrl.navigateRoot('');
+        this.authService.removeCredentials();
+        this.navCtrl.navigateRoot('/login');
+        window["plugins"].PushbotsPlugin.updateAlias("--");
+        
       }
     } catch (err) {
       console.log(err);

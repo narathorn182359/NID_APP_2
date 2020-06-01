@@ -80,6 +80,9 @@ public ideas: Observable<Idea[]>;
        })
        .catch(async err => {
         console.log(err);
+        this.authService.removeCredentials();
+        this.navCtrl.navigateRoot('/login');
+        window["plugins"].PushbotsPlugin.updateAlias("--");
        })
 
 

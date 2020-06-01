@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApidataService } from '../api/apidata.service';
 import { DomSanitizer} from '@angular/platform-browser';
-import { ModalController } from '@ionic/angular';
+import { ModalController,NavController } from '@ionic/angular';
+import { AuthService } from '../api/auth.service';
 @Component({
   selector: 'app-e-learning',
   templateUrl: './e-learning.page.html',
@@ -14,6 +15,8 @@ export class ELearningPage implements OnInit {
     private apidataService:ApidataService,
     private sanitizer: DomSanitizer,
     private modalController: ModalController,
+    public navCtrl: NavController, 
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -27,7 +30,9 @@ export class ELearningPage implements OnInit {
       
    })
    .catch(async err => {
-  
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
     console.log(err)
    })
 

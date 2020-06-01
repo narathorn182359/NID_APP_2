@@ -81,7 +81,7 @@ export class LoginPage implements OnInit {
     try {
       let isAuthenticated = await this.authService.checkIsAuthenticated();
       if ( isAuthenticated == true) {
-        
+       // this.storage.set('set_noti',"null");
         this.storage.set('get_username',this.formLogin.name);
         this.storage.set('get_img',this.formLogin.name+".jpg");
         console.log(isAuthenticated);

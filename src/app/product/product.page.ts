@@ -40,7 +40,7 @@ export class ProductPage implements OnInit {
 
 
   detail_pd(id:any){
-    this.router.navigateByUrl('/product-list/'+id);
+    this.router.navigateByUrl('/tabss/tabs/tab1/product-list/'+id);
   }
 
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApidataService } from '../api/apidata.service';
 import { Storage } from '@ionic/storage';
+import { ModalController,NavController } from '@ionic/angular';
+import { AuthService } from '../api/auth.service';
 
 @Component({
   selector: 'app-km-hr',
@@ -14,6 +16,8 @@ export class KmHrPage implements OnInit {
   constructor(
     private apidataService: ApidataService,
     private router: Router,
+    public navCtrl: NavController, 
+    private authService: AuthService,
 
   ) { }
 
@@ -33,7 +37,10 @@ export class KmHrPage implements OnInit {
    })
    .catch(async err => {
     console.log(err);
-    
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
+   
    })
 
 
@@ -42,7 +49,7 @@ export class KmHrPage implements OnInit {
 
 
   detail_pd(id:any){
-    this.router.navigateByUrl('/km-hr-list/'+id);
+    this.router.navigateByUrl('/tabss/tabs/tab1/km-hr-list/'+id);
   }
 
 

@@ -8,6 +8,7 @@ import { IonContent } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { IonInfiniteScroll } from '@ionic/angular';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -192,6 +193,9 @@ export class ChatPage implements OnInit {
       
    })
    .catch(async err => {
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
     console.log(err)
    })
   }

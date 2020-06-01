@@ -1,10 +1,10 @@
 import { Component, OnInit,ViewChild ,ElementRef} from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { ToastController } from '@ionic/angular';
+import { ToastController,NavController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApidataService } from '../api/apidata.service';
 import { Storage } from '@ionic/storage';
-
+import { AuthService } from '../api/auth.service';
 
 @Component({
   selector: 'app-detail-staff',
@@ -28,7 +28,9 @@ export class DetailStaffPage implements OnInit {
     private apidataService: ApidataService,
     private storage: Storage,
     private socket: Socket, 
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public navCtrl: NavController, 
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -55,6 +57,9 @@ export class DetailStaffPage implements OnInit {
         //  console.log( this.messages);
           })
          .catch(async err => {
+          this.authService.removeCredentials();
+          this.navCtrl.navigateRoot('/login');
+          window["plugins"].PushbotsPlugin.updateAlias("--");
           console.log(err);
          }) 
   

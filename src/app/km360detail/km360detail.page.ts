@@ -82,21 +82,12 @@ export class Km360detailPage implements OnInit {
           
          })
          .catch(async err => {
-          console.log(err);
-            this.authService.removeCredentials();
-            this.navCtrl.navigateRoot('');
+          this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
          }) 
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
         }
 
 

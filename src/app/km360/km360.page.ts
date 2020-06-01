@@ -105,7 +105,9 @@ export class Km360Page implements OnInit {
       
    })
    .catch(async err => {
-   
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
  
     console.log(err);
     
@@ -118,11 +120,11 @@ export class Km360Page implements OnInit {
 
   async list_km360(id:any){
     if(id == 13){
-      this.router.navigateByUrl('/product/'+id);
+      this.router.navigateByUrl('/tabss/tabs/tab1/product/'+id);
     }else if(id == 3){
-      this.router.navigateByUrl('/km-hr/'+id);
+      this.router.navigateByUrl('/tabss/tabs/tab1/km-hr/'+id);
     }else{
-      this.router.navigateByUrl('/km360list/'+id);
+      this.router.navigateByUrl('/tabss/tabs/tab1/km360list/'+id);
     }
    
   }

@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/km360"></ion-back-button>
+      <ion-back-button *ngIf="!!detail" defaultHref="/tabss/tabs/tab1/km360list/{{detail.id_km_cat}}" ></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="!!detail"> {{detail.km_title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content  *ngIf="!!detail" padding>
+<ion-content>
 
    <!-- <ion-slides pager="true">
       <ion-slide *ngFor="let l of detail_img">
@@ -18,8 +18,8 @@
   </ion-slides>
  -->
   
- <div [innerHTML]="detail.km_important"></div>
- <p>
+ <div *ngIf="!!detail" [innerHTML]="detail.km_important"></div>
+ <p *ngIf="!!detail">
   {{detail.km_title}}
    </p>
  

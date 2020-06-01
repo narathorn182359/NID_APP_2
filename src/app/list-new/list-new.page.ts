@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApidataService } from '../api/apidata.service';
 import { Storage } from '@ionic/storage';
-import { ModalController } from '@ionic/angular';
+import { ModalController,NavController } from '@ionic/angular';
 import { ModalNewPage } from '../modal-new/modal-new.page';
+import { AuthService } from '../api/auth.service';
 @Component({
   selector: 'app-list-new',
   templateUrl: './list-new.page.html',
@@ -23,7 +24,9 @@ export class ListNewPage implements OnInit {
     private router: Router,
     private dataService: ApidataService,
     private storage: Storage,
-    private modalController:ModalController
+    private modalController:ModalController,
+    private authService: AuthService,
+    public navCtrl: NavController, 
     ) { 
 
     
@@ -41,7 +44,9 @@ export class ListNewPage implements OnInit {
       console.log(this.advertise)
    })
    .catch(async err => {
-  
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
     console.log(err)
    })
    
@@ -85,6 +90,7 @@ export class ListNewPage implements OnInit {
      })
      .catch(async err => {
       console.log(err);
+      
      })
   
   

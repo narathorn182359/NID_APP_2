@@ -45,62 +45,16 @@ const routes: Routes = [
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
   },
   {
-    path: 'km360list/:id',
-    resolve:{
-      special: DataResolverService
-    },
-    loadChildren: () => import('./km360list/km360list.module').then( m => m.Km360listPageModule)
-  },
-  {
-    path: 'km360detail/:id',
-    resolve:{
-      special: DataResolverService
-    },
-    loadChildren: () => import('./km360detail/km360detail.module').then( m => m.Km360detailPageModule)
-  },
-  {
     path: 'privileges',
     loadChildren: () => import('./privileges/privileges.module').then( m => m.PrivilegesPageModule)
-  },{
-        path:'micro-detail/:id',
-        resolve:{
-          special: DataResolverService
-        },
-        loadChildren: () => import('./micro-detail/micro-detail.module').then(m => m.MicroDetailPageModule)
-      },
-  {
-    path: 'product/:id',
-    resolve:{
-      special: DataResolverService
-    },
-    loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
   },
   {
     path: 'product-detail',
     loadChildren: () => import('./product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
   },
   {
-    path: 'product-list/:id',
-    resolve:{
-      special: DataResolverService
-    },
-    loadChildren: () => import('./product-list/product-list.module').then( m => m.ProductListPageModule)
-  },
-  {
     path: 'change-password',
     loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
-  },
-  {
-    path: 'km-hr/:id',
-    loadChildren: () => import('./km-hr/km-hr.module').then( m => m.KmHrPageModule)
-  },
-  {
-    path: 'km-hr-list/:id',
-    loadChildren: () => import('./km-hr-list/km-hr-list.module').then( m => m.KmHrListPageModule)
-  },
-  {
-    path: 'km-hr-detail/:id',
-    loadChildren: () => import('./km-hr-detail/km-hr-detail.module').then( m => m.KmHrDetailPageModule)
   },
   {
     path: 'modal-benefits',

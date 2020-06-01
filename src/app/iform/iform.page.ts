@@ -51,6 +51,10 @@ data:any;
       }
     } catch (err) {
       console.log(err);
+      this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
+    console.log(err)
     
     }
   }

@@ -54,7 +54,48 @@ const routes: Routes = [
             },
             loadChildren: () => import('../kpi-detail/kpi-detail.module').then( m => m.KpiDetailPageModule)
             
+          },
+          {
+             path: 'km-hr-list/:id',
+             loadChildren: () => import('../km-hr-list/km-hr-list.module').then( m => m.KmHrListPageModule)
+          },
+          {
+            path: 'km-hr/:id',
+            loadChildren: () => import('../km-hr/km-hr.module').then( m => m.KmHrPageModule)
+          },
+          {
+            path: 'product/:id',
+            resolve:{
+              special: DataResolverService
+            },
+            loadChildren: () => import('../product/product.module').then( m => m.ProductPageModule)
+          },
+          {
+            path: 'km360list/:id',
+            resolve:{
+              special: DataResolverService
+            },
+            loadChildren: () => import('../km360list/km360list.module').then( m => m.Km360listPageModule)
+          },
+          {
+            path: 'product-list/:id',
+            resolve:{
+              special: DataResolverService
+            },
+            loadChildren: () => import('../product-list/product-list.module').then( m => m.ProductListPageModule)
+          },
+          {
+            path: 'km-hr-detail/:id',
+            loadChildren: () => import('../km-hr-detail/km-hr-detail.module').then( m => m.KmHrDetailPageModule)
+          },
+          {
+            path: 'km360detail/:id',
+            resolve:{
+              special: DataResolverService
+            },
+            loadChildren: () => import('../km360detail/km360detail.module').then( m => m.Km360detailPageModule)
           }
+          
          
         ]
       }

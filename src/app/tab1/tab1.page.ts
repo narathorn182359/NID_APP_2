@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertDailyPage } from '../alert-daily/alert-daily.page';
 import { AttendancePage } from '../attendance/attendance.page';
 import { PMSPage } from '../pms/pms.page';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -37,7 +38,8 @@ export class Tab1Page implements OnInit {
     private authService: AuthService,
     private router: Router,
     private platform: Platform,
-    private modalController:ModalController
+    private modalController:ModalController,
+    private storage:Storage
   
     ) { 
   
@@ -65,11 +67,11 @@ export class Tab1Page implements OnInit {
         console.log(isAuthenticated);
       }else{
       
-        this.navCtrl.navigateRoot('');
+      
       } 
     } catch (err) {
       console.log(err);
-    
+      
     }
   }
 
@@ -111,19 +113,39 @@ export class Tab1Page implements OnInit {
 
 
   async ionViewWillEnter(){
+
+     let user_noti;
+
     this.slides.nativeElement.startAutoplay();
     this.apidataService.alert_daily_c().then(async (response: any) => {
-      
-      console.log(response)
-    if(response == 'N'){
+      console.log(response.success)
+      user_noti =  response.username
+    if(response.success == 'N'){
       this.presentModal();
     }
      
    })
    .catch(async err => {
-   console.log(err)
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+    window["plugins"].PushbotsPlugin.updateAlias("--");
+    console.log(err)
    })
   
+   let set_noti = await this.storage.get('set_noti')
+   console.log(set_noti);
+
+   if(set_noti){
+    console.log("ok")
+   }else{
+    console.log("set")
+    this.storage.set('set_noti',"null");
+    window["plugins"].PushbotsPlugin.updateAlias(user_noti);
+    
+   }
+   
+
+
    
   }
 
@@ -158,21 +180,6 @@ export class Tab1Page implements OnInit {
     
     return await modal.present();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
