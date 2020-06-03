@@ -20,7 +20,7 @@ const routes: Routes = [
           },
           {
             path:'micro/:id',
-            loadChildren: () => import('../list-new/list-new.module').then( m => m.ListNewPageModule)
+            loadChildren: () => import('../micro/micro.module').then( m => m.MicroPageModule)
           },
           {
             path:'detail-new/:id',
@@ -94,6 +94,11 @@ const routes: Routes = [
               special: DataResolverService
             },
             loadChildren: () => import('../km360detail/km360detail.module').then( m => m.Km360detailPageModule)
+          },
+          {
+            
+            path: 'micro-detail/:id',
+            loadChildren: () => import('../micro-detail/micro-detail.module').then( m => m.MicroDetailPageModule)
           }
           
          

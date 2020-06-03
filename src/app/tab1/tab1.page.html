@@ -13,8 +13,8 @@
     <ion-card class="card-banner">
       <ion-slides pager="true" [options]="sliderOpts" loop="true" (ionSlideDidChange)="slideChanged()" (ionSlideTouchEnd)="slideChanged_2()" #slides>
         <ion-slide *ngFor="let p of banner">
-          <a routerLink ="/detail-new/{{p.advertise_id}}" >
-          <img class="img"     src="http://18.140.109.247/nidapi/imgnew/{{p.img}}"    width="100%"  style="height: 150px;"/>
+          <a routerLink ="/tabss/tabs/tab1/detail-new/{{p.advertise_id}}" >
+          <img class="img"     src="http://18.140.109.247/nidapi/imgnew/{{p.img_banner}}"    width="100%"  style="height: 150px;"/>
         </a>
         </ion-slide>
     </ion-slides>
@@ -89,6 +89,11 @@
     </ion-row>  
 </ion-card>
 </div>
-
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="white" (click)="chatWithHr()">
+    <img src="/assets/imgsystem/botton_HRChat.svg" alt="" width="80%">
+  </ion-fab-button>
+</ion-fab>
+ 
 
 </ion-content>

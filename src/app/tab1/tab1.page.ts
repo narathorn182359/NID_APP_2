@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AlertDailyPage } from '../alert-daily/alert-daily.page';
 import { AttendancePage } from '../attendance/attendance.page';
+import { ChatWithHrPage } from '../chat-with-hr/chat-with-hr.page';
+
 import { PMSPage } from '../pms/pms.page';
 import { Storage } from '@ionic/storage';
 
@@ -87,7 +89,7 @@ export class Tab1Page implements OnInit {
    .then(async (response: any) => {
      this.banner = response.ngg_banner;
      this.feedlist = response.advertise_heade
-     this.img_banner = this.banner[0].img
+     this.img_banner = this.banner[0].img_banner
       console.log( this.feedlist)
        await loading.dismiss(); 
      
@@ -143,29 +145,40 @@ export class Tab1Page implements OnInit {
     window["plugins"].PushbotsPlugin.updateAlias(user_noti);
     
    }
-   
-
-
-   
   }
 
 
 
 
   async presentModal() {
+  
     const modal = await this.modalController.create({
       component: AlertDailyPage,
       cssClass: 'my-custom-modal-css',
       componentProps: { 
-       
+     
       }
+    });
+
+    return await modal.present();
+  }
+
+
+  async chatWithHr() {
+    let username = await this.storage.get('get_username')
+    let  img = await this.storage.get('get_img')
+    const modal = await this.modalController.create({
+      component: ChatWithHrPage,
+      componentProps: { 
+        chat_partner:'99999',
+        owner_room :username,
+        img_s :img,
+        }
     });
 
     
     return await modal.present();
   }
-
-
 
 
   async AttendenceModal() {
@@ -199,7 +212,7 @@ export class Tab1Page implements OnInit {
     this.slides.nativeElement.startAutoplay();
     this.slides.nativeElement.getActiveIndex().then(index => {
       this.banner[index];
-      this.img_banner =   this.banner[index].img;
+      this.img_banner =   this.banner[index].img_banner;
     });
     }
 

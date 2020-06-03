@@ -340,10 +340,11 @@ export class ChatPage implements OnInit {
         console.log('Done');
         event.target.complete();
       }else{
+        this.count_em++;
         this.apidataService.get_username_all("",this.count_em).then(async (response: any) => {
           if(response){
             this.get_username_all("")
-            this.count_em++;
+        
             event.target.disabled = false;
             console.log(this.count_em);
             event.target.complete();

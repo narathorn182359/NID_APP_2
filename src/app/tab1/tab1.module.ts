@@ -7,6 +7,7 @@ import { Tab1Page } from './tab1.page';
 import { AlertDailyPageModule } from '../alert-daily/alert-daily.module';
 import { AttendancePageModule } from '../attendance/attendance.module';
 import { PMSPageModule } from '../pms/pms.module';
+import { ChatWithHrPageModule } from '../chat-with-hr/chat-with-hr.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { PMSPageModule } from '../pms/pms.module';
     Tab1PageRoutingModule,
     AlertDailyPageModule,
     AttendancePageModule,
-    PMSPageModule
+    PMSPageModule,
+    ChatWithHrPageModule
    
   ],
   declarations: [Tab1Page]
