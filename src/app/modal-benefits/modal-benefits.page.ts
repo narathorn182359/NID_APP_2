@@ -15,7 +15,7 @@ export class ModalBenefitsPage implements OnInit {
     private apidataService: ApidataService,
     ) { }
   modalTitle: string;
-  modelId: string
+  modelId: string;
   ngOnInit() {
    
     this.modelId = this.navParams.data.paramID;

@@ -94,7 +94,7 @@ export class MicroPage implements OnInit {
      })
   
   
-      this.router.navigateByUrl('/micro-detail/'+id);
+      this.router.navigateByUrl('/tabss/tabs/tab1/micro-detail/'+id);
    
     
   }

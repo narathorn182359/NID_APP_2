@@ -135,6 +135,7 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content #content>
   <ion-grid>
     <ion-text color="medium" text-center>
@@ -170,7 +171,7 @@
       <ion-col size="2">
         <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn"
           (click)="sendMessage()">
-          <ion-icon name="paper-plane"></ion-icon>
+          <ion-icon name="paper-plane" size="large"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
