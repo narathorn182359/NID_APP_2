@@ -62,6 +62,21 @@
   </div>
 
   <div *ngIf="segmentModel === 'สนทนา'">
+    <ion-list lines="none">
+      <ion-list-header>
+        กลุ่ม
+      </ion-list-header>
+  
+      <ion-item *ngFor="let c of  history_chat"  button (click)="chat(c.username)">
+        <ion-avatar slot="start">
+          <img src="http://18.140.109.247/nidapi/img/{{c.img}}">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{c.name_thai}}</h3>
+          <p>{{c.msg.msg}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   <ion-list lines="none">
     <ion-list-header>
       รายชื่อสนทนาล่าสุด
@@ -77,6 +92,12 @@
       </ion-label>
     </ion-item>
   </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="white" (click)="CreateGroupModal()">
+      <img src="/assets/imgsystem/botton_Create group.svg" alt="" width="100%">
+    </ion-fab-button>
+  </ion-fab>
+  
   </div>
 
 
@@ -103,15 +124,6 @@
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
     </div>
-
-  
-
-
-
-
-
-
-
 <div *ngIf="segmentModel === 'ตำแหน่ง'">
   <ion-list style="margin-top: 8px;">
     <ion-list-header>ตำแหน่ง</ion-list-header>
@@ -124,4 +136,15 @@
   </ion-list>
 </div>
  
+
+
+
+
+
+
+
+
+
+
+
 </ion-content>

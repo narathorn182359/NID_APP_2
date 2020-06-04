@@ -123,7 +123,9 @@ export class Tab1Page implements OnInit {
       console.log(response.success)
       user_noti =  response.username
     if(response.success == 'N'){
+     
       this.presentModal();
+      window["plugins"].PushbotsPlugin.updateAlias(user_noti);
     }
      
    })
@@ -134,17 +136,7 @@ export class Tab1Page implements OnInit {
     console.log(err)
    })
   
-   let set_noti = await this.storage.get('set_noti')
-   console.log(set_noti);
-
-   if(set_noti){
-    console.log("ok")
-   }else{
-    console.log("set")
-    this.storage.set('set_noti',"null");
-    window["plugins"].PushbotsPlugin.updateAlias(user_noti);
-    
-   }
+ 
   }
 
 
@@ -165,20 +157,30 @@ export class Tab1Page implements OnInit {
 
 
   async chatWithHr() {
-    let username = await this.storage.get('get_username')
-    let  img = await this.storage.get('get_img')
-    const modal = await this.modalController.create({
-      component: ChatWithHrPage,
-      componentProps: { 
-        chat_partner:'99999',
-        owner_room :username,
-        img_s :img,
-        }
+    const loading = await this.loadingController.create({
+      spinner: 'bubbles',
+      message: null, 
     });
+    await loading.present();
+    this.apidataService.getuserid().then(async (response: any) => {
+      await loading.dismiss();
+      let username = response.username
+      let  img = response.username+".jpg"
+      const modal = await this.modalController.create({
+        component: ChatWithHrPage,
+        componentProps: { 
+          chat_partner:'99999',
+          owner_room :username,
+          img_s :img,
+          }
+      });
+      return await modal.present();
 
+    })
+   
+  
     
-    return await modal.present();
-  }
+}
 
 
   async AttendenceModal() {
@@ -189,8 +191,6 @@ export class Tab1Page implements OnInit {
        
       }
     });
-
-    
     return await modal.present();
   }
 

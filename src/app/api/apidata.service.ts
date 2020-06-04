@@ -797,6 +797,54 @@ async get_list_benefits()
   }
   
 
+  async get_username_all_addroom(){
+
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+      
+      return this.http.get(`${Service.apiUrl}/get_username_all_addroom`,{ headers }).toPromise()
+
+  }
+
+
+  async save_room_chat(value:any)
+  {
+    let request = {
+      'name_group':value.name_group,
+      'username':value.username,
+
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+    return this.http.post(`${Service.apiUrl}/save_addroom`,request,{ headers }).toPromise()
+  }
+
+
+  async check_room(value:any)
+  {
+    let request = {
+      'check_room':value.check_room,
+     
+
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+    return this.http.post(`${Service.apiUrl}/check_room`,request,{ headers }).toPromise()
+  }
+  
+
+
+
+
+
+
+
 
 
 }

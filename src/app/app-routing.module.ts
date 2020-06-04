@@ -76,6 +76,10 @@ const routes: Routes = [
   {
     path: 'chat-with-hr',
     loadChildren: () => import('./chat-with-hr/chat-with-hr.module').then( m => m.ChatWithHrPageModule)
+  },
+  {
+    path: 'create-group-chat',
+    loadChildren: () => import('./create-group-chat/create-group-chat.module').then( m => m.CreateGroupChatPageModule)
   }
 ];
 
