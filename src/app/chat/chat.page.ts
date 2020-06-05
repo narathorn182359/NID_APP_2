@@ -39,6 +39,8 @@ export class ChatPage implements OnInit {
   count_em=1;
   getuserall: any;
   user_id: any;
+  group_chat: any;
+  status_confirm: any;
   constructor( 
     
     
@@ -62,22 +64,72 @@ export class ChatPage implements OnInit {
 
   ngOnInit() {
    this.get_positin("");
- 
    this.get_username_all("");
    this.checkAuthenticated();
-  
+   this.status_confirm_join_group();
   }
   async ionViewWillEnter(){
  
     this.get_history_chat("");
-   
+   this.get_group_chat();
+  
   } 
 
   onSearchInput(){
     this.searching = true;
 }
 
+
+get_group_chat() {
+
+  this.apidataService.get_group_chat("").then(async(response:any)=>{
+     if(response != "404"){
+      this.group_chat = response;
+     // console.log(response);
+     }
+  
+  }).catch(async err =>{
+    
+    console.log(err)
+  })
+
+
+ }
+
+ status_confirm_join_group(){
+
+  this.apidataService.status_confirm_join_group().then(async(response:any)=>{
+
+     this.status_confirm =  response;
+     console.log(response);
+    
  
+ }).catch(async err =>{
+    this.authService.removeCredentials();
+   this.navCtrl.navigateRoot('/login');
+   window["plugins"].PushbotsPlugin.updateAlias("--");
+   console.log(err)
+ })
+
+ }
+
+
+
+ confirm(value:any,id:any){
+
+  this.apidataService.confirm(value,id).then(async(response:any)=>{
+    console.log(response)
+   this.get_group_chat();
+   this.status_confirm_join_group();
+ }).catch(async err =>{
+   
+   console.log(err)
+ }) 
+
+
+ 
+ }
+
 
   async checkAuthenticated ()
   {
@@ -279,6 +331,13 @@ export class ChatPage implements OnInit {
 
   }
 
+
+
+
+
+
+
+
   async  get_username_all(value){
 
         this.apidataService.get_username_all(value,this.count_em).then(async (response: any) => {
@@ -320,24 +379,40 @@ export class ChatPage implements OnInit {
         })
 
       }
+/////
+     async chat(id){
 
-  async chat(id){
-    this.username = await this.storage.get('get_username')
-    let img = await this.storage.get('get_img')
-    
-    this.data ={
-      'chat_partner':id,
-      'owner_room':this.username,
-      'img_s' :img,
-    }
+      this.apidataService.getuserid().then(async (response: any) => {
 
-  console.log(img);
-  
+        let username = response.username
+        let  img = response.username+".jpg"
+        this.data ={
+          'chat_partner':id,
+          'owner_room':username,
+          'img_s' :img,
+        }
+        this.router.navigate(['/detail-staff',this.data]);
+      })
+   
 
- this.router.navigate(['/detail-staff',this.data]);
+  }
+
+
+  async chat_group(id){
+
+
+    this.router.navigateByUrl('/chat-group-room/'+id);
 
 
   }
+
+
+
+
+
+
+
+
 
 
   loadData_em(event) {

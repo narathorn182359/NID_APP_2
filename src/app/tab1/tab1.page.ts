@@ -125,7 +125,7 @@ export class Tab1Page implements OnInit {
     if(response.success == 'N'){
      
       this.presentModal();
-      window["plugins"].PushbotsPlugin.updateAlias(user_noti);
+     // window["plugins"].PushbotsPlugin.updateAlias(user_noti);
     }
      
    })

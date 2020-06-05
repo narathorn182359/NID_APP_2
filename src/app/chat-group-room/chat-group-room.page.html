@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss/tabs/chat"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ห้อง {{name_room}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  
+  <ion-content #content>
+    <ion-grid>
+      <ion-text color="medium" text-center>
+      </ion-text>
+      <ion-row *ngFor="let message of messages">
+        <ion-col size="9" *ngIf="message.chat_partner !== currentUser" class="">
+        
+          <div class="message other-message">
+        
+            <span style="font-size: 13px; text-align: center;"> {{message.name_thai}}</span>
+            <img src="http://18.140.109.247/nidapi/img/{{message.img}}" class="img-other">
+        
+            <div class="my-message_other message_other">
+           
+              <span>{{ message.msg }}</span>
+            
+             
+              </div>
+          </div>
+          <div class="time_other" text-right>{{ message.createdAt | date:'short' }}</div>
+        </ion-col>
+        <ion-col offset="3" size="9" *ngIf="message.chat_partner === currentUser" class="">
+         
+            <div class=" message my-message">
+            
+              <img src="http://18.140.109.247/nidapi/img/{{message.img}}" class="img-bro">
+            
+               <div class="my-message_2 message_2">
+               
+                <span>{{ message.msg }}</span> 
+              
+               </div>
+               <div class="time" text-right>{{ message.createdAt | date:'short' }}</div>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar color="light">
+      <ion-row align-items-center>
+        <ion-col size="10">
+          <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="message"></ion-textarea>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn"
+            (click)="sendMessage()">
+            <ion-icon name="paper-plane" size="large"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+

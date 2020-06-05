@@ -80,6 +80,10 @@ const routes: Routes = [
   {
     path: 'create-group-chat',
     loadChildren: () => import('./create-group-chat/create-group-chat.module').then( m => m.CreateGroupChatPageModule)
+  },
+  {
+    path: 'chat-group-room/:id',
+    loadChildren: () => import('./chat-group-room/chat-group-room.module').then( m => m.ChatGroupRoomPageModule)
   }
 ];
 
