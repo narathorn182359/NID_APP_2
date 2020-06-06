@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApidataService } from '../api/apidata.service';
 import { Storage } from '@ionic/storage';
 import { AuthService } from '../api/auth.service';
+import { PopoverController } from '@ionic/angular';
+import { SettingChatGroupPage } from '../setting-chat-group/setting-chat-group.page';
+
 
 @Component({
   selector: 'app-chat-group-room',
@@ -34,7 +37,28 @@ export class ChatGroupRoomPage implements OnInit {
     private toastCtrl: ToastController,
     public navCtrl: NavController, 
     private authService: AuthService,
+    public popoverController: PopoverController
   ) { }
+
+
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: SettingChatGroupPage,
+      cssClass: '',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
+
+
+
+
+
+
+
+
 
   ngOnInit() {
     this.scrollToBottomOnInit_2();

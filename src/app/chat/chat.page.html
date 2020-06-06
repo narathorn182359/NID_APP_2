@@ -61,29 +61,30 @@
     <ion-spinner></ion-spinner>
   </div>
 
-  <div *ngIf="!!status_confirm">
-    <ion-list lines="none">
-      <ion-list-header>
-       คำเชิญเข้ากลุ่ม
-      </ion-list-header>
-  
-      <ion-item *ngFor="let c of  status_confirm" style="background-color: seagreen;">
-        <ion-avatar slot="start">
-          <img src="http://18.140.109.247/nidapi/imgnew/{{c.img}}">
-        </ion-avatar>
-        <ion-label>
-          <h3>{{c.name_room}}</h3>
-        </ion-label>
-        <div  slot="end">
-          <ion-icon name="checkmark-circle" size="large" style="color: yellowgreen;"  (click)="confirm('1',c.code_room_id)"  ></ion-icon>
-          <ion-icon name="close-circle" size="large" style="color: red;"   (click)="confirm('0',c.code_room_id)" ></ion-icon>
-        </div>
 
-      </ion-item>
-    </ion-list>
-
-  </div>
   <div *ngIf="segmentModel === 'สนทนา'">
+    <div *ngIf="!!status_confirm">
+      <ion-list lines="none">
+        <ion-list-header>
+         คำเชิญเข้ากลุ่ม
+        </ion-list-header>
+    
+        <ion-item *ngFor="let c of  status_confirm" style="background-color: seagreen;">
+          <ion-avatar slot="start">
+            <img src="http://18.140.109.247/nidapi/imgnew/{{c.img}}">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{c.name_room}}</h3>
+          </ion-label>
+          <div  slot="end">
+            <ion-icon name="checkmark-circle" size="large" style="color: yellowgreen;"  (click)="confirm('1',c.code_room_id)"  ></ion-icon>
+            <ion-icon name="close-circle" size="large" style="color: red;"   (click)="confirm('0',c.code_room_id)" ></ion-icon>
+          </div>
+  
+        </ion-item>
+      </ion-list>
+  
+    </div>
   <ion-list lines="none">
     <ion-list-header>
       รายชื่อสนทนาล่าสุด
