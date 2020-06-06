@@ -37,19 +37,20 @@ export class PositionDetailPage implements OnInit {
 
     async detail_staff(id){
 
-        this.username = await this.storage.get('get_username')
-        let img = await this.storage.get('get_img')
-        
+      this.apidataService.getuserid().then(async (response: any) => {
+        let username = response.username
+        let  img = response.username+".jpg"
         this.data ={
           'chat_partner':id,
-          'owner_room':this.username,
+          'owner_room':username,
           'img_s' :img,
         }
-
       console.log(img);
-      
-    
      this.router.navigate(['/detail-staff',this.data]);
+
+
+      })
+       
     
     }
   

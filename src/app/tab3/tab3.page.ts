@@ -37,7 +37,10 @@ export class Tab3Page implements OnInit {
  
   }
 
+  dismissModal() {
+    this.modalController.dismiss();
 
+   }
 
   async checkAuthenticated ()
   {
@@ -49,12 +52,12 @@ export class Tab3Page implements OnInit {
           spinner: 'bubbles',
           message: null, 
         });
-        await loading.present();
+      /*   await loading.present(); */
         this.apidataService.getlistmenu()
         .then(async (response: any) => {
           this.menulist = response;
            console.log(response)
-           await loading.dismiss();
+          /*  await loading.dismiss(); */
           
        })
        .catch(async err => {
@@ -83,13 +86,14 @@ export class Tab3Page implements OnInit {
 
 change_password(){
   this.router.navigateByUrl('/change-password');
+  this.modalController.dismiss();
 }
 
 
   
 
   logout () {
-    
+    this.modalController.dismiss();
     this.authService.removeCredentials();
    //this.menuCtrl.enable(false);
     setTimeout(() => {
@@ -103,6 +107,7 @@ change_password(){
   
 
   async ELearningModal() {
+    this.modalController.dismiss();
     const modal = await this.modalController.create({
       component: ELearningPage,
       cssClass: '',
@@ -111,7 +116,7 @@ change_password(){
       }
     });
 
-    
+  
     return await modal.present();
   }
 

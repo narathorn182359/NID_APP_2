@@ -17,7 +17,7 @@ ion-segment-button{
   color: black;
  
   border: none !important;
-  .title_new{
+ /*  .title_new{
     border-radius: 20px;
     border: solid;
     border-color: rgb(221, 89, 89);
@@ -26,7 +26,7 @@ ion-segment-button{
     height: 10px;
   
   
-  }
+  } */
   
 }
 
@@ -107,8 +107,10 @@ ion-segment-button{
  
 
 .bg-pro{
-  --background: none;
+  --background: #FFF;
   background-image: url('/assets/imgsystem/bg_Profile.svg');
   background-size: 100% ;
   
 }
+
+

@@ -76,7 +76,20 @@ const routes: Routes = [
   {
     path: 'chat-with-hr',
     loadChildren: () => import('./chat-with-hr/chat-with-hr.module').then( m => m.ChatWithHrPageModule)
+  },
+  {
+    path: 'create-group-chat',
+    loadChildren: () => import('./create-group-chat/create-group-chat.module').then( m => m.CreateGroupChatPageModule)
+  },
+  {
+    path: 'chat-group-room/:id',
+    loadChildren: () => import('./chat-group-room/chat-group-room.module').then( m => m.ChatGroupRoomPageModule)
+  },
+  {
+    path: 'setting-chat-group',
+    loadChildren: () => import('./setting-chat-group/setting-chat-group.module').then( m => m.SettingChatGroupPageModule)
   }
+
 ];
 
 @NgModule({

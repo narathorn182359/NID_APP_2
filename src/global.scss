@@ -39,3 +39,25 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
  }
+
+ .my-custom-modal-css-2 .modal-wrapper {
+  height: 50%;
+  top: 50%;
+  position: absolute;  
+  
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+ ion-input{
+   font-family: 'Prompt', sans-serif !important;
+ }
+
+ ion-label{
+   font-family: 'Prompt', sans-serif !important;
+ }
+
+
+ ion-select{
+   font-family: 'Prompt', sans-serif !important;
+ }

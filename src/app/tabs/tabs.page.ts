@@ -3,6 +3,8 @@ import { NavController, AlertController, LoadingController, MenuController } fro
 import { ApidataService } from '../api/apidata.service';
 import { AuthService } from '../api/auth.service';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { Tab3Page } from '../tab3/tab3.page';
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -22,7 +24,8 @@ m:any;
     private menuCtrl: MenuController,
     private apidataService: ApidataService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController
   ) { 
 
   
@@ -101,12 +104,16 @@ this.checkAuthenticated();
   async alert_menu_1()
   {
 
-    this.i = 0;
-    this.j = 0;
-    this.k = 0;
-    this.l = 0;
-    this.m = 1;
 
+    const modal = await this.modalController.create({
+      component: Tab3Page,
+      cssClass: 'my-custom-modal-css-2',
+      componentProps: { 
+     
+      }
+    });
+
+    return await modal.present();
   }
  
 

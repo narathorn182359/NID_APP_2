@@ -1,0 +1,63 @@
+.adjust-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  
+  .image {
+    
+    margin: auto;
+     height: 150px; 
+     width: 150px; 
+   // border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px gray;
+    display: block;
+  
+     background-image: url('http://18.140.109.247/nidapi/img/user.svg');
+}
+
+.title_new{
+    border-radius: 20px;
+    border: solid;
+    border-color: rgb(221, 89, 89);
+    background-color:rgb(221, 89, 89);
+    width: 9px;
+    height: 20px;
+  
+  
+  }
+
+  .bg-image {
+    /* The image used */
+    /* Add the blur effect */
+    filter: blur(5px);
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+    
+    /* Full height */
+    height: 200px; 
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    background-image: url('http://18.140.109.247/nidapi/imgnew/banner-1.jpg');
+  }
+
+  .bg-text 
+  {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+  
+    
+  }

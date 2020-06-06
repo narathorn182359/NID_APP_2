@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>สร้างห้องเเชท</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" color="danger">ปิด</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+  <div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
+    <p *ngIf="submitAttempt" style="color: #ea6153;">กรุณาระบุข้อมูลให้ครบ.</p>
+  </div>
+  <form [formGroup]="slideTwoForm">
+    <div style="margin-top: 10%;  padding-left: 10%;  padding-right: 10%;">
+      <ion-input [class.invalid]="!slideTwoForm.controls.name_group.valid && (slideTwoForm.controls.name_group.dirty || submitAttempt)" formControlName="name_group" type="text" placeholder="ชื่อกลุ่ม"></ion-input>
+    </div>
+    <ion-item *ngIf="slideTwoForm.controls.name_group.pending">
+      <div style="padding-left: 10%;  padding-right: 10%;">
+        <p>ตรวจสอบชื่อกลุ่ม...</p>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="!slideTwoForm.controls.name_group.valid && !slideTwoForm.controls.name_group.pending && (slideTwoForm.controls.name_group.dirty || submitAttempt)">
+      <div style="padding-left: 10%;  padding-right: 10%;">
+        <p>คำเตือน, ไม่สามารถใช้ชื่อนี้ได้</p>
+        </div>
+    </ion-item>
+    <div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
+      <ion-select [class.invalid]="!slideTwoForm.controls.username.valid && (slideTwoForm.controls.username.dirty || submitAttempt)" formControlName="username" multiple="true" placeholder="เพิ่มรายชื่อ"  cancelText="ยกเลิก" okText="ตกลง">
+       <div  *ngFor="let p  of   username_all">
+ 
+        <ion-select-option value="{{p.Code_Staff}}">
+          {{p.Name_Thai}}
+        </ion-select-option>
+       </div>
+     
+      
+    </ion-select>
+    </div>
+</form>
+
+
+<div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
+  <ion-button  color="primary" (click)="save()"  class="shadow-red">บันทกข้อมูล</ion-button>
+</div>
+
+ <!--  <ion-slides #signupSlider pager>
+
+    <ion-slide>
+
+      <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+      <ion-list lines="none">
+
+          <form [formGroup]="slideOneForm">
+
+              <ion-item>
+                  <ion-label position="floating">First Name</ion-label>
+                  <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)" placeholder="ชื่อกลุ่ม"></ion-input>
+              </ion-item>
+
+              <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+                  <p>Please enter a valid name.</p>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label position="floating">Last Name</ion-label>
+                  <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
+              </ion-item>
+
+              <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+                  <p>Please enter a valid name.</p>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label position="floating">Age</ion-label>
+                  <ion-input formControlName="age" type="number" [class.invalid]="!slideOneForm.controls.age.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
+              </ion-item>
+
+              <ion-item *ngIf="!slideOneForm.controls.age.valid  && (slideOneForm.controls.age.dirty || submitAttempt)">
+                  <p>Please enter a valid age.</p>
+              </ion-item>
+
+          </form>
+
+      </ion-list>
+
+    </ion-slide>
+
+    <ion-slide>
+
+      <ion-list lines="none">
+
+        
+
+      </ion-list>
+
+      <ion-button expand="full" color="primary" (click)="save()">Create Account!</ion-button>
+
+    </ion-slide>
+
+  </ion-slides> -->
+
+</ion-content>

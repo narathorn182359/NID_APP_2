@@ -797,6 +797,140 @@ async get_list_benefits()
   }
   
 
+  async get_username_all_addroom(){
+
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+      
+      return this.http.get(`${Service.apiUrl}/get_username_all_addroom`,{ headers }).toPromise()
+
+  }
+
+
+  async save_room_chat(value:any)
+  {
+    let request = {
+      'name_group':value.name_group,
+      'username':value.username,
+
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+    return this.http.post(`${Service.apiUrl}/save_addroom`,request,{ headers }).toPromise()
+  }
+
+
+  async check_room(value:any)
+  {
+    let request = {
+      'check_room':value.check_room,
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+    return this.http.post(`${Service.apiUrl}/check_room`,request,{ headers }).toPromise()
+  }
+  
+
+  async get_group_chat(value:any)
+  {
+    let request = {
+      'group_chat':value.group_chat,
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+    return this.http.post(`${Service.apiUrl}/get_group_chat`,request,{ headers }).toPromise()
+  }
+  
+
+  async get_chat_group(value:any)
+  {
+    let request = {
+      'id_room':value.id_room,
+      'chat_partner':value.chat_partner,
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+      return this.http.post(`${Service.apiUrl}/get_chat_group`,request,{ headers }).toPromise()
+
+  }
+  
+
+
+
+  
+  async save_chat_group(value:any)
+  {
+
+    let request = {
+      'id_room':value.id_room,
+      'chat_partner':value.msg,
+    }
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${auth.access_token}`,
+      })
+      return this.http.post(`${Service.apiUrl}/save_chat_group`,request,{ headers }).toPromise()
+
+   }
+
+
+
+   async status_confirm_join_group()
+   {
+ 
+     let auth: any = await this.storage.get('auth');
+     let headers: HttpHeaders = new HttpHeaders({
+           'Authorization': `Bearer ${auth.access_token}`,
+       })
+       return this.http.get(`${Service.apiUrl}/status_confirm_join_group`,{ headers }).toPromise()
+ 
+    }
+
+    async confirm(value:any,id:any)
+    {
+
+      let request = {
+        'id':id,
+        'confirm':value,
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        return this.http.post(`${Service.apiUrl}/confirm`,request,{ headers }).toPromise()
+
+
+
+    }
+
+    
+    
+
+    async exit_group_chat(value:any){
+      let request = {
+        'id':value,
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        
+        return this.http.post(`${Service.apiUrl}/exit_group_chat`,request,{ headers }).toPromise()
+  
+    }
+
+
+
 
 
 }
