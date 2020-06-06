@@ -12,7 +12,7 @@
     <ion-list-header>
     ตำแหน่ง {{position}}
     </ion-list-header>
-    <div *ngFor="let c of  showe" button  (click)="detail_staff(c.Code_Staff)" >
+    <div *ngFor="let c of  showe" button routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"  >
       <ion-item lines="none"> 
         <ion-avatar slot="start">
           <img src="http://18.140.109.247/nidapi/img/{{c.img}}" >
