@@ -31,6 +31,7 @@
     "@ionic/storage": "^2.2.0",
     "chart.js": "^2.9.3",
     "cordova-android": "8.1.0",
+    "cordova-ios": "5.1.1",
     "file-saver": "^2.0.2",
     "firebase": "^7.14.6",
     "ngx-filesaver": "^9.0.0",
@@ -82,7 +83,8 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
