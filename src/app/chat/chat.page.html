@@ -128,16 +128,18 @@
   <div *ngIf="segmentModel === 'ผู้คน'">
     <ion-list lines="none" style="margin-top: 8px;">
     
-  
-      <ion-item *ngFor="let c of  username_all"  button >
+
+  <ion-item *ngFor="let c of  username_all"  button  routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}">
         <ion-avatar slot="start">
-          <img src="http://18.140.109.247/nidapi/img/{{c.img}}">
+          <img src="http://18.140.109.247/nidapi/img/{{c.img}}" class="image">
         </ion-avatar>
         <ion-label>
           <h3>{{c.Name_Thai}}</h3>
           <p>{{c.Position}}</p>
         </ion-label>
       </ion-item>
+     
+    
     </ion-list>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_em($event)">
       <ion-infinite-scroll-content

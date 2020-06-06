@@ -13,8 +13,6 @@
   </div>
 <!--  <div style="background-color: #f2f2f2 !important; height: 100; overflow: auto;"> -->
   <ion-list > 
-
-  
     <ion-item button lines="none" *ngFor="let p of advertise"  (click) ="detail_new(p.id_ad,p.id)">
       <ion-thumbnail slot="start" style="width: 100px; height:100px;">
              <div *ngIf="!!p.img_ad">
@@ -39,4 +37,5 @@
 <!--   </div> -->
 
 </ion-content>
+<section id="preload" style="display: none;"></section>
 

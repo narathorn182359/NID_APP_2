@@ -353,7 +353,8 @@ get_group_chat() {
               let i = {
                'Name_Thai' :data['Name_Thai'],
                'Position' : data['Position'],
-               'img':data['img']
+               'img':data['img'],
+               'Code_Staff':data['Code_Staff']
                    }
 
                      this.username_all.push(i);
@@ -367,7 +368,8 @@ get_group_chat() {
               let i = {
                'Name_Thai' :data['Name_Thai'],
                'Position' : data['Position'],
-               'img':data['img']
+               'img':data['img'],
+               'Code_Staff':data['Code_Staff']
                    }
 
                      this.username_all.push(i);

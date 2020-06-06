@@ -84,7 +84,8 @@ const routes: Routes = [
   {
     path: 'chat-group-room/:id',
     loadChildren: () => import('./chat-group-room/chat-group-room.module').then( m => m.ChatGroupRoomPageModule)
-  },  {
+  },
+  {
     path: 'setting-chat-group',
     loadChildren: () => import('./setting-chat-group/setting-chat-group.module').then( m => m.SettingChatGroupPageModule)
   }

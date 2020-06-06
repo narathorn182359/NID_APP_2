@@ -112,7 +112,16 @@ export class Tab1Page implements OnInit {
     this.router.navigateByUrl('/tabss/tabs/tab1/list-new/'+id)
    
   }
-
+  ionViewDidEnter() {
+    console.log("nnn");
+    const preloadArea: HTMLElement = document.getElementById('preload');
+    preloadArea.appendChild(document.createElement('ion-title'));
+    preloadArea.appendChild(document.createElement('ion-list'));
+    preloadArea.appendChild(document.createElement('ion-item'));
+    preloadArea.appendChild(document.createElement('ion-thumbnail'));
+    preloadArea.appendChild(document.createElement('ion-card-content'));
+    preloadArea.appendChild(document.createElement('ion-back-button'));
+  }
 
   async ionViewWillEnter(){
 

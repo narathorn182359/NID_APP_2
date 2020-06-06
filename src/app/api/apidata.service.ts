@@ -912,9 +912,22 @@ async get_list_benefits()
 
 
     }
+
+    
     
 
-
+    async exit_group_chat(value:any){
+      let request = {
+        'id':value,
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        
+        return this.http.post(`${Service.apiUrl}/exit_group_chat`,request,{ headers }).toPromise()
+  
+    }
 
 
 

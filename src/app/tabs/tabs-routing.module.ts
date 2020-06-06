@@ -132,7 +132,12 @@ const routes: Routes = [
           {
             path: 'position-detail',
             loadChildren: () => import('../position-detail/position-detail.module').then( m => m.PositionDetailPageModule)
+          },
+          {
+            path: 'profile-st/:id',
+            loadChildren: () => import('../profile-st/profile-st.module').then( m => m.ProfileStPageModule)
           }
+
         ]
       },{
         path:'time',

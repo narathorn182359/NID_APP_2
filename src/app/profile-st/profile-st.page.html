@@ -1,0 +1,123 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss/tabs/chat"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="bg-image" ></div>
+  <div class="bg-text">
+
+    <img src="http://18.140.109.247/nidapi/img/{{datainfouser.img}}" alt="" class="image"  *ngIf="!!datainfouser">
+  </div>
+ 
+  <br>
+  <div style="text-align: center; " *ngIf="!!datainfouser">
+<p style="margin-top: -15px;" class="adjust-text">    {{datainfouser.Name_Thai}} </p>
+ <p style="margin-top: -14px;" class="adjust-text">{{datainfouser.Position}}</p> 
+  </div>
+
+  <div style="text-align: center;">
+    <img src="/assets/imgsystem/profile_chat.svg" width="80px" height="80px"  alt=""  style="padding: 15px;" *ngIf="!!datainfouser" (click)="detail_staff(datainfouser.Code_Staff)">
+    <img src="/assets/imgsystem/profile_call.svg" width="80px" height="80px" alt=""  *ngIf="!!datainfouser" style="padding: 15px;">
+    <img src="/assets/imgsystem/profile_like.svg" width="80px" height="80px" alt=""*ngIf="!!datainfouser"  style="padding: 15px;">
+  </div>
+ 
+</ion-header>
+<ion-content>
+  
+
+  <ion-grid *ngIf="!!datainfouser" style="padding-left: 30px;">
+    <ion-row >
+      <div  class="title_new"></div>   <div style="padding-left: 5px;">
+       ข้อมูลส่วนตัว
+      </div>    
+  </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 10px;" > รหัสพนักงาน <br>  <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.Code_Staff}}</font>  </p>
+       <p>
+        
+       </p>
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;">  ชื่อเล่น  <br>  <font color="black" style="font-size: 15px;">{{datainfouser.Nickname}}</font>   </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 12px;">ชื่อ-นามสกุล<br>  <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.Name_Thai}}</font>  </p>
+
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;">ชื่อ-นามสกุล (อังกฤษ) <br> <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.Name_Eng}}</font> </p> 
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 10px;">เบอร์โทร <br> <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.TelephoneNumber}}</font></p>  
+     
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;"> เบอร์โต๊ะ <br> <font color="black" style="font-size: 15px;" class="adjust-text">-</font></p> 
+      
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 10px;">บริษัท <br>  <font color="black" style="font-size: 15px;">
+          {{datainfouser.name_company_eng}}
+          
+        </font> </p> 
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;">ฝ่าย <br> <font color="black" style="font-size: 15px;" class="adjust-text"> {{datainfouser.Faction}}</font> <p>
+
+       
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 10px;">แผนก <br> <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.Department}}</font> </p> 
+       
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;">ตำแหน่ง <br> <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.Position}}</font>  </p> 
+       
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 10px;">ระดับพนักงาน <br>  <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.Degree}}</font> </p>  
+      
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;">Brand <br>   <font color="black" style="font-size: 15px;" class="adjust-text">{{datainfouser.JGStatus}}</font></p>  
+      
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 10px;">อายุงาน <br>  <font color="black" style="font-size: 15px;" class="adjust-text">{{ datainfouser.Yearsofservice}}</font> </p>  
+ 
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;">จังหวัดตามที่สถาน  <br> <font color="black" style="font-size: 15px;" class="adjust-text">-</font></p> 
+     
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <p style="font-size: 10px;">DIRECTREPFULL <br>  <font color="black" style="font-size: 15px;" class="adjust-text">-</font> </p>  
+ 
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 10px;">DIRECTREPID  <br> <font color="black" style="font-size: 15px;" class="adjust-text">-</font></p> 
+     
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+
+
+
+</ion-content>

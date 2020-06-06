@@ -43,11 +43,16 @@ export class ChatGroupRoomPage implements OnInit {
 
 
   async presentPopover(ev: any) {
+   
     const popover = await this.popoverController.create({
       component: SettingChatGroupPage,
       cssClass: '',
       event: ev,
-      translucent: true
+      translucent: true,
+      componentProps: { 
+        idroom: this.route.snapshot.paramMap.get('id'),
+        
+        }
     });
     return await popover.present();
   }
