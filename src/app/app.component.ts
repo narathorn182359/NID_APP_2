@@ -44,11 +44,35 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.statusBar.backgroundColorByName('white');
-      window["plugins"].PushbotsPlugin.initialize("5ed3e6512c9f8c1f8d3ed9c4", {"android":{"sender_id":"707863121412"}});
+    // window["plugins"].PushbotsPlugin.initialize("5ed3e6512c9f8c1f8d3ed9c4", {"android":{"sender_id":"707863121412"}});
       this.checkAuthenticated();
       this.backButtonEvent();
-    });
+   //Remove this method to stop OneSignal Debugging 
+    window["plugins"].OneSignal.setLogLevel({logLevel: 6, visualLevel: 0});
     
+    var notificationOpenedCallback = function(jsonData) {
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    };
+    
+    // Set your iOS Settings
+    var iosSettings = {};
+    iosSettings["kOSSettingsKeyAutoPrompt"] = false;
+    iosSettings["kOSSettingsKeyInAppLaunchURL"] = false;
+    
+    window["plugins"].OneSignal
+      .startInit("16adf426-0420-49fa-b189-d71af438789a")
+      .handleNotificationOpened(notificationOpenedCallback)
+      .iOSSettings(iosSettings)
+      .inFocusDisplaying(window["plugins"].OneSignal.OSInFocusDisplayOption.Notification)
+      .endInit();
+    
+    // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+    window["plugins"].OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
+      console.log("User accepted notifications: " + accepted);
+    });
+  });
+    
+ 
   }
 
   async checkAuthenticated ()

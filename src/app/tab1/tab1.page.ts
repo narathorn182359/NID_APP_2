@@ -87,6 +87,7 @@ export class Tab1Page implements OnInit {
     await loading.present(); 
    this.apidataService.banner()
    .then(async (response: any) => {
+        
      this.banner = response.ngg_banner;
      this.feedlist = response.advertise_heade
      this.img_banner = this.banner[0].img_banner
@@ -141,7 +142,7 @@ export class Tab1Page implements OnInit {
    .catch(async err => {
     this.authService.removeCredentials();
     this.navCtrl.navigateRoot('/login');
-    window["plugins"].PushbotsPlugin.updateAlias("--");
+  /*   window["plugins"].PushbotsPlugin.updateAlias("--"); */
     console.log(err)
    })
   

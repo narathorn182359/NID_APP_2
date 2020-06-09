@@ -76,7 +76,7 @@ export class Tab3Page implements OnInit {
       console.log(err);
       this.authService.removeCredentials();
       this.navCtrl.navigateRoot('/login');
-      window["plugins"].PushbotsPlugin.updateAlias("--");
+     // window["plugins"].PushbotsPlugin.updateAlias("--");
       console.log(err)
     }
   }
@@ -98,7 +98,7 @@ change_password(){
    //this.menuCtrl.enable(false);
     setTimeout(() => {
       this.navCtrl.navigateRoot('/login');
-      window["plugins"].PushbotsPlugin.updateAlias("--");
+      //window["plugins"].PushbotsPlugin.updateAlias("--");
       //this.nav.setRoot('auth');
       //window.location.reload();
     }, 750)
