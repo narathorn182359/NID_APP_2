@@ -1,13 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<<<<<<< HEAD
-<widget id="hr.ngg.em" version="1.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-=======
-<<<<<<< HEAD
-<widget id="hr.ngg.em" version="1.1.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-=======
-<widget id="hr.ngg.em" version="1.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
->>>>>>> 00cbd4f9b82b249037ea19d3bf5e8940fb822199
->>>>>>> c9a5b9932ce708122f4142c52f7477202feca055
+<widget id="hr.ngg.em" version="1.3.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>NiD</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>

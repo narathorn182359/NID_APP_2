@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Service } from '../../settings/Laravel';
-
+import { HTTP } from '@ionic-native/http/ngx';
 
 
 @Injectable({
@@ -12,7 +12,12 @@ export class AuthService {
 
   isAuthenticated: boolean = false;
 
-  constructor(private http: HttpClient, private storage: Storage) {
+  constructor(
+    private http: HttpClient, 
+    private storage: Storage,
+    private https:HTTP
+    
+    ) {
   }
 
   async checkIsAuthenticated ()
@@ -37,7 +42,19 @@ export class AuthService {
       'username': user.name,
       'password': user.password,
     }
-
+   /*  return this.https.sendRequest(`${Service.url}/oauth/token`,
+    {
+      method: 'post',
+      data: {
+        'grant_type': 'password',
+        'client_id': Service.passport.client_id,
+        'client_secret': Service.passport.client_secret,
+        'username': user.name,
+        'password': user.password,
+      },
+      headers: {Authorization:''},
+      timeout: 5000
+    }) */
     return this.http.post(`${Service.url}/oauth/token`, request).toPromise();
   }
 
