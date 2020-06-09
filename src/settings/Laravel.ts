@@ -9,6 +9,7 @@ export const Service: any = {
     url: 'http://localhost:8000',
     apiUrl: 'http://localhost:8000/api',
 
+
       /**
      *
      * Info of your passport client, usually second record on table "oauth_clients" in your database, name "Laravel Password Grant Client"

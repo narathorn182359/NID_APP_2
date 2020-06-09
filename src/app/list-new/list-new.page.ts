@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApidataService } from '../api/apidata.service';
 import { Storage } from '@ionic/storage';
 import { ModalController,NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { ModalNewPage } from '../modal-new/modal-new.page';
 import { AuthService } from '../api/auth.service';
 @Component({
@@ -27,6 +28,7 @@ export class ListNewPage implements OnInit {
     private modalController:ModalController,
     private authService: AuthService,
     public navCtrl: NavController, 
+    public alertController: AlertController
     ) { 
 
     
@@ -39,15 +41,16 @@ export class ListNewPage implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');  
     this.dataService.gethead_new(this.route.snapshot.paramMap.get('id'))
     .then(async (response: any) => {
+     
       this.advertise = response.advertise
       this.advertise_head = response.advertise_heade
       console.log(this.advertise)
    })
    .catch(async err => {
-    this.authService.removeCredentials();
-    this.navCtrl.navigateRoot('/login');
-    window["plugins"].PushbotsPlugin.updateAlias("--");
-    console.log(err)
+  
+
+  
+
    })
    
 

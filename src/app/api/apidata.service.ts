@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
+import { HTTP } from '@ionic-native/http/ngx';
 import { Service } from '../../settings/Laravel';
 
 @Injectable({
@@ -10,7 +10,11 @@ import { Service } from '../../settings/Laravel';
 export class ApidataService {
   unitsInfo:any;
   public items: any = [];
-  constructor(public http: HttpClient, private storage: Storage) {
+  constructor(public http: HttpClient, 
+    private storage: Storage,
+    public  https:HTTP
+    
+    ) {
     
   }
 
@@ -194,6 +198,12 @@ export class ApidataService {
    'Authorization': `Bearer ${auth.access_token}`,
  })
 
+
+
+
+
+
+
  return this.http.post(`${Service.apiUrl}/gethead_new`,request, { headers }).toPromise();
 
 
@@ -227,11 +237,14 @@ export class ApidataService {
 
   async banner()
   {
-    let auth: any = await this.storage.get('auth');
-    let headers: HttpHeaders = new HttpHeaders({
-      'Authorization': `Bearer ${auth.access_token}`,
-    })
-    return this.http.get(`${Service.apiUrl}/banner`, { headers }).toPromise()
+   
+  let auth: any = await this.storage.get('auth');
+  let headers: HttpHeaders = new HttpHeaders({
+    'Authorization': `Bearer ${auth.access_token}`,
+  })
+  return this.http.get(`${Service.apiUrl}/banner`, { headers }).toPromise()
+
+
   }
 
   async getimg(item:any)

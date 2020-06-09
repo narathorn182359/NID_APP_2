@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 export class LoginPage implements OnInit {
   segment: string = "login";
   loading: any;
+  id_st:any
   formLogin: any = {
     name: '',
     password: '',
@@ -46,6 +47,10 @@ export class LoginPage implements OnInit {
 
   async doLogin (data: any)
   {
+   /*  window["plugins"].OneSignal.getIds(function(ids) {
+      alert("player id: " + ids.userId);
+  });
+   */
     const loading = await this.loadingController.create({
       spinner: null,
      
@@ -55,27 +60,28 @@ export class LoginPage implements OnInit {
     await loading.present();
     this.authService.login(data)
       .then(async (response: any) => {
-        this.authService.storeCredentials(response);
-         setTimeout(() => { 
-          this.checkAuthenticated() 
-           loading.dismiss();
-         }, 5);
-      })
-      .catch(async err => {
         
-        if ( err.status == 400 ) {
+        this.authService.storeCredentials(response);
+        //window["plugins"].PushbotsPlugin.setAlias(this.formLogin.name)
+        this.navCtrl.navigateRoot('/tabss');
+        loading.dismiss();
+         
+      })
+      .catch(async error => {
+      
+        if ( error.status == 400 ) {
           const alert = await this.alertController.create({ header: 'ผิดพลาด',
-        message:'ไม่พบข้อมูลโปรดลองอีกครั้ง', buttons: ['OK']  });
+        message:'โปรดใส่ข้อมูล', buttons: ['OK']  });
         await loading.dismiss();
         await alert.present();
-        }else if (err.status == 401) {
+        }else if (error.status == 401) {
           const alert = await this.alertController.create({ header: 'ผิดพลาด',
-          message:`${err.error.message}`, buttons: ['OK']  });
+          message:`${error.message}`, buttons: ['OK']  });
           await loading.dismiss();
           await alert.present();
         } else {
           const alert = await this.alertController.create({ header: 'ผิดพลาด',
-          message:'ไม่สามารถติดต่อฐานข้อมูลได้', buttons: ['OK']  });
+          message:`${error.message}`, buttons: ['OK']  });
           await loading.dismiss();
           await alert.present();  
         } 
@@ -91,11 +97,9 @@ export class LoginPage implements OnInit {
       let isAuthenticated = await this.authService.checkIsAuthenticated();
       if ( isAuthenticated == true) {
        // this.storage.set('set_noti',"null");
-        this.storage.set('get_username',this.formLogin.name);
-        this.storage.set('get_img',this.formLogin.name+".jpg");
         console.log(isAuthenticated);
-        this.navCtrl.navigateRoot('/tabss');
-        window["plugins"].PushbotsPlugin.setAlias(this.formLogin.name)
+       
+       
       }else{
       
         this.navCtrl.navigateRoot('');
