@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
       .then(async (response: any) => {
         this.authService.storeCredentials(response);
          setTimeout(() => { 
-          this.checkAuthenticated()
+          this.checkAuthenticated() 
            loading.dismiss();
          }, 5);
       })
