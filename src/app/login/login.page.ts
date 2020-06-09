@@ -76,12 +76,12 @@ export class LoginPage implements OnInit {
         await alert.present();
         }else if (error.status == 401) {
           const alert = await this.alertController.create({ header: 'ผิดพลาด',
-          message:`${error.message}`, buttons: ['OK']  });
+          message:'ไม่พบข้อมูลในระบบ', buttons: ['OK']  });
           await loading.dismiss();
           await alert.present();
         } else {
           const alert = await this.alertController.create({ header: 'ผิดพลาด',
-          message:`${error.message}`, buttons: ['OK']  });
+          message:'ไม่สามารถติดต่อฐานข้อมูลได้', buttons: ['OK']  });
           await loading.dismiss();
           await alert.present();  
         } 
