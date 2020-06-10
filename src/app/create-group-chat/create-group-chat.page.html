@@ -29,7 +29,8 @@
     </ion-item>
     <div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
       <ion-select [class.invalid]="!slideTwoForm.controls.username.valid && (slideTwoForm.controls.username.dirty || submitAttempt)" formControlName="username" multiple="true" placeholder="เพิ่มรายชื่อ"  cancelText="ยกเลิก" okText="ตกลง">
-       <div  *ngFor="let p  of   username_all">
+      
+        <div  *ngFor="let p  of   username_all">
  
         <ion-select-option value="{{p.Code_Staff}}">
           {{p.Name_Thai}}

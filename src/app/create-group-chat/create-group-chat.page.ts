@@ -55,8 +55,7 @@ export class CreateGroupChatPage implements OnInit {
     }) .catch(async err => {
     this.authService.removeCredentials();
     this.navCtrl.navigateRoot('/login');
-    window["plugins"].PushbotsPlugin.updateAlias("--");
-
+   
    })
 
 
@@ -93,7 +92,6 @@ export class CreateGroupChatPage implements OnInit {
     }).catch(async err => {
     this.authService.removeCredentials();
     this.navCtrl.navigateRoot('/login');
-    window["plugins"].PushbotsPlugin.updateAlias("--");
     console.log(err)
    })
 

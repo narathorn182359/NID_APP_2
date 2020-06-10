@@ -72,6 +72,7 @@ export class ChatPage implements OnInit {
     this.status_confirm_join_group();
     this.get_history_chat("");
     this.get_group_chat();
+   console.log("jh");
   } 
 
   onSearchInput(){
@@ -96,13 +97,14 @@ export class ChatPage implements OnInit {
  }
 
  status_confirm_join_group(){
-
+  this.searching = true;
   this.apidataService.status_confirm_join_group().then(async(response:any)=>{
       if(response != "null"){
         this.status_confirm =  response;
-      
+        this.searching = false;
       }else{
         this.status_confirm = null;
+        this.searching = false;
       }
    
     
@@ -213,9 +215,10 @@ export class ChatPage implements OnInit {
   doRefresh(event) {
    
     setTimeout(() => {
-   
+      this.status_confirm_join_group();
       this.get_positin("");
       this.checkAuthenticated();
+      this.get_group_chat();
       event.target.complete();
     }, 2000);
   }
@@ -238,7 +241,7 @@ export class ChatPage implements OnInit {
 
 
   async get_history_chat(value){
- 
+    this.searching = true;
     this.apidataService.getuserid().then(async (response: any) => {
       this.user_id = response.username
 
@@ -247,6 +250,7 @@ export class ChatPage implements OnInit {
     
     this.apidataService.get_history_chat(value)
     .then(async (response: any) => {
+    
       this.history_chat = [];
       if(response != "null"){
         for(let data of  response) {
@@ -275,17 +279,17 @@ export class ChatPage implements OnInit {
           
           }
 
-    // console.log(this.history_chat)
+    
    }
       }
-     
+      this.searching = false;
+      console.log(this.history_chat)
    })
    .catch(async err => {
     console.log(err)
    })
 
   }
-
 
 
 
@@ -362,6 +366,8 @@ export class ChatPage implements OnInit {
 
 
   }
+
+
 
 
 

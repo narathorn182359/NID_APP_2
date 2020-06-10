@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 import { AuthService } from '../api/auth.service';
 import { PopoverController } from '@ionic/angular';
 import { SettingChatGroupPage } from '../setting-chat-group/setting-chat-group.page';
-
+import { ChatPage } from '../chat/chat.page'
 
 @Component({
   selector: 'app-chat-group-room',
@@ -54,6 +54,13 @@ export class ChatGroupRoomPage implements OnInit {
         
         }
     });
+
+    popover.onDidDismiss().then(data=>{
+     this.router.navigateByUrl('/tabss/tabs/chat');
+      
+    })
+
+
     return await popover.present();
   }
 
