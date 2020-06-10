@@ -44,7 +44,7 @@ export class AuthService {
       'username': user.name,
       'password': user.password,
     }
-   /*  return this.https.sendRequest(`${Service.url}/oauth/token`,
+  /*   return this.https.sendRequest(`${Service.url}/oauth/token`,
     {
       method: 'post',
       data: {
@@ -56,7 +56,8 @@ export class AuthService {
       },
       headers: {Authorization:''},
       timeout: 5000
-    }) */
+    })  */
+
     return this.http.post(`${Service.url}/oauth/token`, request).toPromise();
   }
 
