@@ -46,7 +46,7 @@ export class ProductListPage implements OnInit {
 
   async list_km360detail(id:any){
  
-    this.router.navigateByUrl('/km360detail/'+id);
+    this.router.navigateByUrl('/tabss/tabs/tab1/km360detail/'+id);
 
   }
 
