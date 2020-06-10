@@ -66,13 +66,12 @@ export class ChatPage implements OnInit {
    this.get_positin("");
    this.get_username_all("");
    this.checkAuthenticated();
-   this.status_confirm_join_group();
+   this.get_group_chat();
   }
   async ionViewWillEnter(){
- 
+    this.status_confirm_join_group();
     this.get_history_chat("");
-   this.get_group_chat();
-  
+    this.get_group_chat();
   } 
 
   onSearchInput(){
@@ -80,17 +79,17 @@ export class ChatPage implements OnInit {
 }
 
 
-get_group_chat() {
+  get_group_chat() {
 
   this.apidataService.get_group_chat("").then(async(response:any)=>{
      if(response != "404"){
       this.group_chat = response;
-     // console.log(response);
+     
      }
-  
+  console.log(response);
   }).catch(async err =>{
     
-    console.log(err)
+    //console.log(err)
   })
 
 
@@ -99,9 +98,13 @@ get_group_chat() {
  status_confirm_join_group(){
 
   this.apidataService.status_confirm_join_group().then(async(response:any)=>{
-
-     this.status_confirm =  response;
-     console.log(response);
+      if(response != "null"){
+        this.status_confirm =  response;
+      
+      }else{
+        this.status_confirm = null;
+      }
+   
     
  
  }).catch(async err =>{
@@ -118,7 +121,7 @@ get_group_chat() {
  confirm(value:any,id:any){
 
   this.apidataService.confirm(value,id).then(async(response:any)=>{
-    console.log(response)
+    //console.log(response)
    this.get_group_chat();
    this.status_confirm_join_group();
  }).catch(async err =>{
@@ -172,7 +175,7 @@ get_group_chat() {
        .catch(async err => {
         console.log(err)
        })   
-        console.log(isAuthenticated);
+       // console.log(isAuthenticated);
       }else{
       
         this.navCtrl.navigateRoot('');
@@ -185,58 +188,7 @@ get_group_chat() {
 
  
 
-/*   async getlis_staff(search){
-   
-    
-    this.apidataService.getalluser(this.page,search)
-    .then(async (response: any) => {
-     
-      if(search == ""){
-        this.alluser = [];
-        this.searching = true;
-        this.alluser_no =    this.alluser_no.concat(response.data);
-      }else{
-        this.searching = true;
-        this.alluser = [];
-        this.alluser_no = [];
-        this.page = 0;
-        this.alluser =    this.alluser.concat(response.data);
-      }
-      
-      
-      this.maximumPages =  response.last_page
-      this.searching = false;
-      console.log(response);
-   })
-   .catch(async err => {
-    console.log(err)
-   })
 
-  } */
- 
-
- /*  async loadData(event) {
-    setTimeout(async () => {
-      this.page++;
-
-   console.log(this.page);
-    this.getlis_staff("");
-    
-    if (this.page === this.maximumPages) {
-     // event.target.disabled = true;
-      const toast = await this.toastController.create({
-        message: 'แสดงรายการทั้งหมดแล้วค่ะ.',
-        duration: 2000
-      });
-    //  toast.present();
-    }
-      event.target.complete();
-    }, 750)
-  
-  
-  
-  
-  } */
 
 
   async get_positin(value:any){
@@ -250,7 +202,6 @@ get_group_chat() {
    .catch(async err => {
     this.authService.removeCredentials();
     this.navCtrl.navigateRoot('/login');
-    window["plugins"].PushbotsPlugin.updateAlias("--");
     console.log(err)
    })
   }
@@ -279,7 +230,8 @@ get_group_chat() {
 
   segmentChanged(ev: any) {
     this.get_history_chat("");
-    
+    this.status_confirm_join_group();
+    this.get_group_chat();
   }
 
 
@@ -290,40 +242,43 @@ get_group_chat() {
     this.apidataService.getuserid().then(async (response: any) => {
       this.user_id = response.username
 
-      this.history_chat = [];
+     
     })
     
     this.apidataService.get_history_chat(value)
     .then(async (response: any) => {
-    
-      for(let data of  response) {
-             if(this.user_id == data['owner_room']){
-              const img_d = data['chat_partner']+'.jpg';
-               let data_save = {
-                 'img' :img_d,
-                 'username':data['chat_partner'],
-                 'msg':data['msg'],
-                 'name_thai':data['name_thai_chat_partner']
-               }
-              this.history_chat.push(data_save);  
-              
-             }
-              else if(this.user_id == data['chat_partner'])
-             {
-              const img_d = data['owner_room']+'.jpg';
-              let data_save = {
-                'img' :img_d,
-                'username':data['owner_room'],
-                'msg':data['msg'],
-                'name_thai':data['name_thai_owner_room']
-              }
+      this.history_chat = [];
+      if(response != "null"){
+        for(let data of  response) {
+          if(this.user_id == data['owner_room']){
+           const img_d = data['chat_partner']+'.jpg';
+            let data_save = {
+              'img' :img_d,
+              'username':data['chat_partner'],
+              'msg':data['msg'],
+              'name_thai':data['name_thai_chat_partner']
+            }
+           this.history_chat.push(data_save);  
+           
+          }
+           else if(this.user_id == data['chat_partner'])
+          {
+           const img_d = data['owner_room']+'.jpg';
+           let data_save = {
+             'img' :img_d,
+             'username':data['owner_room'],
+             'msg':data['msg'],
+             'name_thai':data['name_thai_owner_room']
+           }
 
-              this.history_chat.push(data_save);  
-             
-             }
+           this.history_chat.push(data_save);  
+          
+          }
 
-        console.log(this.history_chat)
+    // console.log(this.history_chat)
+   }
       }
+     
    })
    .catch(async err => {
     console.log(err)
@@ -377,7 +332,7 @@ get_group_chat() {
                 
           }
               
-               console.log(response);
+              // console.log(response);
         })
 
       }
@@ -430,7 +385,7 @@ get_group_chat() {
             this.get_username_all("")
         
             event.target.disabled = false;
-            console.log(this.count_em);
+          //  console.log(this.count_em);
             event.target.complete();
           }
         
@@ -450,17 +405,12 @@ get_group_chat() {
          
         }
       });
+      modal.onDidDismiss().then(data =>{
+       this.get_group_chat();
+      });
       return await modal.present();
     }
 
 
-
-
-
-
-
-  toggleInfiniteScroll() {
-    this.infiniteScroll.nativeElement.disabled = !this.infiniteScroll.nativeElement.disabled;
-  }
 
 }
