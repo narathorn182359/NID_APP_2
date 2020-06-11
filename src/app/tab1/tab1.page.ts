@@ -22,6 +22,7 @@ export class Tab1Page implements OnInit {
   @ViewChild('slides',{read: ElementRef, static:true}) slides: ElementRef;
   feedlist: any;
   banner:any;
+  keyplayer:any;
   sliderOpts = {
     initialSlide: 0,
     autoplay: true,
@@ -62,15 +63,15 @@ export class Tab1Page implements OnInit {
   
 
   window["plugins"].OneSignal.getIds(function(ids) {
-    this.apidataService.save_key_player(ids.userId).then(response =>{
-      alert("player id: success");
-    }) .catch(async err => {
-      alert(err);
+   this.keyplayer = ids.userId;
     
-    })
-    
-
  }); 
+ this.apidataService.save_key_player(this.keyplayer).then(response =>{
+  alert("player id: success");
+}) .catch(async err => {
+  alert(err);
+
+})
   }
 
   async checkAuthenticated ()
