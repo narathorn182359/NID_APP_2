@@ -7,8 +7,8 @@ export const Service: any = {
   //  apiUrl: 'http://18.140.109.247/nidapi/api',
  
 
-    url: 'http://localhost:8000',
-    apiUrl: 'http://localhost:8000/api',
+    url: 'http://192.168.137.1/LumenPassport/public',
+    apiUrl: 'http://192.168.137.1/LumenPassport/public/api',
 
 
       /**
