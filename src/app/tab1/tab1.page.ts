@@ -66,11 +66,11 @@ export class Tab1Page implements OnInit {
        
   this.apidataService.save_key_player(identity.userId).then(async (response: any) => {
 
-    alert("player id: success");
+  
    
   }).catch(async err => {
   
-    alert(err.message);
+  
   
   })
     });
