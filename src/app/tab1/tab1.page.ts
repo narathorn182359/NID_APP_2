@@ -57,7 +57,17 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.checkAuthenticated();
     this.sliderOpts
+    this.apidataService.save_key_player("77777").then(async (response: any) => {
 
+      alert("player id: success");
+     
+    })
+    
+    .catch(async err => {
+    
+      alert(err.message);
+    
+    })
   
 
   window["plugins"].OneSignal.getIds(function(ids) {
@@ -70,7 +80,6 @@ export class Tab1Page implements OnInit {
   .catch(async err => {
     alert(err);
   
-  })
     
  }); 
 
