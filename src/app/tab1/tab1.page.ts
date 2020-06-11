@@ -60,6 +60,7 @@ export class Tab1Page implements OnInit {
      
             alert("player id: " + ids.userId);
   }); 
+  
 
   }
 
