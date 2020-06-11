@@ -68,7 +68,6 @@ export class Tab1Page implements OnInit {
    
   })
   .catch(async err => {
-  
     alert(err);
   
   })
