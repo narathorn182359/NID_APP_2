@@ -7,7 +7,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertDailyPage } from '../alert-daily/alert-daily.page';
 import { AttendancePage } from '../attendance/attendance.page';
 import { ChatWithHrPage } from '../chat-with-hr/chat-with-hr.page';
-
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { PMSPage } from '../pms/pms.page';
 import { Storage } from '@ionic/storage';
 
@@ -32,6 +32,7 @@ export class Tab1Page implements OnInit {
   };
   subscribe:any;
   img_banner: any;
+  playerid: any;
   constructor(
     public navCtrl: NavController, 
     private alertController: AlertController,
@@ -42,7 +43,8 @@ export class Tab1Page implements OnInit {
     private router: Router,
     private platform: Platform,
     private modalController:ModalController,
-    private storage:Storage
+    private storage:Storage,
+    private oneSignal: OneSignal,
   
     ) { 
   
@@ -60,10 +62,9 @@ export class Tab1Page implements OnInit {
  
   
 
-   window["plugins"].OneSignal.getIds(function(ids) {
- ids.userId;
-   alert(ids.userId);
-   this.apidataService.save_key_player(ids.userId).then(async (response: any) => {
+    this.oneSignal.getIds().then(identity => {
+       
+  this.apidataService.save_key_player(identity.userId).then(async (response: any) => {
 
     alert("player id: success");
    
@@ -72,10 +73,7 @@ export class Tab1Page implements OnInit {
     alert(err.message);
   
   })
-    
- });  
-
-
+    });
 
 
 
