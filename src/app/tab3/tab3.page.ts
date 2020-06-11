@@ -98,7 +98,12 @@ change_password(){
     this.modalController.dismiss();
     this.authService.removeCredentials();
     this.oneSignal.getIds().then(identity => {
-      this.apidataService.logout_key(identity.userId).then(async (response: any) => {}).catch(async err => {})
+      this.apidataService.logout_key(identity.userId).then(async (response: any) => {
+      alert('ok');
+      }).catch(async err => {
+        alert(err.message);
+
+      })
   });
 
 
