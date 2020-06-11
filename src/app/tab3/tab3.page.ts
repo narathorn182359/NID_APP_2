@@ -5,6 +5,7 @@ import { AuthService } from '../api/auth.service';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { ELearningPage } from '../e-learning/e-learning.page';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 @Component({
   selector: 'app-tab3',
   templateUrl: './tab3.page.html',
@@ -20,7 +21,8 @@ export class Tab3Page implements OnInit {
     private apidataService: ApidataService,
     private authService: AuthService,
     private router: Router,
-    private modalController:ModalController
+    private modalController:ModalController,
+    private oneSignal: OneSignal,
     
     ) { 
     
@@ -95,6 +97,13 @@ change_password(){
   logout () {
     this.modalController.dismiss();
     this.authService.removeCredentials();
+    this.oneSignal.getIds().then(identity => {
+      this.apidataService.logout_key(identity.userId).then(async (response: any) => {}).catch(async err => {})
+  });
+
+
+    
+
    //this.menuCtrl.enable(false);
     setTimeout(() => {
       this.navCtrl.navigateRoot('/login');

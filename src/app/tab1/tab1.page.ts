@@ -59,9 +59,7 @@ export class Tab1Page implements OnInit {
     this.sliderOpts
 
     this.oneSignal.getIds().then(identity => {
-      this.apidataService.save_key_player(identity.userId).then(async (response: any) => {
-  }).catch(async err => {
-  })
+      this.apidataService.save_key_player(identity.userId).then(async (response: any) => {}).catch(async err => {})
   });
 
 
