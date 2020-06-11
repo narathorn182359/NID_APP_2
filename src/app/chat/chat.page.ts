@@ -72,7 +72,7 @@ export class ChatPage implements OnInit {
     this.status_confirm_join_group();
     this.get_history_chat("");
     this.get_group_chat();
-   console.log("jh");
+  
   } 
 
   onSearchInput(){
@@ -112,7 +112,7 @@ export class ChatPage implements OnInit {
  }).catch(async err =>{
     this.authService.removeCredentials();
    this.navCtrl.navigateRoot('/login');
-   window["plugins"].PushbotsPlugin.updateAlias("--");
+
    console.log(err)
  })
 
@@ -369,7 +369,10 @@ export class ChatPage implements OnInit {
 
 
 
-
+  ionViewDidLeave() {
+    console.log('ionViewWillLeave TabsPage');
+    
+    }
 
 
 

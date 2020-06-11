@@ -47,9 +47,7 @@ export class LoginPage implements OnInit {
 
   async doLogin (data: any)
   {
-/*      window["plugins"].OneSignal.getIds(function(ids) {
-      alert("player id: " + ids.userId);
-  }); */
+
    
     const loading = await this.loadingController.create({
       spinner: null,
