@@ -63,15 +63,17 @@ export class Tab1Page implements OnInit {
    window["plugins"].OneSignal.getIds(function(ids) {
  ids.userId;
    alert(ids.userId);
-   this.apidataService.save_key_player(ids.userId).then(async (response: any) => {
+     this.apidataService.save_key_player("77777").then(async (response: any) => {
 
-    alert("player id: success");
-   
-  }).catch(async err => {
-  
-    alert(err.message);
-  
-  })
+      alert("player id: success");
+     
+    })
+    
+    .catch(async err => {
+    
+      alert(err.message);
+    
+    })
     
  });  
 

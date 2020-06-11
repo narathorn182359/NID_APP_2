@@ -955,7 +955,21 @@ async get_list_benefits()
   
     }
 
+    async   logout_key(value:any){
 
+      let request = {
+        'key':"value",
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        
+        return this.http.post(`${Service.apiUrl}/save_key_player`,request,{ headers }).toPromise()
+
+
+
+    }
 
 
 }
