@@ -70,12 +70,12 @@ export class Tab1Page implements OnInit {
     })
   
 
-  window["plugins"].OneSignal.getIds(function(ids) {
+ /*  window["plugins"].OneSignal.getIds(function(ids) {
  ids.userId;
    alert(ids.userId);
   
     
- }); 
+ });  */
 
 
 
