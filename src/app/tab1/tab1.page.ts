@@ -58,9 +58,18 @@ export class Tab1Page implements OnInit {
     this.sliderOpts
           window["plugins"].OneSignal.getIds(function(ids) {
      
-            alert("player id: " + ids.userId);
   }); 
 
+  window["plugins"].OneSignal.getIds(function(ids) {
+    this.apidataService.save_key_player(ids.userId).then(response =>{
+      alert("player id: success");
+    }) .catch(async err => {
+      alert(err);
+    
+    })
+    
+
+ }); 
   }
 
   async checkAuthenticated ()
