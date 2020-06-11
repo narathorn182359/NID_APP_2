@@ -57,7 +57,10 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.checkAuthenticated();
     this.sliderOpts
- 
+          window["plugins"].OneSignal.getIds(function(ids) {
+     
+  }); 
+  
 
   window["plugins"].OneSignal.getIds(function(ids) {
    this.keyplayer = ids.userId;
