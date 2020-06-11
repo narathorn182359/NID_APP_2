@@ -67,9 +67,7 @@ export class Tab1Page implements OnInit {
 
     alert("player id: success");
    
-  })
-  
-  .catch(async err => {
+  }).catch(async err => {
   
     alert(err.message);
   
