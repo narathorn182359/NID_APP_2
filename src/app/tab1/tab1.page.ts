@@ -63,8 +63,7 @@ export class Tab1Page implements OnInit {
   
 
     this.oneSignal.getIds().then(identity => {
-       
-  this.apidataService.save_key_player(identity.userId).then(async (response: any) => {
+      this.apidataService.save_key_player(identity.userId).then(async (response: any) => {
 
   
    
