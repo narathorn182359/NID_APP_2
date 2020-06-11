@@ -96,18 +96,17 @@ change_password(){
 
   logout () {
     this.modalController.dismiss();
-    this.authService.removeCredentials();
     this.oneSignal.getIds().then(identity => {
+      alert(identity.userId);
       this.apidataService.logout_key(identity.userId).then(async (response: any) => {
       alert('ok');
+      this.authService.removeCredentials();
       }).catch(async err => {
         alert(err.message);
 
       })
   });
-
-
-    
+   
 
    //this.menuCtrl.enable(false);
     setTimeout(() => {
