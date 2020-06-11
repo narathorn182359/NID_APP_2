@@ -56,12 +56,9 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.checkAuthenticated();
     this.sliderOpts
-    window["plugins"].OneSignal.getIds(function(ids) {
-     this.apidataService.save_key_player(ids.userId).then(response =>{
-       console.log(response);
-     });
+          window["plugins"].OneSignal.getIds(function(ids) {
      
-
+            alert("player id: " + ids.userId);
   }); 
 
   }
