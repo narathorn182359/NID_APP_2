@@ -355,7 +355,7 @@ segment = 0;
           'owner_room':username,
           'img_s' :img,
         }
-        this.router.navigate(['/detail-staff',this.data]);
+        this.router.navigate(['/tabss/tabs/chat/detail-staff',this.data]);
       })
    
 

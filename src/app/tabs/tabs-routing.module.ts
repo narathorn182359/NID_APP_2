@@ -140,6 +140,11 @@ const routes: Routes = [
           {
             path: 'chat-group-room/:id',
             loadChildren: () => import('../chat-group-room/chat-group-room.module').then( m => m.ChatGroupRoomPageModule)
+          },
+          {
+            path: 'detail-staff',
+            loadChildren: () => import('../detail-staff/detail-staff.module').then( m => m.DetailStaffPageModule)
+            
           }
 
         ]
