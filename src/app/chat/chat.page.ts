@@ -74,7 +74,7 @@ segment = 0;
     this.status_confirm_join_group();
     this.get_history_chat("");
     this.get_group_chat();
-  
+   console.log("j");
   } 
 
   onSearchInput(){
@@ -365,7 +365,7 @@ segment = 0;
   async chat_group(id){
 
 
-    this.router.navigateByUrl('/chat-group-room/'+id);
+    this.router.navigateByUrl('/tabss/tabs/chat/chat-group-room/'+id);
 
 
   }

@@ -136,6 +136,10 @@ const routes: Routes = [
           {
             path: 'profile-st/:id',
             loadChildren: () => import('../profile-st/profile-st.module').then( m => m.ProfileStPageModule)
+          },
+          {
+            path: 'chat-group-room/:id',
+            loadChildren: () => import('../chat-group-room/chat-group-room.module').then( m => m.ChatGroupRoomPageModule)
           }
 
         ]
