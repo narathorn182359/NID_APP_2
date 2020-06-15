@@ -11,6 +11,10 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { CreateGroupChatPage } from '../create-group-chat/create-group-chat.page';
 import { ModalController } from '@ionic/angular';
 import { IonSlides } from '@ionic/angular';
+import { Socket } from 'ngx-socket-io';
+
+
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -45,7 +49,7 @@ segment = 0;
   status_confirm: any;
   constructor( 
     
-    
+    private socket: Socket, 
     public navCtrl: NavController, 
     private alertController: AlertController,
     private loadingController: LoadingController,
@@ -69,6 +73,39 @@ segment = 0;
    this.get_username_all("");
    this.checkAuthenticated();
    this.get_group_chat();
+   this.socket.connect();
+   this.get_history_chat("");
+
+   this.socket.fromEvent('message').subscribe(message => {
+
+    setTimeout(() => {
+      this.get_history_chat("");
+      this.get_group_chat();
+    }, 1000);
+  
+  
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
   async ionViewWillEnter(){
     this.status_confirm_join_group();
@@ -350,15 +387,9 @@ segment = 0;
 
         let username = response.username
         let  img = response.username+".jpg"
-        this.data ={
-          'chat_partner':id,
-          'owner_room':username,
-          'img_s' :img,
-        }
-        this.router.navigate(['/tabss/tabs/chat/detail-staff',this.data]);
+    
+        this.router.navigateByUrl('/tabss/tabs/chat/detail-staff/'+id+"/"+username+"/"+img);
       })
-   
-
   }
 
 

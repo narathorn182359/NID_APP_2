@@ -102,7 +102,10 @@
       <ion-label>
         <h3>{{c.name_thai}}</h3>
         <p>{{c.msg.msg}}</p>
+     
       </ion-label>
+      
+      <ion-badge  *ngIf="!!c.noti" slot="end" color="danger">{{c.noti_owne}} {{c.noti}}</ion-badge>
     </ion-item>
   </ion-list>
 
@@ -172,14 +175,6 @@
     <img src="/assets/imgsystem/botton_Create group.svg" alt="" width="100%">
   </ion-fab-button>
 </ion-fab>
-
-
- 
- 
-
-
-
-
 
 
 
