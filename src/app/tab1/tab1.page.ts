@@ -77,9 +77,7 @@ export class Tab1Page implements OnInit {
         this.feednew();
         console.log(isAuthenticated);
       }else{
-        this.authService.removeCredentials();
-   this.navCtrl.navigateRoot('/login');
-
+   
    
       
       } 
