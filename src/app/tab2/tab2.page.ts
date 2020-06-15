@@ -67,10 +67,12 @@ export class Tab2Page implements OnInit {
       
 
       }else{
-        this.navCtrl.navigateRoot('');
+        this.authService.removeCredentials();
+      this.navCtrl.navigateRoot('/login');
       }
     } catch (err) {
-      console.log(err);
+      this.authService.removeCredentials();
+      this.navCtrl.navigateRoot('/login');
    
     }
   }
@@ -117,6 +119,8 @@ export class Tab2Page implements OnInit {
    .catch(async err => {
     await loading.dismiss();
     console.log(err)
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
    })
 
 

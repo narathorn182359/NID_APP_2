@@ -77,11 +77,15 @@ export class Tab1Page implements OnInit {
         this.feednew();
         console.log(isAuthenticated);
       }else{
-      
+   
+   
       
       } 
     } catch (err) {
-      console.log(err);
+      this.authService.removeCredentials();
+      this.navCtrl.navigateRoot('/login');
+   
+      console.log(err)
       
     }
   }
@@ -106,8 +110,11 @@ export class Tab1Page implements OnInit {
   })
   .catch(async err => {
     await loading.dismiss(); 
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+ 
+    console.log(err)
 
-   console.log(err);
    
 
 

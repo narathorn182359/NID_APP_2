@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { CreateGroupChatPage } from '../create-group-chat/create-group-chat.page';
 import { ModalController } from '@ionic/angular';
+import { IonSlides } from '@ionic/angular';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -18,7 +19,8 @@ import { ModalController } from '@ionic/angular';
 
 export class ChatPage implements OnInit {
 @ViewChild('IonInfiniteScroll',{read: ElementRef, static:true}) infiniteScroll: ElementRef;
-
+@ViewChild('slides', { static: true }) slider: IonSlides;
+segment = 0;
   segmentModel: string = "สนทนา";
   datainfouser:any;
   position:any;
@@ -420,6 +422,11 @@ export class ChatPage implements OnInit {
       });
       return await modal.present();
     }
+
+
+
+
+
 
 
 
