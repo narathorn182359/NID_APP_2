@@ -242,17 +242,18 @@ export class ChatPage implements OnInit {
 
   async get_history_chat(value){
     this.searching = true;
-    this.apidataService.getuserid().then(async (response: any) => {
+   /*  this.apidataService.getuserid().then(async (response: any) => {
       this.user_id = response.username
 
      
     })
-    
+     */
     this.apidataService.get_history_chat(value)
     .then(async (response: any) => {
     
-      this.history_chat = [];
-      if(response != "null"){
+       this.history_chat = response;
+       this.searching = false;
+    /*   if(response != "null"){
         for(let data of  response) {
           if(this.user_id == data['owner_room']){
            const img_d = data['chat_partner']+'.jpg';
@@ -278,12 +279,12 @@ export class ChatPage implements OnInit {
            this.history_chat.push(data_save);  
           
           }
+        }
 
-    
-   }
-      }
-      this.searching = false;
-      console.log(this.history_chat)
+      } */
+
+     
+      console.log(response)
    })
    .catch(async err => {
     console.log(err)

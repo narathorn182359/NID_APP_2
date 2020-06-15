@@ -3,12 +3,12 @@ export const Service: any = {
     /**
      * Url of your Laravel Project
      */
-  //  url: 'http://18.140.109.247/nidapi',
-  //  apiUrl: 'http://18.140.109.247/nidapi/api',
+   url: 'http://localhost:8000',
+   apiUrl: 'http://localhost:8000/api',
  
 
-    url: 'http://18.140.109.247/servicenid',
-    apiUrl: 'http://18.140.109.247/servicenid/api',
+   // url: 'http://18.140.109.247/servicenid',
+   // apiUrl: 'http://18.140.109.247/servicenid/api',
 
 
       /**
