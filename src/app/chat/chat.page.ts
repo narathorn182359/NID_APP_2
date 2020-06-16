@@ -66,6 +66,7 @@ segment = 0;
       this.searchControl = new FormControl();
       this.searchControl_history_chat = new FormControl();
       this.searchControl_em_chat = new FormControl();
+   
     }
 
   ngOnInit() {
@@ -73,7 +74,7 @@ segment = 0;
    this.get_username_all("");
    this.checkAuthenticated();
    this.get_group_chat();
-   this.socket.connect();
+
    this.get_history_chat("");
 
    this.socket.fromEvent('message').subscribe(message => {
@@ -108,6 +109,7 @@ segment = 0;
 
   }
   async ionViewWillEnter(){
+    this.socket.connect();
     this.status_confirm_join_group();
     this.get_history_chat("");
     this.get_group_chat();

@@ -57,16 +57,14 @@
   </ion-refresher>
 
 
-  <div *ngIf="searching" class="spinner-container">
+<!--   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
-  </div>
+  </div> -->
 
 
   <div *ngIf="segmentModel === 'สนทนา'">
-    <div *ngIf="!!status_confirm">
-      <div *ngIf="searching" class="spinner-container">
-        <ion-spinner></ion-spinner>
-      </div>
+    <div *ngIf="!!status_confirm"> 
+     
       <ion-list lines="none">
         <ion-list-header>
          คำเชิญเข้ากลุ่ม
@@ -92,9 +90,9 @@
     <ion-list-header>
       รายชื่อสนทนาล่าสุด
     </ion-list-header>
-    <div *ngIf="searching" class="spinner-container">
+   <!--  <div *ngIf="searching" class="spinner-container">
       <ion-spinner></ion-spinner>
-    </div>
+    </div> -->
     <ion-item *ngFor="let c of  history_chat"  button (click)="chat(c.username)">
       <ion-avatar slot="start">
         <img src="http://18.140.109.247/nidapi/img/{{c.img}}">
@@ -105,7 +103,7 @@
      
       </ion-label>
       
-      <ion-badge  *ngIf="!!c.noti" slot="end" color="danger">{{c.noti_owne}} {{c.noti}}</ion-badge>
+      <ion-badge  *ngIf="!!c.noti" slot="end" color="danger"> {{c.noti}}</ion-badge>
     </ion-item>
   </ion-list>
 
@@ -113,9 +111,9 @@
     <ion-list-header>
       กลุ่ม
     </ion-list-header>
-    <div *ngIf="searching" class="spinner-container">
+  <!--   <div *ngIf="searching" class="spinner-container">
       <ion-spinner></ion-spinner>
-    </div>
+    </div> -->
     <ion-item *ngFor="let c of  group_chat"  button (click)="chat_group(c.code_room_id)">
       <ion-avatar slot="start">
         <img src="http://18.140.109.247/nidapi/imgnew/{{c.img}}">
