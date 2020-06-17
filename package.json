@@ -41,6 +41,7 @@
     "file-saver": "^2.0.2",
     "firebase": "^7.14.6",
     "ionic": "^5.4.16",
+    "ionic-selectable": "^4.7.1",
     "ngx-filesaver": "^9.0.0",
     "ngx-socket-io": "^3.0.1",
     "onesignal-cordova-plugin": "^2.9.1",

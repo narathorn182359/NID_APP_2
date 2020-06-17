@@ -822,11 +822,11 @@ async get_list_benefits()
   }
 
 
-  async save_room_chat(value:any)
+  async save_room_chat(value:any,i:any)
   {
     let request = {
       'name_group':value.name_group,
-      'username':value.username,
+      'username':i,
 
     }
     let auth: any = await this.storage.get('auth');
@@ -971,5 +971,54 @@ async get_list_benefits()
 
     }
 
+
+
+    async   add_staff_ingroup(value:any){
+
+      let request = {
+        'room':value,
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        
+        return this.http.post(`${Service.apiUrl}/add_staff_ingroup`,request,{ headers }).toPromise()
+
+
+    }
+    
+    async   save_staff_ingroup(value:any,room:any){
+
+      let request = {
+        'room':room,
+        'username':value
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        
+        return this.http.post(`${Service.apiUrl}/save_staff_ingroup`,request,{ headers }).toPromise()
+
+
+    }
+
+
+    async   remove_noti(value:any){
+
+      let request = {
+        'username':value
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        
+        return this.http.post(`${Service.apiUrl}/remove_noti`,request,{ headers }).toPromise()
+
+
+    }
+    
 
 }

@@ -27,24 +27,25 @@
         <p>คำเตือน, ไม่สามารถใช้ชื่อนี้ได้</p>
         </div>
     </ion-item>
-    <div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
-      <ion-select [class.invalid]="!slideTwoForm.controls.username.valid && (slideTwoForm.controls.username.dirty || submitAttempt)" formControlName="username" multiple="true" placeholder="เพิ่มรายชื่อ"  cancelText="ยกเลิก" okText="ตกลง">
-      
-        <div  *ngFor="let p  of   username_all">
- 
-        <ion-select-option value="{{p.Code_Staff}}">
-          {{p.Name_Thai}}
-        </ion-select-option>
-       </div>
-     
-      
-    </ion-select>
-    </div>
+  
 </form>
+<div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
+  <ionic-selectable  [isMultiple]="true"
+  [(ngModel)]="port"
+  [items]="ports"
+  itemValueField="Code_Staff"
+  itemTextField="Name_Thai"
+  [canSearch]="true"
+  (onChange)="portChange($event)"
+  placeholder="รายชื่อพนักงาน"
+  [searchFailText]="'ไม่พบรายชื่อ...'"
+  >
+</ionic-selectable>
 
+</div>
 
 <div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
-  <ion-button  color="primary" (click)="save()"  class="shadow-red">บันทกข้อมูล</ion-button>
+  <ion-button  color="primary" (click)="save()"  class="shadow-red">บันทึกข้อมูล</ion-button>
 </div>
 
  <!--  <ion-slides #signupSlider pager>
@@ -103,5 +104,10 @@
     </ion-slide>
 
   </ion-slides> -->
+
+
+
+
+   
 
 </ion-content>

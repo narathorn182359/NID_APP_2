@@ -87,26 +87,6 @@ segment = 0;
   
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
   async ionViewWillEnter(){
     this.socket.connect();
@@ -127,6 +107,8 @@ segment = 0;
      if(response != "404"){
       this.group_chat = response;
      
+     }else{
+    this.group_chat == null
      }
   console.log(response);
   }).catch(async err =>{
@@ -384,6 +366,11 @@ segment = 0;
       }
 /////
      async chat(id){
+
+      this.apidataService.remove_noti(id).then(async (response: any) => {
+                console.log(response)
+      })
+
 
       this.apidataService.getuserid().then(async (response: any) => {
 
