@@ -1020,5 +1020,21 @@ async get_list_benefits()
 
     }
     
+    async   remove_noti_group(value:any){
+
+      let request = {
+        'room':value
+      }
+      let auth: any = await this.storage.get('auth');
+      let headers: HttpHeaders = new HttpHeaders({
+            'Authorization': `Bearer ${auth.access_token}`,
+        })
+        
+        return this.http.post(`${Service.apiUrl}/remove_noti_group`,request,{ headers }).toPromise()
+
+
+    }
+
+    
 
 }
