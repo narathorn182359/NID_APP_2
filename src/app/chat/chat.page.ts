@@ -384,7 +384,9 @@ segment = 0;
 
   async chat_group(id){
 
-
+    this.apidataService.remove_noti_group(id).then(async (response: any) => {
+      console.log(response)
+})
     this.router.navigateByUrl('/tabss/tabs/chat/chat-group-room/'+id);
 
 
@@ -392,10 +394,7 @@ segment = 0;
 
 
 
-  ionViewDidLeave() {
-    console.log('ionViewWillLeave TabsPage');
-    
-    }
+
 
 
 
