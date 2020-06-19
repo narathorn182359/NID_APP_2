@@ -122,6 +122,8 @@
         <h3>{{c.name_room}}</h3>
         <p>{{c.msg.msg}}</p>
       </ion-label>
+      <ion-badge  *ngIf="c.no_ti != 0" slot="end" color="danger"> {{c.no_ti}}</ion-badge>
+      
     </ion-item>
   </ion-list>
 

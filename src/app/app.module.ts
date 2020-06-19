@@ -18,7 +18,7 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { IonicSelectableModule } from 'ionic-selectable';
 
-const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', options: {} };
+const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', options: {} };
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
