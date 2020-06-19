@@ -7,8 +7,8 @@ export const Service: any = {
   // apiUrl: 'https://111loves.com/api',
  
 
-    url: 'http://127.0.0.1:8000',
-    apiUrl: 'http://127.0.0.1:8000/api',
+    url: 'https://111loves.com',
+    apiUrl: 'https://111loves.com/api',
 
 
       /**

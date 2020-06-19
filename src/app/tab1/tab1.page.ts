@@ -140,13 +140,13 @@ export class Tab1Page implements OnInit {
 
 
     this.oneSignal.getIds().then(identity => {
-      alert(identity.userId);
+      
       this.apidataService.save_key_player(identity.userId).then(async (response: any) => {
-      alert(response);
+     
 
       }).catch(async err => {
 
-        alert(err.message);
+        
       })
   });
 
