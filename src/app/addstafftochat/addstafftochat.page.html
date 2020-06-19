@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>เลือกพนักงาน</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" color="danger">ปิด</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
+    <ionic-selectable  
+    [isMultiple]="true"
+    [(ngModel)]="port"
+    [items]="ports"
+    itemValueField="Code_Staff"
+    itemTextField="Name_Thai"
+    [canSearch]="true"
+    (onChange)="portChange($event)"
+    placeholder="รายชื่อพนักงาน"
+    [searchFailText]="'ไม่พบรายชื่อ...'"
+    >
+  </ionic-selectable>
+  
+  </div>
+  
+  <div style="margin-top: 10%; padding-left: 10%;  padding-right: 10%;">
+    <ion-button  color="primary" (click)="save()"  class="shadow-red">บันทึกข้อมูล</ion-button>
+  </div>
+</ion-content>

@@ -14,7 +14,8 @@ export class ProfileStPage implements OnInit {
   constructor(
     public apidataService:ApidataService,
     public router:ActivatedRoute,
-    public route:Router
+    public route:Router,
+    private routers: Router,
     ) { }
 
   ngOnInit() {
@@ -41,7 +42,7 @@ export class ProfileStPage implements OnInit {
         'img_s' :img,
       }
     console.log(img);
-   this.route.navigate(['/detail-staff',this.data]);
+    this.routers.navigateByUrl('/tabss/tabs/chat/detail-staff/'+id+"/"+username+"/"+img);
 
 
     })

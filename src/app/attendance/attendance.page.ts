@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-attendance',
@@ -9,14 +10,18 @@ import { ModalController } from '@ionic/angular';
 export class AttendancePage implements OnInit {
 
   constructor(
-    private modalController:ModalController
+    private modalController:ModalController,
+    private router: Router,
+    public navParams: NavParams,
   ) { }
 
   ngOnInit() {
-  
+   
+   
   }
 
-  dismissModal() {
+  dismissModal(  ) {
+
     this.modalController.dismiss();
 
    }

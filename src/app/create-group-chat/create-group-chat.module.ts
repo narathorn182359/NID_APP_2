@@ -8,14 +8,17 @@ import { CreateGroupChatPageRoutingModule } from './create-group-chat-routing.mo
 
 import { CreateGroupChatPage } from './create-group-chat.page';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { IonicSelectableModule } from 'ionic-selectable';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    CreateGroupChatPageRoutingModule
+    CreateGroupChatPageRoutingModule,
+    IonicSelectableModule
+    
+   
   ],
   declarations: [CreateGroupChatPage]
 })

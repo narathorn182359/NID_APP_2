@@ -39,19 +39,22 @@ export class DetailStaffPage implements OnInit {
   ngOnInit() {
     this.scrollToBottomOnInit_2();
     this.socket.connect();
-  
-    let chat_partners: any =    this.route.snapshot.paramMap.get('id')
-    this.route.params.subscribe(params => {
-    this.user1 =  params['owner_room'];
-    this.user2 =  params['chat_partner'];
-      this.dataroute = {
-        'owner_room':params['owner_room'],
-        'chat_partner': params['chat_partner'],    
-        'img_s' :params['img_s'],  
-      }
-         console.log(this.dataroute);
+    let id_1: any =    this.route.snapshot.paramMap.get('id_1')
+    let id_2: any =    this.route.snapshot.paramMap.get('id_2')
+    let id_3: any =    this.route.snapshot.paramMap.get('id_3')
 
- });
+        this.user1 = id_1;
+        this.user2 = id_2;
+        this.dataroute = {
+          'owner_room':id_2,
+          'chat_partner': id_1,    
+          'img_s' :id_3,  
+        }
+           console.log(this.dataroute);
+  
+
+ 
+
     
          this.apidataService.get_chat(this.dataroute).then(async (response: any) => {
           this.messages =  response.dataall;
@@ -86,8 +89,9 @@ export class DetailStaffPage implements OnInit {
         this.messages.push(message);
       }
     
-     
     });
+
+
   }
  
   sendMessage() {
@@ -143,7 +147,7 @@ export class DetailStaffPage implements OnInit {
 
 
    async ionViewWillEnter(){
-
+  
    
   }
 

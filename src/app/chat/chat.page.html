@@ -57,16 +57,14 @@
   </ion-refresher>
 
 
-  <div *ngIf="searching" class="spinner-container">
+<!--   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
-  </div>
+  </div> -->
 
 
   <div *ngIf="segmentModel === 'สนทนา'">
-    <div *ngIf="!!status_confirm">
-      <div *ngIf="searching" class="spinner-container">
-        <ion-spinner></ion-spinner>
-      </div>
+    <div *ngIf="!!status_confirm"> 
+     
       <ion-list lines="none">
         <ion-list-header>
          คำเชิญเข้ากลุ่ม
@@ -92,9 +90,9 @@
     <ion-list-header>
       รายชื่อสนทนาล่าสุด
     </ion-list-header>
-    <div *ngIf="searching" class="spinner-container">
+   <!--  <div *ngIf="searching" class="spinner-container">
       <ion-spinner></ion-spinner>
-    </div>
+    </div> -->
     <ion-item *ngFor="let c of  history_chat"  button (click)="chat(c.username)">
       <ion-avatar slot="start">
         <img src="http://18.140.109.247/nidapi/img/{{c.img}}">
@@ -102,7 +100,10 @@
       <ion-label>
         <h3>{{c.name_thai}}</h3>
         <p>{{c.msg.msg}}</p>
+     
       </ion-label>
+      
+      <ion-badge  *ngIf="!!c.noti" slot="end" color="danger"> {{c.noti}}</ion-badge>
     </ion-item>
   </ion-list>
 
@@ -110,9 +111,9 @@
     <ion-list-header>
       กลุ่ม
     </ion-list-header>
-    <div *ngIf="searching" class="spinner-container">
+  <!--   <div *ngIf="searching" class="spinner-container">
       <ion-spinner></ion-spinner>
-    </div>
+    </div> -->
     <ion-item *ngFor="let c of  group_chat"  button (click)="chat_group(c.code_room_id)">
       <ion-avatar slot="start">
         <img src="http://18.140.109.247/nidapi/imgnew/{{c.img}}">
@@ -121,6 +122,8 @@
         <h3>{{c.name_room}}</h3>
         <p>{{c.msg.msg}}</p>
       </ion-label>
+      <ion-badge  *ngIf="c.no_ti != 0" slot="end" color="danger"> {{c.no_ti}}</ion-badge>
+      
     </ion-item>
   </ion-list>
 
@@ -172,14 +175,6 @@
     <img src="/assets/imgsystem/botton_Create group.svg" alt="" width="100%">
   </ion-fab-button>
 </ion-fab>
-
-
- 
- 
-
-
-
-
 
 
 

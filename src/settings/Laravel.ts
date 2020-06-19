@@ -3,12 +3,12 @@ export const Service: any = {
     /**
      * Url of your Laravel Project
      */
-   //url: 'http://192.168.3.203/LumenPassport/public',
- //  apiUrl: 'http://192.168.3.203/LumenPassport/public/api',
+ //  url: 'https://111loves.com',
+  // apiUrl: 'https://111loves.com/api',
  
 
-    url: 'http://18.140.109.247/servicenid',
-    apiUrl: 'http://18.140.109.247/servicenid/api',
+    url: 'http://127.0.0.1:8000',
+    apiUrl: 'http://127.0.0.1:8000/api',
 
 
       /**
@@ -17,8 +17,8 @@ export const Service: any = {
      */
     passport: {
         'grant_type': 'password',
-        'client_id': '1',
-        'client_secret': '6Op5WO81R1x7ggTTTcUddkKukXEBgPaqXEQYm3EP',
-    }
+        'client_id': '6',
+        'client_secret': 'e2qfiHDWym2guNyKuXhehLqB2cQ3N738WEr0JkXB',
+       }
 
 };

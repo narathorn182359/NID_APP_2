@@ -64,14 +64,6 @@ export class ChatGroupRoomPage implements OnInit {
     return await popover.present();
   }
 
-
-
-
-
-
-
-
-
   ngOnInit() {
     this.scrollToBottomOnInit_2();
     this.socket.connect();

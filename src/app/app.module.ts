@@ -16,7 +16,9 @@ import { environment } from '../environments/environment';
 import { HTTP } from '@ionic-native/http/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', options: {} };
+import { IonicSelectableModule } from 'ionic-selectable';
+
+const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', options: {} };
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,7 +30,9 @@ const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', opt
     IonicStorageModule.forRoot(),
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    IonicSelectableModule
+  
   ],
   providers: [
     StatusBar,

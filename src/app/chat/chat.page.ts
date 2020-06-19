@@ -11,6 +11,10 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { CreateGroupChatPage } from '../create-group-chat/create-group-chat.page';
 import { ModalController } from '@ionic/angular';
 import { IonSlides } from '@ionic/angular';
+import { Socket } from 'ngx-socket-io';
+
+
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -45,7 +49,7 @@ segment = 0;
   status_confirm: any;
   constructor( 
     
-    
+    private socket: Socket, 
     public navCtrl: NavController, 
     private alertController: AlertController,
     private loadingController: LoadingController,
@@ -62,6 +66,7 @@ segment = 0;
       this.searchControl = new FormControl();
       this.searchControl_history_chat = new FormControl();
       this.searchControl_em_chat = new FormControl();
+   
     }
 
   ngOnInit() {
@@ -69,8 +74,22 @@ segment = 0;
    this.get_username_all("");
    this.checkAuthenticated();
    this.get_group_chat();
+
+   this.get_history_chat("");
+
+   this.socket.fromEvent('message').subscribe(message => {
+
+    setTimeout(() => {
+      this.get_history_chat("");
+      this.get_group_chat();
+    }, 1000);
+  
+  
+  });
+
   }
   async ionViewWillEnter(){
+    this.socket.connect();
     this.status_confirm_join_group();
     this.get_history_chat("");
     this.get_group_chat();
@@ -88,6 +107,8 @@ segment = 0;
      if(response != "404"){
       this.group_chat = response;
      
+     }else{
+    this.group_chat == null
      }
   console.log(response);
   }).catch(async err =>{
@@ -346,19 +367,18 @@ segment = 0;
 /////
      async chat(id){
 
+      this.apidataService.remove_noti(id).then(async (response: any) => {
+                console.log(response)
+      })
+
+
       this.apidataService.getuserid().then(async (response: any) => {
 
         let username = response.username
         let  img = response.username+".jpg"
-        this.data ={
-          'chat_partner':id,
-          'owner_room':username,
-          'img_s' :img,
-        }
-        this.router.navigate(['/tabss/tabs/chat/detail-staff',this.data]);
+    
+        this.router.navigateByUrl('/tabss/tabs/chat/detail-staff/'+id+"/"+username+"/"+img);
       })
-   
-
   }
 
 

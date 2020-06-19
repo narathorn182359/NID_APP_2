@@ -1,9 +1,9 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
-import { Platform,NavController, AlertController, LoadingController, MenuController } from '@ionic/angular';
+import { Platform,NavController, AlertController, LoadingController, MenuController,ModalController } from '@ionic/angular';
 import { ApidataService } from '../api/apidata.service';
 import { AuthService } from '../api/auth.service';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+
 import { AlertDailyPage } from '../alert-daily/alert-daily.page';
 import { AttendancePage } from '../attendance/attendance.page';
 import { ChatWithHrPage } from '../chat-with-hr/chat-with-hr.page';
