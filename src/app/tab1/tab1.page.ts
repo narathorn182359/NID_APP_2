@@ -58,10 +58,6 @@ export class Tab1Page implements OnInit {
     this.checkAuthenticated();
     this.sliderOpts
 
-    this.oneSignal.getIds().then(identity => {
-      this.apidataService.save_key_player(identity.userId).then(async (response: any) => {}).catch(async err => {})
-  });
-
 
 
 
@@ -141,6 +137,21 @@ export class Tab1Page implements OnInit {
   }
 
   async ionViewWillEnter(){
+
+
+    this.oneSignal.getIds().then(identity => {
+      alert(identity.userId);
+      this.apidataService.save_key_player(identity.userId).then(async (response: any) => {
+      alert(response);
+
+      }).catch(async err => {
+
+        alert(err.message);
+      })
+  });
+
+
+
 
      let user_noti;
 
