@@ -24,7 +24,7 @@ export class ELearningPage implements OnInit {
     this.apidataService.getuserid()
     .then(async (response: any) => {
       this.datainfouser = response;
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl('http://18.140.109.247/learning/loginuser?identity='+this.datainfouser.username+'&password='+this.datainfouser.id_card);
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://111loves.com/learning/loginuser?identity='+this.datainfouser.username+'&password='+this.datainfouser.id_card);
       console.log( this.url)
       
       
