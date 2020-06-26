@@ -144,13 +144,20 @@
 </div>
 <div *ngIf="segmentModel === 'สิทธิประโยชน์'" style="margin-top: 8px;">
   <ion-list>
-    <ion-item *ngFor="let p of benefits"  (click) ="presentModal(p.id,p.name_benefits)">
+    <ion-item *ngFor="let p of benefits" >
       <ion-thumbnail slot="start">
         <img src="assets/imgsystem/{{p.icon}}"  >
       </ion-thumbnail>
       <ion-label>
-        <h3> {{p.name_benefits}}</h3>
-        <p style="font-size: 20px;">รายละเอียด..</p>
+        <h3> {{p.name}}</h3>
+        <h2 >  
+        <div  *ngFor="let l of p.list">
+          <h3>
+            {{l.head}} {{l.detail}}
+          </h3>
+        
+        </div>
+       </h2>
       </ion-label>
     </ion-item>
   </ion-list>

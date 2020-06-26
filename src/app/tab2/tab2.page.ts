@@ -78,6 +78,11 @@ export class Tab2Page implements OnInit {
   }
 
   segmentChanged(ev: any) {
+    this.apidataService.get_list_benefits()
+    .then(async (response: any) => {
+    this.benefits = response;
+ 
+   })
     console.log('Segment changed', ev);
    
   }

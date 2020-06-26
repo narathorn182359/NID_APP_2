@@ -14,7 +14,7 @@
       <ion-slides pager="true" [options]="sliderOpts" loop="true" (ionSlideDidChange)="slideChanged()" (ionSlideTouchEnd)="slideChanged_2()" #slides>
         <ion-slide *ngFor="let p of banner">
           <a routerLink ="/tabss/tabs/tab1/detail-new/{{p.advertise_id}}" >
-          <img class="img"     src="https://111loves.com/imgnew/{{p.img_banner}}"    width="100%"  style="height: 150px;"/>
+          <img class="img"  src="https://111loves.com/imgnew/{{p.img_banner}}"    width="100%"  style="height: 150px;"/>
         </a>
         </ion-slide>
     </ion-slides>
