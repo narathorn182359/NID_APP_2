@@ -1,101 +1,136 @@
-<ion-header >
-    <ion-toolbar class="new">
-      <img   src="/assets/imgsystem/Logo_NID.png" width="40" height="100%"/>
-    </ion-toolbar>
+<ion-header>
+  <ion-toolbar class="new">
+    <img src="/assets/imgsystem/Logo_NID.png" width="40" height="100%" />
+  </ion-toolbar>
 </ion-header>
- 
-<ion-content fullscreen  >
-  <div class="bg-image" [ngStyle]="{'background-image': 'url(https://111loves.com/imgnew/'+img_banner+')'}"></div>
+
+<ion-content fullscreen>
+  <div
+    class="bg-image"
+    [ngStyle]="{'background-image': 'url(https://111loves.com/imgnew/'+img_banner+')'}"
+  ></div>
   <div class="bg-text">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <ion-card class="card-banner">
-      <ion-slides pager="true" [options]="sliderOpts" loop="true" (ionSlideDidChange)="slideChanged()" (ionSlideTouchEnd)="slideChanged_2()" #slides>
+      <ion-slides
+        pager="true"
+        [options]="sliderOpts"
+        loop="true"
+        (ionSlideDidChange)="slideChanged()"
+        (ionSlideTouchEnd)="slideChanged_2()"
+        #slides
+      >
         <ion-slide *ngFor="let p of banner">
-          <a routerLink ="/tabss/tabs/tab1/detail-new/{{p.advertise_id}}" >
-          <img class="img"  src="https://111loves.com/imgnew/{{p.img_banner}}"    width="100%"  style="height: 150px;"/>
-        </a>
+          <a routerLink="/tabss/tabs/tab1/detail-new/{{p.advertise_id}}">
+            <img
+              class="img"
+              src="https://111loves.com/imgnew/{{p.img_banner}}"
+              width="100%"
+              style="height: 150px;"
+            />
+          </a>
         </ion-slide>
-    </ion-slides>
-  </ion-card>
+      </ion-slides>
+    </ion-card>
   </div>
-    <br class="title_br"><br class="title_br">
-    <div class="spinner-container">
-      <ion-row>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <div>
-                <img src="/assets/imgsystem/icon_time.svg" alt="" style="height: 30px; width: 100%;" (click)="AttendenceModal()">
-                <br> 
-             <p style="font-size: 11px;">เวลา</p> 
-              </div>
-            </ion-col>
-            <ion-col>
-              <div>
-                <a routerLink ="/tabss/tabs/tab1/pms" >
-                <img src="/assets/imgsystem/icon_pms.svg" alt="" style="height: 30px; width: 100%;" >
-                </a>
-                <br> 
-                <p style="font-size: 11px;">  PMS </p>
-              </div>
-            </ion-col>
-            <ion-col>
-              <div>
-                <a routerLink ="/tabss/tabs/tab1/km360" >
-                <img src="/assets/imgsystem/icon_km.svg" alt="" style="height: 30px; width: 100%;">
-                </a>
-                <br> 
-                <p style="font-size: 11px;"> KM360 </p>
-              </div>
-            </ion-col>
-            <ion-col>
-              <div>
-      
-                <a routerLink ="/tabss/tabs/tab1/iform" >
-                <img src="/assets/imgsystem/icon_hr-service.svg" alt="" style="height: 30px; width: 100%;">
-                </a>
-
-                <br> 
-                <p style="font-size: 11px;"> HR Service </p>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-row>
-    </div>
-    <ion-row style="padding-left: 30px;">
-        <div  class="title_new"></div>   <div style="padding-left: 5px;">
-          NEWS
-        </div>    
-    </ion-row>
-        
-<div *ngFor="let p of feedlist">
-  <ion-card class="card-new" button (click)="list_new(p.id)">
-
+  <br class="title_br" /><br class="title_br" />
+  <div class="spinner-container">
     <ion-row>
-      <ion-col size="4">
-        <div class="img-new">
-          <img   src="https://111loves.com/imgnew/{{p.img}}"  />
-        </div>
-      </ion-col>
-      <ion-col size="8" >
-        <div >
-          <label style="font-size: 17px; color: black;">{{p.name_adver}}</label>  <br>
-          <label style="font-size: 14px; color: rgb(128, 123, 123);">{{p.name_thai}}</label> 
-        </div> 
-      </ion-col>
-    </ion-row>  
-</ion-card>
-</div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              <img
+                src="/assets/imgsystem/icon_time.svg"
+                alt=""
+                style="height: 30px; width: 100%;"
+                (click)="AttendenceModal()"
+              />
+              <br />
+              <p style="font-size: 11px;">เวลา</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <a routerLink="/tabss/tabs/tab1/pms">
+                <img
+                  src="/assets/imgsystem/icon_pms.svg"
+                  alt=""
+                  style="height: 30px; width: 100%;"
+                />
+              </a>
+              <br />
+              <p style="font-size: 11px;">PMS</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <a routerLink="/tabss/tabs/tab1/km360">
+                <img
+                  src="/assets/imgsystem/icon_km.svg"
+                  alt=""
+                  style="height: 30px; width: 100%;"
+                />
+              </a>
+              <br />
+              <p style="font-size: 11px;">KM360</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <a routerLink="/tabss/tabs/tab1/iform">
+                <img
+                  src="/assets/imgsystem/icon_hr-service.svg"
+                  alt=""
+                  style="height: 30px; width: 100%;"
+                />
+              </a>
 
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button color="white" (click)="chatWithHr()">
-    <img src="/assets/imgsystem/botton_HRChat.svg" alt="" width="80%">
-  </ion-fab-button>
-</ion-fab>
- 
+              <br />
+              <p style="font-size: 11px;">HR Service</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+  </div>
+  <ion-row style="padding-left: 30px;">
+    <div class="title_new"></div>
+    <div style="padding-left: 5px;">
+      NEWS
+    </div>
+  </ion-row>
+
+  <div *ngFor="let p of feedlist">
+    <ion-card class="card-new" button (click)="list_new(p.id)">
+      <ion-row>
+        <ion-col size="4">
+          <div class="img-new">
+            <img src="https://111loves.com/imgnew/{{p.img}}" />
+          </div>
+        </ion-col>
+        <ion-col size="8">
+          <div>
+            <label style="font-size: 17px; color: black;"
+              >{{p.name_adver}}</label
+            >
+            <br />
+            <label style="font-size: 14px; color: rgb(128, 123, 123);"
+              >{{p.name_thai}}</label
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="white" (click)="chatWithHr()">
+      <img src="/assets/imgsystem/botton_HRChat.svg" alt="" width="80%" />
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 <section id="preload" style="display: none;"></section>
