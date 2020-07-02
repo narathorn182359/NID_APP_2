@@ -22,7 +22,7 @@
   
     </ion-slide>
 </ion-slides> -->
-<ion-card>
+<!-- <ion-card>
   <ion-card-content>
    <p  *ngFor="let p of data" style="color: black; font-size: 25px;"> {{p.subject}}</p>
   <div *ngFor="let p of data">
@@ -31,7 +31,15 @@
   </div>
 
 </ion-card-content>
-</ion-card>
+</ion-card> -->
+<div class="ion-text-wrap content">
+  <h3  *ngFor="let p of data" style="color: black; font-size: 25px;"> {{p.subject}}</h3>
+  <div *ngFor="let p of data">
+      <p [innerHTML]="p.explain" style="color: black;"></p> 
+
+  </div>
+</div>
+
   <ion-card>
     <ion-card-content>
       <ion-list>

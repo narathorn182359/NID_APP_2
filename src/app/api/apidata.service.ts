@@ -5,7 +5,7 @@ import { HTTP } from "@ionic-native/http/ngx";
 import { Service } from "../../settings/Laravel";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 export class ApidataService {
   unitsInfo: any;
@@ -21,10 +21,10 @@ export class ApidataService {
       .then(async (response: any) => {
         this.items = response;
       })
-      .catch(async (err) => {
+      .catch(async err => {
         console.log(err);
       });
-    return this.items.filter((item) => {
+    return this.items.filter(item => {
       return item.km_title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
   }
@@ -32,7 +32,7 @@ export class ApidataService {
   async getuserInfo() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/user`, { headers }).toPromise();
   }
@@ -40,18 +40,18 @@ export class ApidataService {
   async getlistmenu() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/listmenu`, { headers }).toPromise();
   }
 
   async getListData2(item: any, page: any) {
     let request = {
-      search: item.search,
+      search: item.search
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/searchdata2`, request, { headers })
@@ -61,7 +61,7 @@ export class ApidataService {
   async getliststaff() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/liststaff`, { headers })
@@ -71,7 +71,7 @@ export class ApidataService {
   async getdepartment() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/department`, { headers })
@@ -81,7 +81,7 @@ export class ApidataService {
   async getjob_family() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/job_family`, { headers })
@@ -91,7 +91,7 @@ export class ApidataService {
   async getlavel() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/lavel`, { headers }).toPromise();
   }
@@ -99,7 +99,7 @@ export class ApidataService {
   async position() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/position`, { headers }).toPromise();
   }
@@ -107,7 +107,7 @@ export class ApidataService {
   async company() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/company`, { headers }).toPromise();
   }
@@ -115,7 +115,7 @@ export class ApidataService {
   async brand() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/brand`, { headers }).toPromise();
   }
@@ -123,18 +123,18 @@ export class ApidataService {
   async getnew() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/feednew`, { headers }).toPromise();
   }
 
   async getDetailnew(item: any) {
     let request = {
-      id: item,
+      id: item
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -144,11 +144,11 @@ export class ApidataService {
 
   async getDetail_new(item: any) {
     let request = {
-      id: item,
+      id: item
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -158,11 +158,11 @@ export class ApidataService {
 
   async gethead_new(item: any) {
     let request = {
-      id: item,
+      id: item
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -173,7 +173,7 @@ export class ApidataService {
   async getsale_day() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/get_salse`, { headers })
@@ -182,11 +182,11 @@ export class ApidataService {
 
   async save_profile(item: any) {
     let request = {
-      phone: item.phone,
+      phone: item.phone
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/save_profile`, request, { headers })
@@ -196,18 +196,18 @@ export class ApidataService {
   async banner() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/banner`, { headers }).toPromise();
   }
 
   async getimg(item: any) {
     let request = {
-      id: item,
+      id: item
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getimg`, request, { headers })
@@ -216,11 +216,11 @@ export class ApidataService {
 
   async getimg_banner_d(item: any) {
     let request = {
-      id: item,
+      id: item
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getimg_banner_d`, request, { headers })
@@ -230,7 +230,7 @@ export class ApidataService {
   async sales_single() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/sales_single`, { headers })
@@ -240,7 +240,7 @@ export class ApidataService {
   async get_salse_sumdaily() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/get_salse_sumdaily`, { headers })
@@ -252,7 +252,7 @@ export class ApidataService {
     let search = search_us;
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(
@@ -266,11 +266,11 @@ export class ApidataService {
     let request = {
       day: item.day,
       month: item.month,
-      year: item.year,
+      year: item.year
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_sales_search`, request, { headers })
@@ -279,11 +279,11 @@ export class ApidataService {
 
   async getDetail_Staff(item: any) {
     let request = {
-      id: item,
+      id: item
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_detail_staff`, request, { headers })
@@ -293,7 +293,7 @@ export class ApidataService {
   async get_km360() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/get_km360`, { headers })
@@ -303,7 +303,7 @@ export class ApidataService {
   async getkm360list_search() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/getkm360list_search`, { headers })
@@ -313,7 +313,7 @@ export class ApidataService {
   async get_iform() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/get_iform`, { headers })
@@ -322,11 +322,11 @@ export class ApidataService {
 
   async getkm360list(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getkm360list`, request, { headers })
@@ -335,11 +335,11 @@ export class ApidataService {
 
   async getkmimgpreview(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getkmimgpreview`, request, { headers })
@@ -348,11 +348,11 @@ export class ApidataService {
 
   async getkmimgdetail(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getkmimgdetail`, request, { headers })
@@ -361,11 +361,11 @@ export class ApidataService {
 
   async count_read(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/count_read`, request, { headers })
@@ -375,7 +375,7 @@ export class ApidataService {
   async get_list_benefits() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/get_list_benefits`, { headers })
@@ -384,11 +384,11 @@ export class ApidataService {
 
   async micro(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/micro`, request, { headers })
@@ -397,11 +397,11 @@ export class ApidataService {
 
   async micro_name(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/micro_name`, request, { headers })
@@ -410,11 +410,11 @@ export class ApidataService {
 
   async getProduct(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getProduct`, request, { headers })
@@ -423,11 +423,11 @@ export class ApidataService {
 
   async getProduct_list(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getProduct_list`, request, { headers })
@@ -436,11 +436,11 @@ export class ApidataService {
 
   async getkmfile(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/getkmfile`, request, { headers })
@@ -451,11 +451,11 @@ export class ApidataService {
     let request = {
       password_old: item.password_old,
       password_new: item.password_new,
-      password_con: item.password_con,
+      password_con: item.password_con
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/password_ch`, request, { headers })
@@ -465,7 +465,7 @@ export class ApidataService {
   async kmhr() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/kmhr`, { headers }).toPromise();
   }
@@ -473,7 +473,7 @@ export class ApidataService {
   async gethrbp() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http.get(`${Service.apiUrl}/gethrbp`, { headers }).toPromise();
   }
@@ -481,7 +481,7 @@ export class ApidataService {
   async getaccident() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/getaccident`, { headers })
@@ -491,7 +491,7 @@ export class ApidataService {
   async getproviden() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/getproviden`, { headers })
@@ -501,7 +501,7 @@ export class ApidataService {
   async getinsurance() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/getinsurance`, { headers })
@@ -511,7 +511,7 @@ export class ApidataService {
   async gethealth() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/gethealth`, { headers })
@@ -521,7 +521,7 @@ export class ApidataService {
   async getemployee() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/getemployee`, { headers })
@@ -530,11 +530,11 @@ export class ApidataService {
 
   async get_be(id: any) {
     let request = {
-      id: id,
+      id: id
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_detail_be`, request, { headers })
@@ -544,7 +544,7 @@ export class ApidataService {
   async getuserid() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/getuserid`, { headers })
@@ -553,11 +553,11 @@ export class ApidataService {
 
   async alert_daily(value: any) {
     let request = {
-      value: value,
+      value: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/alert_daily`, request, { headers })
@@ -566,7 +566,7 @@ export class ApidataService {
   async alert_daily_c() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/alert_daily_c`, { headers })
@@ -575,11 +575,11 @@ export class ApidataService {
 
   async get_positin(value: any) {
     let request = {
-      value: value,
+      value: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_positin`, request, { headers })
@@ -588,11 +588,11 @@ export class ApidataService {
 
   async get_contact(value: any) {
     let request = {
-      value: value,
+      value: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_contact`, request, { headers })
@@ -605,11 +605,11 @@ export class ApidataService {
       /*   'img_ad':value.img_ad, */
       owner_room: value.owner_room,
       chat_partner: value.chat_partner,
-      createdAt: value.createdAt,
+      createdAt: value.createdAt
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/save_chat`, request, { headers })
@@ -621,11 +621,11 @@ export class ApidataService {
       user: value.msg,
       /*   'img_ad':value.img_ad, */
       owner_room: value.owner_room,
-      chat_partner: value.chat_partner,
+      chat_partner: value.chat_partner
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_chat`, request, { headers })
@@ -635,7 +635,7 @@ export class ApidataService {
   async get_username() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -645,11 +645,11 @@ export class ApidataService {
 
   async get_history_chat(value: any) {
     let request = {
-      value: value,
+      value: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_history_chat`, request, { headers })
@@ -659,16 +659,16 @@ export class ApidataService {
   async get_username_all(value: any, page: any) {
     let request = {
       value: value,
-      page: page,
+      page: page
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
       .post(`${Service.apiUrl}/get_username_all?page=` + page, request, {
-        headers,
+        headers
       })
       .toPromise();
   }
@@ -676,7 +676,7 @@ export class ApidataService {
   async get_username_all_addroom() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -687,11 +687,11 @@ export class ApidataService {
   async save_room_chat(value: any, i: any) {
     let request = {
       name_group: value.name_group,
-      username: i,
+      username: i
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/save_addroom`, request, { headers })
@@ -700,11 +700,11 @@ export class ApidataService {
 
   async check_room(value: any) {
     let request = {
-      check_room: value.check_room,
+      check_room: value.check_room
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/check_room`, request, { headers })
@@ -713,11 +713,11 @@ export class ApidataService {
 
   async get_group_chat(value: any) {
     let request = {
-      group_chat: value.group_chat,
+      group_chat: value.group_chat
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_group_chat`, request, { headers })
@@ -727,11 +727,11 @@ export class ApidataService {
   async get_chat_group(value: any) {
     let request = {
       id_room: value.id_room,
-      chat_partner: value.chat_partner,
+      chat_partner: value.chat_partner
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/get_chat_group`, request, { headers })
@@ -741,11 +741,11 @@ export class ApidataService {
   async save_chat_group(value: any) {
     let request = {
       id_room: value.id_room,
-      chat_partner: value.msg,
+      chat_partner: value.msg
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/save_chat_group`, request, { headers })
@@ -755,7 +755,7 @@ export class ApidataService {
   async status_confirm_join_group() {
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .get(`${Service.apiUrl}/status_confirm_join_group`, { headers })
@@ -765,11 +765,11 @@ export class ApidataService {
   async confirm(value: any, id: any) {
     let request = {
       id: id,
-      confirm: value,
+      confirm: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
     return this.http
       .post(`${Service.apiUrl}/confirm`, request, { headers })
@@ -778,11 +778,11 @@ export class ApidataService {
 
   async exit_group_chat(value: any) {
     let request = {
-      id: value,
+      id: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -792,11 +792,11 @@ export class ApidataService {
 
   async save_key_player(value: any) {
     let request = {
-      key: value,
+      key: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -806,11 +806,11 @@ export class ApidataService {
 
   async logout_key(value: any) {
     let request = {
-      key: value,
+      key: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -820,11 +820,11 @@ export class ApidataService {
 
   async add_staff_ingroup(value: any) {
     let request = {
-      room: value,
+      room: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -835,11 +835,11 @@ export class ApidataService {
   async save_staff_ingroup(value: any, room: any) {
     let request = {
       room: room,
-      username: value,
+      username: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -849,11 +849,11 @@ export class ApidataService {
 
   async remove_noti(value: any) {
     let request = {
-      username: value,
+      username: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -863,11 +863,11 @@ export class ApidataService {
 
   async remove_noti_group(value: any) {
     let request = {
-      room: value,
+      room: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
@@ -877,18 +877,43 @@ export class ApidataService {
 
   async save_img_chat(value: any) {
     let request = {
-      image: value,
+      image: value
     };
     let auth: any = await this.storage.get("auth");
     let headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${auth.access_token}`,
+      Authorization: `Bearer ${auth.access_token}`
     });
 
     return this.http
       .post(`${Service.apiUrl}/save_img_chat`, request, { headers })
       .toPromise();
-      
   }
 
+  async listkmhr(value: any) {
+    let request = {
+      type: value
+    };
+    let auth: any = await this.storage.get("auth");
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${auth.access_token}`
+    });
 
+    return this.http
+      .post(`${Service.apiUrl}/listkmhr`, request, { headers })
+      .toPromise();
+  }
+
+  async listkmhrdetail(value: any) {
+    let request = {
+      type: value
+    };
+    let auth: any = await this.storage.get("auth");
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${auth.access_token}`
+    });
+
+    return this.http
+      .post(`${Service.apiUrl}/listkmhrdetail`, request, { headers })
+      .toPromise();
+  }
 }

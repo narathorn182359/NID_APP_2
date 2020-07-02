@@ -39,7 +39,7 @@ export class KmHrPage implements OnInit {
     console.log(err);
     this.authService.removeCredentials();
     this.navCtrl.navigateRoot('/login');
-    window["plugins"].PushbotsPlugin.updateAlias("--");
+   
    
    })
 

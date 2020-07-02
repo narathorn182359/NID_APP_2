@@ -21,7 +21,7 @@ import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
-const config: SocketIoConfig = { url: 'https://new-nodejsnio.herokuapp.com', options: {} };
+const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', options: {} };
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

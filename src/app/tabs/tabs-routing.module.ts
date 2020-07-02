@@ -99,6 +99,10 @@ const routes: Routes = [
             
             path: 'micro-detail/:id',
             loadChildren: () => import('../micro-detail/micro-detail.module').then( m => m.MicroDetailPageModule)
+          },
+          {
+            path: 'km-hrdetail/:id',
+            loadChildren: () => import('../km-hrdetail/km-hrdetail.module').then( m => m.KmHrdetailPageModule)
           }
           
          
