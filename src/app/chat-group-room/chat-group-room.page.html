@@ -21,12 +21,14 @@
         
             <div class="my-message_other message_other">
            
-              <span>{{ message.msg }}</span>
-            
+              <span [innerHTML]="message.msg" style="color: rgb(0, 0, 0);"></span> 
+              <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">ดูภาพ</div>
              
               </div>
           </div>
-          <div class="time_other" text-right>{{ message.createdAt | date:'short' }}</div>
+          <div class="time_other" text-right>{{ message.createdAt | date:'short' }}
+            <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
+          </div>
         </ion-col>
         <ion-col offset="3" size="9" *ngIf="message.chat_partner === currentUser" class="">
          
@@ -36,10 +38,13 @@
             
                <div class="my-message_2 message_2">
                
-                <span>{{ message.msg }}</span> 
-              
+                <span [innerHTML]="message.msg" style="color: white;"></span> 
+                <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">ดูภาพ</div>
                </div>
-               <div class="time" text-right>{{ message.createdAt | date:'short' }}</div>
+               <div class="time" text-right>{{ message.createdAt | date:'short' }}
+
+                <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
+               </div>
             </div>
         </ion-col>
       </ion-row>
@@ -48,7 +53,18 @@
   <ion-footer>
     <ion-toolbar color="light">
       <ion-row align-items-center>
-        <ion-col size="10">
+        <ion-col size="2">
+          <ion-button
+            expand="block"
+            fill="clear"
+            color="primary"
+            class="msg-btn"
+            (click)="selectImage()"
+          >
+            <ion-icon name="aperture-outline" size="large"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="8">
           <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="message"></ion-textarea>
         </ion-col>
         <ion-col size="2">
