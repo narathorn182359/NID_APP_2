@@ -3,12 +3,12 @@ export const Service: any = {
     /**
      * Url of your Laravel Project
      */
- // url: 'https://111loves.com',
-  // apiUrl: 'https://111loves.com/api',
+   url: 'https://111loves.com',
+   apiUrl: 'https://111loves.com/api',
  
 
-    url: 'http://127.0.0.1:8000',
-    apiUrl: 'http://127.0.0.1:8000/api',
+    //url: 'http://127.0.0.1:8000',
+    //apiUrl: 'http://127.0.0.1:8000/api',
 
 
       /**
