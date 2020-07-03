@@ -5,8 +5,10 @@ import { AuthService } from '../api/auth.service';
 import { Chart } from 'chart.js';
 import { ModalController } from '@ionic/angular';
 import { ModalBenefitsPage } from '../modal-benefits/modal-benefits.page';
-
-
+import { Camera, CameraOptions } from "@ionic-native/Camera/ngx";
+import { Crop } from "@ionic-native/crop/ngx";
+import { File } from "@ionic-native/file/ngx";
+import { ActionSheetController } from "@ionic/angular";
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -17,7 +19,10 @@ export class Tab2Page implements OnInit {
   segmentModel: string = "ข้อมูลส่วนตัว";
   benefits: any;
   history_chat:[];
-
+  imagePickerOptions = {
+    maximumImagesCount: 1,
+    quality: 50,
+  };
   constructor(
     public navCtrl: NavController, 
     private alertController: AlertController,
@@ -25,7 +30,11 @@ export class Tab2Page implements OnInit {
     private menuCtrl: MenuController,
     public apidataService: ApidataService,
     private authService: AuthService,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private camera: Camera,
+    private crop: Crop,
+    public actionSheetController: ActionSheetController,
+    private file: File,
 
     
     ) { 
@@ -131,11 +140,101 @@ export class Tab2Page implements OnInit {
 
   }
 
+  pickImage(sourceType) {
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: sourceType,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+    };
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64 (DATA_URL):
+        // let base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.cropImage(imageData);
+      },
+      (err) => {
+        // Handle error
+      }
+    );
+  }
 
 
 
 
 
+  async selectImage() {
+    const actionSheet = await this.actionSheetController.create({
+      header: "เลือกรูปภาพ",
+      buttons: [
+        {
+          text: "รูปภายในเครื่อง",
+          handler: () => {
+            this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+          },
+        },
+        {
+          text: "ใช้กล้องถ่าย",
+          handler: () => {
+            this.pickImage(this.camera.PictureSourceType.CAMERA);
+          },
+        },
+        {
+          text: "ยกเลิก",
+          role: "ยกเลิก",
+        },
+      ],
+    });
+    await actionSheet.present();
+  }
+
+  cropImage(fileUrl) {
+    this.crop.crop(fileUrl, { quality: 50 }).then(
+      (newPath) => {
+        this.showCroppedImage(newPath.split("?")[0]);
+      },
+      (error) => {
+        alert("Error cropping image" + error);
+      }
+    );
+  }
+
+  showCroppedImage(ImagePath) {
+
+    var copyPath = ImagePath;
+    var splitPath = copyPath.split("/");
+    var imageName = splitPath[splitPath.length - 1];
+    var filePath = ImagePath.split(imageName)[0];
+
+    this.file.readAsDataURL(filePath, imageName).then(
+      async (base64) => {
+        const loading = await this.loadingController.create({
+          cssClass: 'my-custom-class',
+          message: 'กำลังอัพโหลด...',
+        
+        });
+        await loading.present();
+        this.apidataService
+          .save_img_chat(base64)
+          .then(async (response: any) => {
+         
+            loading.dismiss();
+          })
+          .catch(async (err) => {
+           
+            loading.dismiss();
+          });
+
+     
+      },
+      (error) => {
+        alert("Error in showing image" + error);
+   
+      }
+    );
+  }
 
 
 

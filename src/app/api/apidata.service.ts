@@ -916,4 +916,22 @@ export class ApidataService {
       .post(`${Service.apiUrl}/listkmhrdetail`, request, { headers })
       .toPromise();
   }
+
+
+
+  async save_img_profile(value: any) {
+    let request = {
+      image: value
+    };
+    let auth: any = await this.storage.get("auth");
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${auth.access_token}`
+    });
+
+    return this.http
+      .post(`${Service.apiUrl}/save_img_profile`, request, { headers })
+      .toPromise();
+  }
+
+  
 }

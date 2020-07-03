@@ -1,49 +1,93 @@
 .spinner-container {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-  }
-
-  ion-content{
-
-    --ion-background-color:rgb(247, 247, 247);
+  width: 100%;
+  text-align: center;
+  padding: 10px;
 }
- 
-ion-segment-button{
+
+ion-content {
+
+  --ion-background-color: rgb(247, 247, 247);
+}
+
+ion-segment-button {
   font-size: 12px;
   color: var(--ion-color-medium);
   border: 5px;
   border-radius: 18px;
   --margin-bottom: 0
- 
 }
 
 
-.segment-button-checked{
+.segment-button-checked {
   background: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   font-size: 18px;
   border: none !important;
 
-  
+
 }
 
 
 ion-fab {
   bottom: 2%;
- 
+
   ion-fab-button {
-  --box-shadow:0px 5px 9px rgb(224, 224, 224);
+    --box-shadow: 0px 5px 9px rgb(224, 224, 224);
 
-      }
   }
-
-
-
-  .image {
-   
-  
-  
-     background-image: url('http://18.140.109.247/nidapi/img/user.svg');
 }
 
+
+
+.image {
+
+
+
+  background-image: url('http://18.140.109.247/nidapi/img/user.svg');
+}
+
+
+
+.card {
+  border-radius: 45px;
+  height: 93px;
+  background-color: white;
+  color: #000;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: #c0bebe;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 10px 10px #f0efef;
+}
+
+
+.image_new {
+
+  margin: 0px;
+  height: 95px;
+  width: 95px;
+  // border: 2px solid #fff;
+  border-radius: 17%;
+  box-shadow: 0 0 5px rgb(173, 173, 173);
+  display: block;
+
+  background-image: url('https://111loves.com/img/user.svg');
+
+}
+
+
+.row {
+  margin: -98px;
+  padding-left: 205px;
+  font-size: 16px;
+}
+
+.adjust-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
