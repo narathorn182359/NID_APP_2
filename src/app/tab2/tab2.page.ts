@@ -55,6 +55,7 @@ export class Tab2Page implements OnInit {
     console.log('Begin async operation');
   
     setTimeout(() => {
+      this.getuserInfo();
       this.apidataService.get_list_benefits()
       .then(async (response: any) => {
       this.benefits = response;
@@ -217,9 +218,10 @@ export class Tab2Page implements OnInit {
         });
         await loading.present();
         this.apidataService
-          .save_img_chat(base64)
+          .save_img_profile(base64)
           .then(async (response: any) => {
-         
+            alert("บันทึกสำเร็จ รอระบบอัพเดทค่ะ")
+            this.getuserInfo();
             loading.dismiss();
           })
           .catch(async (err) => {
