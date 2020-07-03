@@ -4,11 +4,11 @@
   padding: 10px;
 }
 
-ion-content {
 
-  --ion-background-color: rgb(247, 247, 247);
+
+ion-header{
+  background-color: white;
 }
-
 ion-segment-button {
   font-size: 12px;
   color: var(--ion-color-medium);
@@ -56,7 +56,7 @@ ion-fab {
   border-width: 0.5px;
   border-style: solid;
   border-color: #c0bebe;
-  border-radius: 20px;
+  border-radius: 48px;
   background-color: white;
   box-shadow: 0px 10px 10px #f0efef;
 }
@@ -68,7 +68,7 @@ ion-fab {
   height: 95px;
   width: 95px;
   // border: 2px solid #fff;
-  border-radius: 17%;
+  border-radius: 43%;
   box-shadow: 0 0 5px rgb(173, 173, 173);
   display: block;
 
@@ -81,6 +81,14 @@ ion-fab {
   margin: -98px;
   padding-left: 205px;
   font-size: 16px;
+}
+
+.row_com {
+  margin: -98px;
+  padding-left: 205px;
+  font-size: 16px;
+  padding-top: 3px;
+  width: 436px;
 }
 
 .adjust-text {

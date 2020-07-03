@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
     <ion-buttons slot="secondary">
       <ion-button>
@@ -29,6 +29,8 @@
     </ion-searchbar>
   </div>
 
+
+
   <div style="padding-left: 12px; padding-right: 12px; padding-bottom: 8px;">
     <ion-segment
       value="สนทนา"
@@ -45,11 +47,15 @@
       <ion-segment-button value="ตำแหน่ง">
         <ion-label>ตำแหน่ง</ion-label>
       </ion-segment-button>
+
+      <ion-segment-button *ngIf="role_com === 'Y'" value="บริษัท">
+        <ion-label>บริษัท</ion-label>
+      </ion-segment-button>
     </ion-segment>
   </div>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -57,6 +63,20 @@
   <!--   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
   </div> -->
+
+  <div *ngIf="segmentModel === 'บริษัท'">
+    <ion-card
+      class="card bg-pro"
+      *ngFor="let c of  company"
+      button
+      (click)="detail_en(c)"
+    >
+      <img src="https://111loves.com/imgnew/{{c}}.png" class="image_new" />
+      <div class="row_com">
+        <p>{{c}}</p>
+      </div>
+    </ion-card>
+  </div>
 
   <div *ngIf="segmentModel === 'สนทนา'">
     <div *ngIf="!!status_confirm">
@@ -154,7 +174,7 @@
       <img src="https://111loves.com/img/{{c.img}}" class="image_new" />
       <div class="row">
         <p class="adjust-text">{{c.Name_Thai}}</p>
-        <p class="adjust-text">{{c.Position}}</p>
+        <p class="adjust-text"  style="color: darkgrey; font-size: 12px;">{{c.Position}}</p>
       </div>
     </ion-card>
 

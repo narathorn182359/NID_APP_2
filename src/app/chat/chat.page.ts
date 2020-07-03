@@ -51,6 +51,8 @@ export class ChatPage implements OnInit {
   user_id: any;
   group_chat: any;
   status_confirm: any;
+  role_com:any;
+  company: any;
   constructor(
     private socket: Socket,
     public navCtrl: NavController,
@@ -89,12 +91,43 @@ export class ChatPage implements OnInit {
     this.status_confirm_join_group();
     this.get_history_chat("");
     this.get_group_chat();
-    console.log("j");
+    this.role_company();
   }
 
   onSearchInput() {
     this.searching = true;
   }
+
+  role_company(){
+    this.apidataService
+    .role_com('company')
+    .then(async (response: any) => {
+      if (response.status == "Y") {
+        this.company = response.company;
+        this.role_com = response.status;
+      } 
+      console.log(response.company);
+    })
+    .catch(async (err) => {
+      //console.log(err)
+    });
+  }
+
+  detail_en(c:string){
+    this.storage.remove("company");
+    this.storage.set("company", c);
+    this.router.navigateByUrl("/tabss/tabs/chat/em-company");
+  }
+
+
+
+
+
+
+
+
+
+
 
   get_group_chat() {
     this.apidataService
@@ -207,7 +240,6 @@ export class ChatPage implements OnInit {
   doRefresh(event) {
     setTimeout(() => {
       this.status_confirm_join_group();
-      this.get_positin("");
       this.checkAuthenticated();
       this.get_group_chat();
       event.target.complete();
@@ -335,5 +367,14 @@ export class ChatPage implements OnInit {
       this.get_group_chat();
     });
     return await modal.present();
+  }
+
+
+  async segmentChanged_2() {
+    await this.slider.slideTo(this.segment);
+  }
+
+  async slideChanged() {
+    this.segment = await this.slider.getActiveIndex();
   }
 }

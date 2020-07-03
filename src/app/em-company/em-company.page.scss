@@ -23,7 +23,7 @@
     display: block;
   
     background-image: url('https://111loves.com/img/user.svg');
-   
+  
   }
   
   
@@ -32,11 +32,7 @@
     padding-left: 205px;
     font-size: 16px;
   }
-  
-  .adjust-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1; /* number of lines to show */
-    -webkit-box-orient: vertical;
+
+  ion-header{
+    background-color: white;
   }

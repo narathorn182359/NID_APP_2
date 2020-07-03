@@ -933,5 +933,42 @@ export class ApidataService {
       .toPromise();
   }
 
+  async role_com(value: any) {
+    let request = {
+      type: value
+    };
+    let auth: any = await this.storage.get("auth");
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${auth.access_token}`
+    });
+
+    return this.http
+      .post(`${Service.apiUrl}/role_com`, request, { headers })
+      .toPromise();
+  }
+
+
+
+
+  async get_em_company(value: any,search:any){
+    let request = {
+      type: value,
+      name:search
+    };
+    let auth: any = await this.storage.get("auth");
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${auth.access_token}`
+    });
+
+    return this.http
+      .post(`${Service.apiUrl}/get_em_company`, request, { headers })
+      .toPromise();
+  }
+
+
+
+
+
+
   
 }

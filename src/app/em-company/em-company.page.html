@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabss/tabs/chat"></ion-back-button>
+    </ion-buttons>
+    <ion-title>รายชื่อพนักงาน</ion-title>
+  </ion-toolbar>
+  <div class="ion-text-center">
+    <h3>{{company}}</h3>
+    
+  </div>
+ 
+  <ion-searchbar [formControl]="searchControl" (ionChange)="onSearchInput()" enterkeyhint="done"></ion-searchbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="ion-text-center">
+    <ion-spinner *ngIf="searching"></ion-spinner>
+    </div>
+
+ 
+  <ion-card
+  class="card bg-pro"
+  *ngFor="let c of  data"
+  button
+  routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"
+>
+  <img src="https://111loves.com/img/{{c.img}}" class="image_new" />
+  <div class="row">
+    <p class="adjust-text">{{c.Name_Thai}}</p>
+    <p class="adjust-text"  style="color: darkgrey; font-size: 12px;">{{c.Position}}</p>
+  </div>
+</ion-card>
+</ion-content>
