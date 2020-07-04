@@ -281,11 +281,11 @@ export class ChatWithHrPage implements OnInit {
   }
 
   imgPreview(value) {
-    this.photoViewer.show('http://192.168.137.1/NID-Passport/public/imgchat/'+value);
+    this.photoViewer.show('https://111loves.com/imgchat/'+value);
   }
 
   downloadimg(value: string) {
-    const pdfUrl = 'http://192.168.137.1/NID-Passport/public/imgchat/'+value;
+    const pdfUrl = 'https://111loves.com/imgchat/'+value;
     const pdfName = value;
    // alert(FileSaver.saveAs(pdfUrl, pdfName));
     FileSaver.saveAs(pdfUrl, pdfName).then((entry) => {
