@@ -8,23 +8,21 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <ion-list>
-    <ion-list-header>
-    ตำแหน่ง {{position}}
-    </ion-list-header>
-    <div *ngFor="let c of  showe" button routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"  >
-      <ion-item lines="none"> 
-        <ion-avatar slot="start">
-          <img src="https://111loves.com/img/{{c.img}}" >
-        </ion-avatar>
-    
-        <ion-label>
-          <h2>{{c.Name_Thai  }}</h2>
-          <h3>{{c.Name_Eng}}</h3>
-          <p>{{c.Degree}}</p>
-        </ion-label>
-      </ion-item>
+ 
+  <div class="ion-text-center">
+    <h3> ตำแหน่ง {{position}}</h3>
+  </div>
+  <ion-card
+    class="card bg-pro"
+    *ngFor="let c of  showe"
+    button
+    routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"
+  >
+    <img src="https://111loves.com/img/{{c.img}}" class="image_new" />
+    <div class="row">
+      <p class="adjust-text">{{c.Name_Thai}}</p>
+     <!--  <p class="adjust-text">{{c.Name_Eng}}</p> -->
+      <p class="adjust-text"  style="color: darkgrey; font-size: 12px;">{{c.Degree}}</p>
     </div>
-  </ion-list>
-
+  </ion-card>
 </ion-content>

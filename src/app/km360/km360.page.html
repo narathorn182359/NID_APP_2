@@ -1,46 +1,56 @@
-<ion-header >
-  <ion-toolbar >
+<ion-header>
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabss/tabs/tab1"></ion-back-button>
     </ion-buttons>
     <ion-title>เพิ่มเติม</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar [formControl]="searchControl"
-    (ionChange)="onSearchInput()">
-  </ion-searchbar>
+    <ion-searchbar [formControl]="searchControl" (ionChange)="onSearchInput()">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content #scrollArea scrollEvents="true">
   <div *ngIf="searching" class="spinner-container">
     <ion-spinner name="circles"></ion-spinner>
   </div>
 
-
-
-<div  *ngIf="!!category">
+  <div *ngIf="!!category">
     <ion-grid>
       <ion-row>
         <ion-col size="12" *ngFor="let item of category">
-          <ion-card style="text-align: center;" (click) ="list_km360(item.id_km_cat)">
-            <img src="https://111loves.com/imgnew/{{item.img}}" height="150px" >
+          <ion-card
+            style="text-align: center;"
+            (click)="list_km360(item.id_km_cat)"
+          >
+            <img
+              src="https://111loves.com/imgnew/{{item.img}}"
+              height="150px"
+            />
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
- </div>
- <div  *ngIf="!!search">
-  <ion-list >
-    <div *ngFor="let item of search">
-      <ion-item routerLink ="/km360detail/{{item.id}}">
-        <ion-label>{{item.km_title}}</ion-label>
-      </ion-item>
-    </div>
-  </ion-list>
-</div>
-
-
+  </div>
+  <div *ngIf="!!search">
+    <ion-card *ngFor="let item of search " button>
+      <img
+        src="https://111loves.com/imgnew/{{item.km_name_img}}"
+        width="100%"
+      />
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-icon name="time-outline"></ion-icon>
+          {{ item.created_at | date:'short' }}
+        </ion-card-subtitle>
+        <ion-card-title>{{ item.km_title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="adjust-text">
+          {{ item.km_remark }}
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

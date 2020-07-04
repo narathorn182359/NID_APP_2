@@ -11,8 +11,7 @@
   <ion-list > 
     <ion-item button  *ngFor="let p of data"  (click) ="detail_pd(p.id)">
       <ion-thumbnail slot="start" style="width: 100px;">
-       <p [innerHTML]="p.explain"></p>
-       <img src="/assets/imgsystem/logo.png"  />
+       <img src="https://111loves.com/imgnew/{{p.img}}"   />
       </ion-thumbnail>
  
     <ion-label >

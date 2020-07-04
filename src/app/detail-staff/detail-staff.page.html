@@ -1,127 +1,3 @@
-<!-- <ion-header no-border>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabss"></ion-back-button>
-    </ion-buttons>
-    <ion-title>รายละเอียด</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content> 
-  <div class="yourclass">
-    <ion-row  >
-      <div  id="cart-btn">
-        <ion-badge id="cart-badge" color="warning"  style="font-size: 27px;"  *ngIf="!!datainfouser"> {{datainfouser.brand}}</ion-badge>
-        <img  *ngFor="let a of datainfouser" src="http://18.140.109.247/nidapi/img/{{a.img}}" class="circle-pic"  >
-      </div>
-    </ion-row>
-    <br> <br>
-    <p text-center ><ion-label class="center" *ngFor="let a of datainfouser" class="text-white"> <h1>{{a.Name_Thai}} </h1>  <br> {{a.Position}}</ion-label>    </p>  
-
-    <br><br>  
-
-    <ion-grid *ngFor="let a of datainfouser">
-      <ion-row>
-        <ion-col size="6" align-self-start>
-          <img src="/assets/imgsystem/icon-personal.png" width="30px">
-        <b style="font-size: 17px;">  <font color="red">ข้อมูลส่วนตัว</font> </b>  
-        <hr width="100%" size="60" color="red"> 
-      </ion-col>
-      <ion-col size="6" >   
-      
-      
-      </ion-col> 
-      </ion-row>
-    
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 10px;" > รหัสพนักงาน <br>  <font color="black" style="font-size: 15px;">{{ a.Code_Staff}}</font>  </p>
-         <p>
-          
-         </p>
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;">  ชื่อเล่น  <br>  <font color="black" style="font-size: 15px;">-</font>   </p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 12px;">ชื่อ-นามสกุล<br>  <font color="black" style="font-size: 15px;">{{ a.Name_Thai}}</font>  </p>
-  
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;">ชื่อ-นามสกุล (อังกฤษ) <br> <font color="black" style="font-size: 15px;">{{ a.Name_Eng}}</font> </p> 
- 
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 10px;">เบอร์โทร <br> <font color="black" style="font-size: 15px;">{{ a.TelephoneNumber}}</font></p>  
-       
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;"> เบอร์โต๊ะ <br> <font color="black" style="font-size: 15px;">-</font></p> 
-        
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 10px;">บริษัท <br>  <font color="black" style="font-size: 15px;">
-            {{datainfouser.name_company_eng}}
-            
-          </font> </p> 
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;">ฝ่าย <br> <font color="black" style="font-size: 15px;"> {{ a.Faction}}</font> <p>
-
-         
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 10px;">แผนก <br> <font color="black" style="font-size: 15px;">{{ a.Department}}</font> </p> 
-         
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;">ตำแหน่ง <br> <font color="black" style="font-size: 15px;">{{ a.Position}}</font>  </p> 
-         
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 10px;">ระดับพนักงาน <br>  <font color="black" style="font-size: 15px;">{{ a.Degree}}</font> </p>  
-        
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;">Brand <br>   <font color="black" style="font-size: 15px;">{{ a.JGStatus}}</font></p>  
-        
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 10px;">อายุงาน <br>  <font color="black" style="font-size: 15px;">{{  a.Yearsofservice}}</font> </p>  
-   
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;">จังหวัดตามที่สถาน  <br> <font color="black" style="font-size: 15px;">-</font></p> 
-       
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <p style="font-size: 10px;">DIRECTREPFULL <br>  <font color="black" style="font-size: 15px;">-</font> </p>  
-   
-        </ion-col>
-        <ion-col size="6">
-          <p style="font-size: 10px;">DIRECTREPID  <br> <font color="black" style="font-size: 15px;">-</font></p> 
-       
-        </ion-col>
-      </ion-row>
-      </ion-grid>
-  </div>
-   
-     
-</ion-content>
- -->
 
  <ion-header>
   <ion-toolbar>
@@ -145,18 +21,31 @@
         <div class="message other-message">
           <img src="https://111loves.com/img/{{message.img}}" class="img-other">
           <div class="my-message_other message_other">
-            <span>{{ message.msg }}</span>
+            <span [innerHTML]="message.msg" style="color: rgb(54, 50, 50);"></span> 
+            <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">ดูภาพ</div>
             </div>
         </div>
-        <div class="time_other" text-right>{{ message.createdAt | date:'short' }}</div>
+        <div class="time_other" text-right>
+          
+          {{ message.createdAt | date:'short' }}  
+            
+          <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
+        
+        </div>
       </ion-col>
       <ion-col offset="3" size="9" *ngIf="message.user === currentUser" class="">
           <div class=" message my-message">
             <img src="https://111loves.com/img/{{message.img}}" class="img-bro">
              <div class="my-message_2 message_2">
-              <span>{{ message.msg }}</span>
+              <span [innerHTML]="message.msg" style="color: white;"></span> 
+              <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">ดูภาพ</div>
              </div>
-             <div class="time" text-right>{{ message.createdAt | date:'short' }}</div>
+             <div class="time" text-right>
+              {{ message.createdAt | date:'short' }}  
+            
+            <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
+              
+              </div>
           </div>
       </ion-col>
     </ion-row>
@@ -165,7 +54,18 @@
 <ion-footer>
   <ion-toolbar color="light">
     <ion-row align-items-center>
-      <ion-col size="10">
+      <ion-col size="2">
+        <ion-button
+          expand="block"
+          fill="clear"
+          color="primary"
+          class="msg-btn"
+          (click)="selectImage()"
+        >
+          <ion-icon name="aperture-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="8">
         <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="message"></ion-textarea>
       </ion-col>
       <ion-col size="2">

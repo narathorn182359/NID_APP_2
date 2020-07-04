@@ -1,41 +1,43 @@
 <ion-header >
-  <ion-toolbar >
+  <ion-toolbar>
     <ion-buttons slot="secondary">
       <ion-button>
-        <img src="/assets/imgsystem/Logo_NID.png" height="100%"/>
-       </ion-button>
+        <img src="/assets/imgsystem/Logo_NID.png" height="100%" />
+      </ion-button>
     </ion-buttons>
     <ion-title>ค้นหาพนักงาน</ion-title>
   </ion-toolbar>
 
   <div *ngIf="segmentModel === 'ตำแหน่ง'">
-    <ion-searchbar 
-    [formControl]="searchControl"
-    (ionChange)="onSearchInput()">
+    <ion-searchbar [formControl]="searchControl" (ionChange)="onSearchInput()">
     </ion-searchbar>
- </div>
+  </div>
 
- <div *ngIf="segmentModel === 'สนทนา'">
-  <ion-searchbar 
-  [formControl]="searchControl_history_chat"
-  (ionChange)="onSearchInput()">
-  </ion-searchbar>
-</div>
+  <div *ngIf="segmentModel === 'สนทนา'">
+    <ion-searchbar
+      [formControl]="searchControl_history_chat"
+      (ionChange)="onSearchInput()"
+    >
+    </ion-searchbar>
+  </div>
 
-<div *ngIf="segmentModel === 'ผู้คน'">
-  <ion-searchbar 
-  [formControl]="searchControl_em_chat"
-  (ionChange)="onSearchInput()">
-  </ion-searchbar>
-</div>
+  <div *ngIf="segmentModel === 'ผู้คน'">
+    <ion-searchbar
+      [formControl]="searchControl_em_chat"
+      (ionChange)="onSearchInput()"
+    >
+    </ion-searchbar>
+  </div>
 
-<div style="padding-left: 12px; padding-right: 12px;  padding-bottom: 8px;">
 
-  <ion-segment   
-    value="สนทนา" 
-    scrollable="true"
-    [(ngModel)]="segmentModel" 
-    (ionChange)="segmentChanged($event)">
+
+  <div style="padding-left: 12px; padding-right: 12px; padding-bottom: 8px;">
+    <ion-segment
+      value="สนทนา"
+      scrollable="true"
+      [(ngModel)]="segmentModel"
+      (ionChange)="segmentChanged($event)"
+    >
       <ion-segment-button value="สนทนา">
         <ion-label>สนทนา</ion-label>
       </ion-segment-button>
@@ -45,140 +47,183 @@
       <ion-segment-button value="ตำแหน่ง">
         <ion-label>ตำแหน่ง</ion-label>
       </ion-segment-button>
+
+      <ion-segment-button *ngIf="role_com === 'Y'" value="บริษัท">
+        <ion-label>บริษัท</ion-label>
+      </ion-segment-button>
     </ion-segment>
   </div>
-
 </ion-header>
- 
 
-<ion-content>
+<ion-content fullscreen>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-
-<!--   <div *ngIf="searching" class="spinner-container">
+  <!--   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
   </div> -->
 
+  <div *ngIf="segmentModel === 'บริษัท'">
+    <ion-card
+      class="card bg-pro"
+      *ngFor="let c of  company"
+      button
+      (click)="detail_en(c)"
+    >
+      <img src="https://111loves.com/imgnew/{{c}}.png" class="image_new" />
+      <div class="row_com">
+        <p>{{c}}</p>
+      </div>
+    </ion-card>
+  </div>
 
   <div *ngIf="segmentModel === 'สนทนา'">
-    <div *ngIf="!!status_confirm"> 
-     
+    <div *ngIf="!!status_confirm">
       <ion-list lines="none">
         <ion-list-header>
-         คำเชิญเข้ากลุ่ม
+          คำเชิญเข้ากลุ่ม
         </ion-list-header>
-    
-        <ion-item *ngFor="let c of  status_confirm" style="background-color: seagreen;">
+
+        <ion-item
+          *ngFor="let c of  status_confirm"
+          style="background-color: seagreen;"
+        >
           <ion-avatar slot="start">
-            <img src="https://111loves.com/imgnew/{{c.img}}">
+            <img src="https://111loves.com/imgnew/{{c.img}}" />
           </ion-avatar>
           <ion-label>
             <h3>{{c.name_room}}</h3>
           </ion-label>
-          <div  slot="end">
-            <ion-icon name="checkmark-circle" size="large" style="color: yellowgreen;"  (click)="confirm('1',c.code_room_id)"  ></ion-icon>
-            <ion-icon name="close-circle" size="large" style="color: red;"   (click)="confirm('0',c.code_room_id)" ></ion-icon>
+          <div slot="end">
+            <ion-icon
+              name="checkmark-circle"
+              size="large"
+              style="color: yellowgreen;"
+              (click)="confirm('1',c.code_room_id)"
+            ></ion-icon>
+            <ion-icon
+              name="close-circle"
+              size="large"
+              style="color: red;"
+              (click)="confirm('0',c.code_room_id)"
+            ></ion-icon>
           </div>
-  
         </ion-item>
       </ion-list>
-  
     </div>
-  <ion-list lines="none">
-    <ion-list-header>
-      รายชื่อสนทนาล่าสุด
-    </ion-list-header>
-   <!--  <div *ngIf="searching" class="spinner-container">
+    <ion-list lines="none">
+      <ion-list-header>
+        รายชื่อสนทนาล่าสุด
+      </ion-list-header>
+      <!--  <div *ngIf="searching" class="spinner-container">
       <ion-spinner></ion-spinner>
     </div> -->
-    <ion-item *ngFor="let c of  history_chat"  button (click)="chat(c.username)">
-      <ion-avatar slot="start">
-        <img src="https://111loves.com/img/{{c.img}}">
-      </ion-avatar>
-      <ion-label>
-        <h3>{{c.name_thai}}</h3>
-        <p>{{c.msg.msg}}</p>
-     
-      </ion-label>
-      
-      <ion-badge  *ngIf="!!c.noti" slot="end" color="danger"> {{c.noti}}</ion-badge>
-    </ion-item>
-  </ion-list>
+      <ion-item
+        *ngFor="let c of  history_chat"
+        button
+        (click)="chat(c.username)"
+      >
+        <ion-avatar slot="start">
+          <img src="https://111loves.com/img/{{c.img}}" />
+        </ion-avatar>
+        <ion-label>
+          <h3>{{c.name_thai}}</h3>
+          <p>{{c.msg.msg}}</p>
+        </ion-label>
 
-  <ion-list lines="none">
-    <ion-list-header>
-      กลุ่ม
-    </ion-list-header>
-  <!--   <div *ngIf="searching" class="spinner-container">
+        <ion-badge *ngIf="!!c.noti" slot="end" color="danger">
+          {{c.noti}}</ion-badge
+        >
+      </ion-item>
+    </ion-list>
+
+    <ion-list lines="none">
+      <ion-list-header>
+        กลุ่ม
+      </ion-list-header>
+      <!--   <div *ngIf="searching" class="spinner-container">
       <ion-spinner></ion-spinner>
     </div> -->
-    <ion-item *ngFor="let c of  group_chat"  button (click)="chat_group(c.code_room_id)">
-      <ion-avatar slot="start">
-        <img src="https://111loves.com/imgnew/{{c.img}}">
-      </ion-avatar>
-      <ion-label>
-        <h3>{{c.name_room}}</h3>
-        <p>{{c.msg.msg}}</p>
-      </ion-label>
-      <ion-badge  *ngIf="c.no_ti != 0" slot="end" color="danger"> {{c.no_ti}}</ion-badge>
-      
-    </ion-item>
-  </ion-list>
-
-
+      <ion-item
+        *ngFor="let c of  group_chat"
+        button
+        (click)="chat_group(c.code_room_id)"
+      >
+        <ion-avatar slot="start">
+          <img src="https://111loves.com/imgnew/{{c.img}}" />
+        </ion-avatar>
+        <ion-label>
+          <h3>{{c.name_room}}</h3>
+          <p>{{c.msg.msg}}</p>
+        </ion-label>
+        <ion-badge *ngIf="c.no_ti != 0" slot="end" color="danger">
+          {{c.no_ti}}</ion-badge
+        >
+      </ion-item>
+    </ion-list>
   </div>
 
-
   <div *ngIf="segmentModel === 'ผู้คน'">
-    <ion-list lines="none" style="margin-top: 8px;">
-    
+    <ion-card
+      class="card bg-pro"
+      *ngFor="let c of  username_all"
+      button
+      routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"
+    >
+      <img src="https://111loves.com/img/{{c.img}}" class="image_new" />
+      <div class="row">
+        <p class="adjust-text">{{c.Name_Thai}}</p>
+        <p class="adjust-text"  style="color: darkgrey; font-size: 12px;">{{c.Position}}</p>
+      </div>
+    </ion-card>
 
-  <ion-item *ngFor="let c of  username_all"  button  routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}">
+    <!--  <ion-list lines="none" style="margin-top: 8px;">
+      <ion-item
+        *ngFor="let c of  username_all"
+        button
+        routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"
+      >
         <ion-avatar slot="start">
-          <img src="https://111loves.com/img/{{c.img}}" class="image">
+          <img src="https://111loves.com/img/{{c.img}}" class="image" />
         </ion-avatar>
         <ion-label>
           <h3>{{c.Name_Thai}}</h3>
           <p>{{c.Position}}</p>
         </ion-label>
       </ion-item>
-     
-    
-    </ion-list>
+    </ion-list> -->
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_em($event)">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
-        loadingText="กำลังโหลดข้อมูล..">
+        loadingText="กำลังโหลดข้อมูล.."
+      >
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
-    </div>
-<div *ngIf="segmentModel === 'ตำแหน่ง'">
-  <ion-list style="margin-top: 8px;">
-    <ion-list-header>ตำแหน่ง</ion-list-header>
-    <ion-item   *ngFor="let c of  position" button  (click)="detail_position(c)" lines="none"> 
-        <ion-label> 
+  </div>
+  <div *ngIf="segmentModel === 'ตำแหน่ง'">
+    <ion-list style="margin-top: 8px;">
+      <ion-list-header>ตำแหน่ง</ion-list-header>
+      <ion-item
+        *ngFor="let c of  position"
+        button
+        (click)="detail_position(c)"
+        lines="none"
+      >
+        <ion-label>
           <h3>{{c}}</h3>
         </ion-label>
-    </ion-item>
-    
-  </ion-list>
-</div>
- 
+      </ion-item>
+    </ion-list>
+  </div>
 
-
-
-
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button color="white" (click)="CreateGroupModal()">
-    <img src="/assets/imgsystem/botton_Create group.svg" alt="" width="100%">
-  </ion-fab-button>
-</ion-fab>
-
-
-
-
-
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="white" (click)="CreateGroupModal()">
+      <img
+        src="/assets/imgsystem/botton_Create group.svg"
+        alt=""
+        width="100%"
+      />
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

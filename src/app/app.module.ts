@@ -17,7 +17,10 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { IonicSelectableModule } from 'ionic-selectable';
-
+import { Crop } from '@ionic-native/crop/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', options: {} };
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +42,10 @@ const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', opti
     SplashScreen,
     HTTP,
     Badge,
+    Crop,
+    Camera,
+    File,
+    PhotoViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     OneSignal,
     InAppBrowser ,

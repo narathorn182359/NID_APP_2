@@ -79,10 +79,12 @@ const routes: Routes = [
   {
     path: 'setting-chat-group',
     loadChildren: () => import('./setting-chat-group/setting-chat-group.module').then( m => m.SettingChatGroupPageModule)
-  },  {
+  },
+  {
     path: 'addstafftochat',
     loadChildren: () => import('./addstafftochat/addstafftochat.module').then( m => m.AddstafftochatPageModule)
   }
+
 
 
 ];
