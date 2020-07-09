@@ -5,51 +5,55 @@
       <ion-back-button defaultHref="/tabss/tabs/chat"></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="owner_info">
-          <img src="https://111loves.com/img/{{owner_info.img}}"  style="border-radius: 50%; width: 20px;  height: 20px;">
-         {{owner_info.Name_Thai}}  <br>
-         {{owner_info.Position}}
+         {{owner_info.Name_Thai}} 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content #content>
-  <ion-grid>
-    <ion-text color="medium" text-center>
-    </ion-text>
-    <ion-row *ngFor="let message of messages">
-      <ion-col size="9" *ngIf="message.user !== currentUser" class="">
-        <div class="message other-message">
-          <img src="https://111loves.com/img/{{message.img}}" class="img-other">
-          <div class="my-message_other message_other">
-            <span [innerHTML]="message.msg" style="color: rgb(54, 50, 50);"></span> 
-            <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">ดูภาพ</div>
-            </div>
-        </div>
-        <div class="time_other" text-right>
-          
-          {{ message.createdAt | date:'short' }}  
-            
-          <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
-        
-        </div>
-      </ion-col>
-      <ion-col offset="3" size="9" *ngIf="message.user === currentUser" class="">
-          <div class=" message my-message">
-            <img src="https://111loves.com/img/{{message.img}}" class="img-bro">
-             <div class="my-message_2 message_2">
-              <span [innerHTML]="message.msg" style="color: white;"></span> 
-              <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">ดูภาพ</div>
-             </div>
-             <div class="time" text-right>
-              {{ message.createdAt | date:'short' }}  
-            
-            <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
-              
+<ion-content #content fullscreen>
+ 
+    <ion-grid>
+      <ion-row *ngFor="let message of messages">
+        <ion-col size="9" *ngIf="message.user !== currentUser" class="">
+       
+          <div class="message other-message">
+            <img src="https://111loves.com/img/{{message.img}}" class="avatar">
+            <div class="my-message_other message_other">
+              <span [innerHTML]="message.msg" style="color: rgb(54, 50, 50);"></span> 
+              <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">กดดูภาพ</div>
+              <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
               </div>
           </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+          <div class="ion-text-center  other">
+            {{ message.createdAt | date:'short' }}  
+          </div>
+     
+        </ion-col>
+        <ion-col offset="3" size="9" *ngIf="message.user === currentUser" class="">
+         
+            <div class=" message my-message">
+              <img src="https://111loves.com/img/{{message.img}}" class="img-bro">
+               <div class="my-message_2 message_2">
+                <span [innerHTML]="message.msg" style="color: white;"></span> 
+                <div *ngIf="message.img_send == '1'" (click)="imgPreview(message.img_send_name)">กดดูภาพ</div>
+                <div *ngIf="message.img_send == '1'"  (click)="downloadimg(message.img_send_name)">บันทึก</div>
+               </div>
+            </div>
+            <div class="ion-text-center  bro">
+              {{ message.createdAt | date:'short' }}  
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+ 
+ 
+
+
+
+
+
 </ion-content>
 <ion-footer>
   <ion-toolbar color="light">
@@ -78,3 +82,4 @@
     </ion-row>
   </ion-toolbar>
 </ion-footer>
+

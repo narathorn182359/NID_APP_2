@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Socket } from "ngx-socket-io";
-import { ToastController, NavController, LoadingController } from "@ionic/angular";
+import {
+  ToastController,
+  NavController,
+  LoadingController,
+  AlertController,
+} from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApidataService } from "../api/apidata.service";
 import { Storage } from "@ionic/storage";
@@ -9,9 +14,9 @@ import { Camera, CameraOptions } from "@ionic-native/Camera/ngx";
 import { Crop } from "@ionic-native/crop/ngx";
 import { File } from "@ionic-native/file/ngx";
 import { ActionSheetController } from "@ionic/angular";
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
-declare var require: any
-const FileSaver = require('file-saver');
+import { PhotoViewer } from "@ionic-native/photo-viewer/ngx";
+declare var require: any;
+const FileSaver = require("file-saver");
 @Component({
   selector: "app-detail-staff",
   templateUrl: "./detail-staff.page.html",
@@ -54,7 +59,7 @@ export class DetailStaffPage implements OnInit {
     private file: File,
     private photoViewer: PhotoViewer,
     private loadingController: LoadingController,
-
+    public alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -71,18 +76,6 @@ export class DetailStaffPage implements OnInit {
       chat_partner: id_1,
       img_s: id_3,
     };
-    console.log(this.dataroute);
-
-    this.apidataService
-      .get_chat(this.dataroute)
-      .then(async (response: any) => {
-        this.messages = response.dataall;
-        this.owner_info = response.owner_info;
-        //  console.log( this.messages);
-      })
-      .catch(async (err) => {
-        console.log(err);
-      });
 
     this.scrollToBottomOnInit();
 
@@ -109,43 +102,55 @@ export class DetailStaffPage implements OnInit {
     });
   }
 
-  sendMessage() {
-    this.socket.emit("send-message", {
-      text: this.message,
-      img: this.dataroute.img_s,
-      owner_room: this.dataroute.owner_room,
-      chat_partner: this.dataroute.chat_partner,
-      coderoom: parseInt(this.user1) + parseInt(this.user2),
-      img_send: this.img_send,
-      img_send_name: this.img_send_name,
-    });
+  async sendMessage() {
+    if (this.currentUser != "") {
+      this.socket.emit("send-message", {
+        text: this.message,
+        img: this.dataroute.img_s,
+        owner_room: this.dataroute.owner_room,
+        chat_partner: this.dataroute.chat_partner,
+        coderoom: parseInt(this.user1) + parseInt(this.user2),
+        img_send: this.img_send,
+        img_send_name: this.img_send_name,
+      });
 
-    let save_message = {
-      msg: this.messages,
-      owner_room: this.dataroute.owner_room,
-      chat_partner: this.dataroute.chat_partner,
-      img_send: this.img_send,
-      img_send_name: this.img_send_name,
-      createdAt: new Date(),
-    };
-    //console.log(save_message.msg);
-    setTimeout(() => {
-      this.apidataService
-        .save_chat(save_message)
-        .then(async (response: any) => {
-          //console.log(response);
-        })
-        .catch(async (err) => {
-          console.log(err);
-        });
-      console.log("ok");
-    }, 1000);
+      let save_message = {
+        msg: this.messages,
+        owner_room: this.dataroute.owner_room,
+        chat_partner: this.dataroute.chat_partner,
+        img_send: this.img_send,
+        img_send_name: this.img_send_name,
+        createdAt: new Date(),
+      };
+      //console.log(save_message.msg);
+      setTimeout(() => {
+        this.apidataService
+          .save_chat(save_message)
+          .then(async (response: any) => {
+            //console.log(response);
+          })
+          .catch(async (err) => {
+            console.log(err);
+          });
+        console.log("ok");
+      }, 900);
 
-    this.message = "";
+      this.message = "";
+    } else {
+      const alert = await this.alertController.create({
+        cssClass: "my-custom-class",
+        header: "เรียนผู้ใช้าน",
+        subHeader: "เกินเวลาที่กำหนด",
+        message: "กรุณาออกจากห้องแชทและเข้าใหม่ค่ะ",
+        buttons: ["ตกลง"],
+      });
+
+      await alert.present();
+    }
   }
 
   ionViewWillLeave() {
-    this.socket.disconnect();
+    //this.socket.disconnect();
   }
 
   async showToast(msg) {
@@ -157,7 +162,17 @@ export class DetailStaffPage implements OnInit {
     toast.present();
   }
 
-  async ionViewWillEnter() {}
+  async ionViewWillEnter() {
+    this.apidataService
+      .get_chat(this.dataroute)
+      .then(async (response: any) => {
+        this.messages = response.dataall;
+        this.owner_info = response.owner_info;
+      })
+      .catch(async (err) => {
+        console.log(err);
+      });
+  }
 
   scrollToBottomOnInit() {
     setTimeout(() => {
@@ -172,7 +187,8 @@ export class DetailStaffPage implements OnInit {
 
   pickImage(sourceType) {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 50,
+     
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
@@ -217,13 +233,11 @@ export class DetailStaffPage implements OnInit {
   }
 
   cropImage(fileUrl) {
-    this.crop.crop(fileUrl, { quality: 50 }).then(
+    this.crop.crop(fileUrl, { quality: 50,targetWidth: -1, targetHeight: -1  }).then(
       (newPath) => {
         this.showCroppedImage(newPath.split("?")[0]);
       },
-      (error) => {
-        alert("Error cropping image" + error);
-      }
+      (error) => {}
     );
   }
 
@@ -236,49 +250,58 @@ export class DetailStaffPage implements OnInit {
 
     this.file.readAsDataURL(filePath, imageName).then(
       async (base64) => {
-        const loading = await this.loadingController.create({
-          cssClass: 'my-custom-class',
-          message: 'กำลังอัพโหลด...',
-        
-        });
-        await loading.present();
-        this.apidataService
-          .save_img_chat(base64)
-          .then(async (response: any) => {
-            this.message = '<img src="' + response.url + '" class="bg-img" />';
-            this.img_send = "1";
-            this.img_send_name = response.name_img;
-            this.sendMessage();
-            loading.dismiss();
-          })
-          .catch(async (err) => {
-           
-            loading.dismiss();
+        if (this.currentUser != "") {
+          const loading = await this.loadingController.create({
+            cssClass: "my-custom-class",
+            message: "กำลังอัพโหลด...",
           });
+          await loading.present();
+          this.apidataService
+            .save_img_chat(base64)
+            .then(async (response: any) => {
+              this.message =
+                '<img src="' + response.url + '" class="bg-img" />';
+              this.img_send = "1";
+              this.img_send_name = response.name_img;
+              this.sendMessage();
+              loading.dismiss();
+            })
+            .catch(async (err) => {
+              loading.dismiss();
+            });
+        } else {
+          const alert = await this.alertController.create({
+            cssClass: "my-custom-class",
+            header: "เรียนผู้ใช้าน",
+            subHeader: "เกินเวลาที่กำหนด",
+            message: "กรุณาออกจากห้องแชทและเข้าใหม่ค่ะ",
+            buttons: ["ตกลง"],
+          });
+
+          await alert.present();
+        }
 
         this.isLoading = false;
       },
       (error) => {
-        alert("Error in showing image" + error);
         this.isLoading = false;
       }
     );
   }
 
   imgPreview(value) {
-    this.photoViewer.show('https://111loves.com/imgchat/'+value);
+    this.photoViewer.show("https://111loves.com/imgchat/" + value);
   }
 
   downloadimg(value: string) {
-    const pdfUrl = 'https://111loves.com/imgchat/'+value;
+    const pdfUrl = "https://111loves.com/imgchat/" + value;
     const pdfName = value;
-   // alert(FileSaver.saveAs(pdfUrl, pdfName));
-    FileSaver.saveAs(pdfUrl, pdfName).then((entry) => {
-    alert('download complete: ' + entry.toURL());
-    }, (error) => {
-      alert(error);
-      
-    });
+    // alert(FileSaver.saveAs(pdfUrl, pdfName));
+    FileSaver.saveAs(pdfUrl, pdfName).then(
+      (entry) => {
+        alert("download complete: " + entry.toURL());
+      },
+      (error) => {}
+    );
   }
-
 }

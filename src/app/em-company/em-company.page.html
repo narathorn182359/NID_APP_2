@@ -18,17 +18,21 @@
     <ion-spinner *ngIf="searching"></ion-spinner>
     </div>
 
- 
-  <ion-card
-  class="card bg-pro"
-  *ngFor="let c of  data"
-  button
-  routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"
->
-  <img src="https://111loves.com/img/{{c.img}}" class="image_new" />
-  <div class="row">
-    <p class="adjust-text">{{c.Name_Thai}}</p>
-    <p class="adjust-text"  style="color: darkgrey; font-size: 12px;">{{c.Position}}</p>
-  </div>
-</ion-card>
+    <ion-list lines="none" style="margin-top: 8px;">
+      <ion-item
+        *ngFor="let c of  data"
+        button
+        routerLink="/tabss/tabs/chat/profile-st/{{c.Code_Staff}}"
+      >
+        <ion-avatar slot="start">
+          <img src="https://111loves.com/img/{{c.img}}" class="image" />
+        </ion-avatar>
+        <ion-label>
+          <h3>{{c.Name_Thai}}</h3>
+          <p>{{c.Position}}</p>
+          <p>{{c.Degree}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list> 
+
 </ion-content>

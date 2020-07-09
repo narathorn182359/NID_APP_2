@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild ,ElementRef} from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { ToastController,NavController,LoadingController } from '@ionic/angular';
+import { ToastController,NavController,LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApidataService } from '../api/apidata.service';
 import { Storage } from '@ionic/storage';
@@ -53,6 +53,7 @@ export class ChatGroupRoomPage implements OnInit {
     private file: File,
     public loadingController: LoadingController,
     private photoViewer: PhotoViewer,
+    public alertController: AlertController
   
   ) { }
 
@@ -135,49 +136,66 @@ export class ChatGroupRoomPage implements OnInit {
     });
   }
  
-  sendMessage() {
-   
-    this.socket.emit('send-message', { 
-      text: this.message,
-      img: this.dataroute.img_s,
-      chat_partner: this.dataroute.chat_partner,
-      name_thai:this.dataroute.chat_name,
-      coderoomgroup:this.dataroute.id_room,
-      img_send: this.img_send,
-      img_send_name: this.img_send_name,
-    });
-   
- 
+  async sendMessage() {
 
-      let save_message = {
-        msg: this.messages,
-        id_room: this.dataroute.id_room,
+    if (this.currentUser != "") {
+      this.socket.emit('send-message', { 
+        text: this.message,
+        img: this.dataroute.img_s,
+        chat_partner: this.dataroute.chat_partner,
+        name_thai:this.dataroute.chat_name,
+        coderoomgroup:this.dataroute.id_room,
         img_send: this.img_send,
         img_send_name: this.img_send_name,
-        createdAt: new Date()
-  
-      }
-      //console.log(save_message.msg);
-
-      setTimeout(() => {
-       this.apidataService.save_chat_group(save_message).then(async (response: any) => {
-     //  console.log(response);
-        })
-       .catch(async err => {
-        console.log(err);
-       }) 
+      });
      
-   }, 1000);
- 
+   
+  
+        let save_message = {
+          msg: this.messages,
+          id_room: this.dataroute.id_room,
+          img_send: this.img_send,
+          img_send_name: this.img_send_name,
+          createdAt: new Date()
+    
+        }
+        //console.log(save_message.msg);
+  
+        setTimeout(() => {
+         this.apidataService.save_chat_group(save_message).then(async (response: any) => {
+       //  console.log(response);
+          })
+         .catch(async err => {
+          console.log(err);
+         }) 
+       
+     }, 1000);
+   
+  
+   
+      this.message = '';
 
- 
-    this.message = '';
+    }else{
+      const alert = await this.alertController.create({
+        cssClass: "my-custom-class",
+        header: "เรียนผู้ใช้าน",
+        subHeader: "เกินเวลาที่กำหนด",
+        message: "กรุณาออกจากห้องแชทและเข้าใหม่ค่ะ",
+        buttons: ["ตกลง"],
+      });
+
+      await alert.present();
+
+
+    }
+   
+  
     
   }
  
   ionViewWillLeave() {
  
-    this.socket.disconnect();
+    //this.socket.disconnect();
   
   }
  
@@ -275,25 +293,46 @@ export class ChatGroupRoomPage implements OnInit {
 
     this.file.readAsDataURL(filePath, imageName).then(
       async (base64) => {
-        const loading = await this.loadingController.create({
-          cssClass: 'my-custom-class',
-          message: 'กำลังอัพโหลด...',
-        
-        });
-        await loading.present();
-        this.apidataService
-          .save_img_chat(base64)
-          .then(async (response: any) => {
-            this.message = '<img src="' + response.url + '" class="bg-img" />';
-            this.img_send = "1";
-            this.img_send_name = response.name_img;
-            this.sendMessage();
-            loading.dismiss();
-          })
-          .catch(async (err) => {
-            
-             loading.dismiss();
+
+        if (this.currentUser != "") {
+
+
+          const loading = await this.loadingController.create({
+            cssClass: 'my-custom-class',
+            message: 'กำลังอัพโหลด...',
+          
           });
+          await loading.present();
+          this.apidataService
+            .save_img_chat(base64)
+            .then(async (response: any) => {
+              this.message = '<img src="' + response.url + '" class="bg-img" />';
+              this.img_send = "1";
+              this.img_send_name = response.name_img;
+              this.sendMessage();
+              loading.dismiss();
+            })
+            .catch(async (err) => {
+              
+               loading.dismiss();
+            });
+
+
+
+        }else{
+          const alert = await this.alertController.create({
+            cssClass: "my-custom-class",
+            header: "เรียนผู้ใช้าน",
+            subHeader: "เกินเวลาที่กำหนด",
+            message: "กรุณาออกจากห้องแชทและเข้าใหม่ค่ะ",
+            buttons: ["ตกลง"],
+          });
+    
+          await alert.present();
+        }
+
+
+
 
         
       },

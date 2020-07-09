@@ -21,6 +21,8 @@ import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { Device } from '@ionic-native/device/ngx';
+
 const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', options: {} };
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +36,9 @@ const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', opti
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     SocketIoModule.forRoot(config),
-    IonicSelectableModule
+    IonicSelectableModule,
+   
+ 
   
   ],
   providers: [
@@ -49,6 +53,7 @@ const config: SocketIoConfig = { url: 'https://mainchat-app.herokuapp.com', opti
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     OneSignal,
     InAppBrowser ,
+    Device
   ],
   bootstrap: [AppComponent]
 })

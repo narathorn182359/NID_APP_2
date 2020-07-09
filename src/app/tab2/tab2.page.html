@@ -216,7 +216,7 @@
       </ion-grid>
     </div>
     <div *ngIf="segmentModel === 'สิทธิประโยชน์'" style="margin-top: 8px;">
-      <ion-card class="card" *ngFor="let p of benefits" button>
+     <!--  <ion-card class="card" *ngFor="let p of benefits" button>
         <img src="assets/imgsystem/{{p.icon}}" class="image_new" width="10%" />
         <div class="row_com">
         <span style="font-size:18px">{{p.name}}</span>  
@@ -227,8 +227,8 @@
         </div>
          
         </div>
-      </ion-card>
-      <!--   <ion-list>
+      </ion-card> -->
+        <ion-list>
     <ion-item *ngFor="let p of benefits" >
       <ion-thumbnail slot="start">
         <img src="assets/imgsystem/{{p.icon}}"  >
@@ -245,13 +245,15 @@
      
       </ion-label>
     </ion-item>
-  </ion-list> -->
+  </ion-list> 
     </div>
 
     <ion-card *ngIf="segmentModel === 'ผลการปฏิบัติงาน'">
       <ion-card-content>
         เร็วๆนี้
+      
       </ion-card-content>
+    
     </ion-card>
 
     <ion-card *ngIf="segmentModel === 'เวลาเข้างาน'">

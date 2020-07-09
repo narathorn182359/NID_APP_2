@@ -1,4 +1,60 @@
-.message {
+/* .yourclass{
+    --background: none;
+    background-image: url('/assets/imgsystem/BG_personal.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% ;
+
+}
+
+
+.card {
+    background-color: #FFFFFF; // black
+    box-shadow: 0px 0px 5px rgb(233, 232, 232);
+    
+  }
+
+  .chart-container {
+    width: 450px;
+    height: 450px
+}
+
+  .circle-pic{
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 50%;
+   
+    border:3px solid rgb(255, 255, 255);
+   
+   
+}
+
+#cart-btn {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+    top:30px;
+ }
+ 
+ #cart-badge {
+    position: absolute;
+    top: 100px;
+    right: 0px;
+ }
+
+ .scroll-content{
+  overflow-y: auto; // or "overflow: auto;"
+}
+
+ion-content{
+
+  --ion-background-color:rgb(247, 247, 247);
+}
+  */
+
+
+  .message {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 4px;
@@ -20,7 +76,7 @@
 
   .message_2 {
     padding: 10px;
-    border-radius: 36px;
+    border-radius: 12px;
     margin-bottom: 4px;
     white-space: pre-wrap;
   }
@@ -37,20 +93,15 @@
 
   .message_other {
     padding: 10px;
-    border-radius: 36px;
+    border-radius: 12px;
     margin-bottom: -14px;
     white-space: pre-wrap;
-    margin-left: 51px;
+    margin-left: 60px;
    
   }
 
 
-  ion-toolbar, ion-header {
-    --min-height: 60px;
-   }
-   ion-toolbar{
-    margin-top: 3px;
-   }
+ 
 
   
 
@@ -87,9 +138,11 @@
   }
 
   .img-bro{
-    border-radius: 50%;
-    width: 50px;
-    float: right;
+    width: calc(16vw - 4px);
+  height: calc(16vw - 4px);
+  border-radius: calc(8vw - 2px);
+  z-index: 2;
+  float: right;
   }
   .img-other{
     border-radius: 50%;
@@ -97,5 +150,34 @@
     float: left;
   }
 
+  .other{
+  padding-left: 51%;
+  font-size: 10px;
+  margin-top: 0%;
+  color: rgb(75, 74, 74);
+ }
 
- 
+
+
+.avatar {
+  width: calc(16vw - 4px);
+  height: calc(16vw - 4px);
+  border-radius: calc(8vw - 2px);
+  z-index: 2;
+  float: left;
+}
+
+.bro{
+  padding-right: 57%;
+  font-size: 10px;
+  margin-top: -5%;
+  color: rgb(75, 74, 74);
+  
+}
+
+
+
+
+
+
+

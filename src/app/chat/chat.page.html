@@ -65,17 +65,22 @@
   </div> -->
 
   <div *ngIf="segmentModel === 'บริษัท'">
-    <ion-card
-      class="card bg-pro"
-      *ngFor="let c of  company"
-      button
-      (click)="detail_en(c)"
-    >
-      <img src="https://111loves.com/imgnew/{{c}}.png" class="image_new" />
-      <div class="row_com">
-        <p>{{c}}</p>
-      </div>
-    </ion-card>
+  
+
+    <ion-list lines="none" style="margin-top: 8px;">
+      <ion-item
+        *ngFor="let f of  company"
+        button
+      (click)="detail_en(f)"
+      >
+        <ion-avatar slot="start">
+          <img src="https://111loves.com/imgnew/{{f}}.png" />
+        </ion-avatar>
+        <ion-label>
+         <h3>{{f}}</h3> 
+        </ion-label>
+      </ion-item>
+    </ion-list> 
   </div>
 
   <div *ngIf="segmentModel === 'สนทนา'">
@@ -165,7 +170,7 @@
   </div>
 
   <div *ngIf="segmentModel === 'ผู้คน'">
-    <ion-card
+   <!--  <ion-card
       class="card bg-pro"
       *ngFor="let c of  username_all"
       button
@@ -176,9 +181,11 @@
         <p class="adjust-text">{{c.Name_Thai}}</p>
         <p class="adjust-text"  style="color: darkgrey; font-size: 12px;">{{c.Position}}</p>
       </div>
-    </ion-card>
+    </ion-card> -->
 
-    <!--  <ion-list lines="none" style="margin-top: 8px;">
+
+
+     <ion-list lines="none" style="margin-top: 8px;">
       <ion-item
         *ngFor="let c of  username_all"
         button
@@ -192,7 +199,7 @@
           <p>{{c.Position}}</p>
         </ion-label>
       </ion-item>
-    </ion-list> -->
+    </ion-list> 
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_em($event)">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
