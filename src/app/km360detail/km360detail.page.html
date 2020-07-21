@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
 
    <!-- <ion-slides pager="true">
       <ion-slide *ngFor="let l of detail_img">
@@ -18,8 +18,8 @@
   </ion-slides>
  -->
   
- <div *ngIf="!!detail" [innerHTML]="detail.km_important"></div>
- <p *ngIf="!!detail">
+ <div *ngIf="!!detail"  class="contecnt" [innerHTML]="detail.km_important"></div>
+ <p *ngIf="!!detail"  class="contecnt">
   {{detail.km_title}}
    </p>
  
