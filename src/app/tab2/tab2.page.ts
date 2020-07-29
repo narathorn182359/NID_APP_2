@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController, LoadingController, MenuController } from '@ionic/angular';
+import { NavController, AlertController, LoadingController, MenuController, } from '@ionic/angular';
 import { ApidataService } from '../api/apidata.service';
 import { AuthService } from '../api/auth.service';
 import { Chart } from 'chart.js';
@@ -9,6 +9,7 @@ import { Camera, CameraOptions } from "@ionic-native/Camera/ngx";
 import { Crop } from "@ionic-native/crop/ngx";
 import { File } from "@ionic-native/file/ngx";
 import { ActionSheetController } from "@ionic/angular";
+import { ModalNewPage } from '../modal-new/modal-new.page';
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -35,6 +36,7 @@ export class Tab2Page implements OnInit {
     private crop: Crop,
     public actionSheetController: ActionSheetController,
     private file: File,
+    
 
     
     ) { 
@@ -240,7 +242,13 @@ export class Tab2Page implements OnInit {
 
 
 
-
+  async presentModalKPI() {
+    const modal = await this.modalController.create({
+      component: ModalNewPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
 
 
 

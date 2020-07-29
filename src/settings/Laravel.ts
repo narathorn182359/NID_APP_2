@@ -3,8 +3,8 @@ export const Service: any = {
     /**
      * Url of your Laravel Project
      */
- url: 'https://111loves.com',
-  apiUrl: 'https://111loves.com/api',
+ url: 'https://111loves.com/nid_deverlop/public',
+  apiUrl: 'https://111loves.com/nid_deverlop/public/api',
 
  
    //url: 'http://127.0.0.1:8000',
