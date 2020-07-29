@@ -25,8 +25,8 @@ export class ModalNewPage implements OnInit {
     this.apidataService.getuserid()
     .then(async (response: any) => {
       this.datainfouser = response;
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl('http://18.140.109.247/kpi');
-      console.log( this.url)
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl('http://18.140.109.247/kpi/KPIUnit/Index_PDF_nid?staff='+response.username);
+      console.log( this.datainfouser)
       
       
    })
