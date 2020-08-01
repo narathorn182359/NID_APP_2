@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import {
   Platform,
   NavController,
@@ -56,13 +57,16 @@ export class Tab1Page implements OnInit {
     private platform: Platform,
     private modalController: ModalController,
     private storage: Storage,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    private iab: InAppBrowser
   ) {}
 
   ngOnInit() {
     this.checkAuthenticated();
     this.sliderOpts;
   }
+
+ 
 
   async checkAuthenticated() {
     try {
@@ -180,12 +184,9 @@ export class Tab1Page implements OnInit {
   }
 
   async AttendenceModal() {
-    const modal = await this.modalController.create({
-      component: AttendancePage,
-      cssClass: "",
-      componentProps: {},
+    const browser = this.iab.create("https://wearengg.com/webtime/default1m.aspx",'_blank',{
+      location:'no'
     });
-    return await modal.present();
   }
 
   doRefresh(event) {

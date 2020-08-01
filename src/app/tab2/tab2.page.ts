@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, LoadingController, MenuController, } from '@ionic/angular';
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { ApidataService } from '../api/apidata.service';
 import { AuthService } from '../api/auth.service';
 import { Chart } from 'chart.js';
@@ -10,6 +11,7 @@ import { Crop } from "@ionic-native/crop/ngx";
 import { File } from "@ionic-native/file/ngx";
 import { ActionSheetController } from "@ionic/angular";
 import { ModalNewPage } from '../modal-new/modal-new.page';
+import { DomSanitizer} from '@angular/platform-browser';
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -24,6 +26,7 @@ export class Tab2Page implements OnInit {
     maximumImagesCount: 1,
     quality: 50,
   };
+  url: any;
   constructor(
     public navCtrl: NavController, 
     private alertController: AlertController,
@@ -36,7 +39,8 @@ export class Tab2Page implements OnInit {
     private crop: Crop,
     public actionSheetController: ActionSheetController,
     private file: File,
-    
+    private iab: InAppBrowser,
+    private sanitizer: DomSanitizer,
 
     
     ) { 
@@ -243,11 +247,27 @@ export class Tab2Page implements OnInit {
 
 
   async presentModalKPI() {
-    const modal = await this.modalController.create({
-      component: ModalNewPage,
-      cssClass: 'my-custom-class'
-    });
-    return await modal.present();
+
+    this.apidataService.getuserid()
+    .then(async (response: any) => {
+      this.datainfouser = response;
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl('http://18.140.109.247/kpi/KPIUnit/Index_PDF_nid?staff='+response.username);
+      console.log( this.datainfouser)
+      const browser = this.iab.create('http://18.140.109.247/kpi/KPIUnit/Index_PDF_nid?staff='+response.username,'_blank',{
+        location:'no'
+      });
+      
+   })
+   .catch(async err => {
+    this.authService.removeCredentials();
+    this.navCtrl.navigateRoot('/login');
+
+    console.log(err)
+   })
+
+
+   
+  
   }
 
 
