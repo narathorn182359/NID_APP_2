@@ -184,7 +184,7 @@ export class Tab1Page implements OnInit {
   }
 
   async AttendenceModal() {
-    const browser = this.iab.create("https://wearengg.com/webtime/default1m.aspx",'_blank',{
+    const browser = this.iab.create("https://wearengg.com/webtime/default1m.aspx",'_system',{
       location:'no'
     });
   }

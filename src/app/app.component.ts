@@ -88,7 +88,7 @@ export class AppComponent {
       
         this.authService.removeCredentials();
         this.navCtrl.navigateRoot('/login');
-        window["plugins"].PushbotsPlugin.updateAlias("--");
+       
         
       }
     } catch (err) {

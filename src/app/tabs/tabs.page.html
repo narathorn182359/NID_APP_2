@@ -1,33 +1,29 @@
-<ion-tabs >
-
-<ion-tab-bar slot="bottom" >
-
-<ion-tab-button tab="tab1" (click) ="alert_new_1()"   >
-    <img src="assets/icon/new_1.svg" width="40px" height="40px" *ngIf="i == 1 " >
-    <img src="assets/icon/new_0.svg" width="40px" height="40px" *ngIf="i != 1 " >
- 
-     </ion-tab-button>
- 
-    
-
-<ion-tab-button tab="tab2"  (click) ="alert_user_1()">
-   <img src="assets/icon/user_0.svg"  width="40px" height="40px" *ngIf="k == 0 " >
-   <img src="assets/icon/user_1.svg"  width="40px" height="40px" *ngIf="k == 1 ">
- </ion-tab-button>
- 
-
-
- <ion-tab-button tab="chat" (click) ="alert_chat_1()"   >
-   <img src="assets/icon/chat_0.svg"  width="40px" height="40px"  *ngIf="j != 1 ">
-   <img src="assets/icon/chat_1.svg"  width="40px" height="40px" *ngIf="j == 1 " >
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tab1" (click)="alert_new_1()">
+      <ion-icon name="home-outline"></ion-icon>
+      หน้าแรก
     </ion-tab-button>
 
-<ion-tab-button  (click) ="alert_menu_1()" >
-   <img src="assets/icon/menu_0.svg"  width="40px" height="40px" *ngIf="m != 1 ">
-   <img src="assets/icon/menu_1.svg"  width="40px" height="40px" *ngIf="m == 1 ">
-</ion-tab-button>
+    <ion-tab-button tab="tab2" (click)="alert_user_1()">
+      <ion-icon name="person-outline"></ion-icon>
+      ส่วนตัว
+    </ion-tab-button>
+    <ion-tab-button tab="wallet">
+      <ion-icon name="wallet-outline"></ion-icon>
+      เป๋าตัง
+    </ion-tab-button>
+    <ion-tab-button tab="chat" (click)="alert_chat_1()">
+      <ion-icon name="chatbubbles-outline"></ion-icon>
+      ติดต่อ
+    </ion-tab-button>
 
-</ion-tab-bar>
+    <ion-tab-button (click)="alert_menu_1()">
+      <ion-icon name="list-outline"></ion-icon>
+      เพิ่มเติม
+    </ion-tab-button>
+  
+  </ion-tab-bar>
 </ion-tabs>
 
 <!--   <ion-fab horizontal="center" vertical="bottom" edge>
@@ -47,7 +43,7 @@
       </ion-fab-button>
     </ion-fab-list>
    </ion-fab>  -->
-   <!--
+<!--
       <ion-fab-button color="light" (click) ="alert_user_1()">
    
       <img src="assets/icon/user_0.svg"  width="20" height="100%" *ngIf="k == 0 " >

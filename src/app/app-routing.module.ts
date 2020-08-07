@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DataResolverService } from './resolver/data-resolver.service';
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'splash', pathMatch: 'full' },
   { path: 'tabss', loadChildren: './tabs/tabs.module#TabsPageModule' },
   {
     path: 'login',
@@ -83,6 +83,10 @@ const routes: Routes = [
   {
     path: 'addstafftochat',
     loadChildren: () => import('./addstafftochat/addstafftochat.module').then( m => m.AddstafftochatPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
   }
 
 

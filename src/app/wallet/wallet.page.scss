@@ -1,0 +1,65 @@
+.grid1 {
+    height: 65%;
+    padding: 0px;
+}
+
+.contaier-login {
+    width: 90%;
+    font-size: 15px;
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(111, 111, 111, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(142, 142, 142, 0.75)
+}
+
+.contaier-paylast{
+    width: 90%;
+    background: #FFFFFF;
+    padding: 10px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(70, 69, 69, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(130, 128, 128, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(121, 121, 121, 0.75);
+
+}
+
+.row1 {
+  
+    height: 50%;
+    background: -moz-linear-gradient(45deg, rgb(123, 15, 15) 0%, rgba(171, 21, 21, 0.8) 100%);
+    background: -webkit-linear-gradient(45deg, rgb(130, 22, 22) 0%, rgba(174, 18, 18, 0.8) 100%);
+    background: linear-gradient(45deg, rgb(136, 8, 8) 0%, rgba(171, 16, 16, 0.8) 100%);
+}
+
+.img-container {
+    color: #FFFFFF;
+    font-weight: bolder;
+    margin-top: 10%;
+  
+  text-align: center;
+  font-size: 30px;
+  
+
+ 
+    // align-items: center; this only if you want to vertical align it to the center too
+ }
+
+
+ion-icon {
+    margin-right: 15px;
+}
+
+ion-button {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+ion-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute !important;
+    top: -120px !important;
+}

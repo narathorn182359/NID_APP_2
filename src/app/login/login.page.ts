@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
    
   }
   async ionViewWillEnter(){
-    this.checkAuthenticated();
+    //this.checkAuthenticated();
 
   }
   ionViewDidEnter() {
