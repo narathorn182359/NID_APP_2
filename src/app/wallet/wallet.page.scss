@@ -34,10 +34,29 @@
     background: linear-gradient(45deg, rgb(136, 8, 8) 0%, rgba(171, 16, 16, 0.8) 100%);
 }
 
+.row2 {
+    background: -moz-linear-gradient(45deg, rgb(123, 15, 15) 0%, rgba(171, 21, 21, 0.8) 100%);
+    background: -webkit-linear-gradient(45deg, rgb(130, 22, 22) 0%, rgba(174, 18, 18, 0.8) 100%);
+    background: linear-gradient(45deg, rgb(136, 8, 8) 0%, rgba(171, 16, 16, 0.8) 100%);
+ 
+}
 .img-container {
     color: #FFFFFF;
     font-weight: bolder;
-    margin-top: 10%;
+    
+  
+  text-align: center;
+  font-size: 30px;
+  
+
+ 
+    // align-items: center; this only if you want to vertical align it to the center too
+ }
+
+ .img-container_top {
+    color: #000000;
+    font-weight: bolder;
+    margin-top: 0%;
   
   text-align: center;
   font-size: 30px;

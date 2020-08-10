@@ -1,15 +1,13 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>NIDPAY</ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content>
   <ion-grid class="grid1">
-    <ion-row class="row1">
-      <ion-col class="img-container">
+    <div class="row1">
+      <div class="img-container">
+       
+      <label style="font-size: 12px;">NIDPAY</label>  
+        <br>
         200.-
-      </ion-col>
-    </ion-row>
+      </div>
+    </div>
   </ion-grid>
 
   <ion-slide>
@@ -17,19 +15,24 @@
       <ion-row>
         <ion-col>
           <ion-icon
-            name="exit"
+            name="exit-outline"
             style="color: rgb(255, 79, 91); font-size: 30px;"
           ></ion-icon>
           <br />
-          ประวัติการจ่าย
+          การจ่าย
         </ion-col>
         <ion-col>
           <ion-icon
-            name="wallet"
+            name="wallet-outline"
             style="color: rgb(255, 79, 91); font-size: 30px;"
           ></ion-icon>
           <br />
-          ประวัติการเติมเงิน
+          การเติมเงิน
+        </ion-col>
+        <ion-col>
+          <ion-icon name="medal-outline" style="color: rgb(255, 79, 91); font-size: 30px;"></ion-icon>
+          <br />
+          Rewards
         </ion-col>
       </ion-row>
     </div>
@@ -44,7 +47,7 @@
 
         <ion-item lines="none">
           <ion-item slot="end">
-            20 บาท
+           +20 บาท
           </ion-item>
           <ion-label>
             <h3>I'm a big deal</h3>
@@ -53,7 +56,7 @@
         </ion-item>
         <ion-item lines="none">
           <ion-item slot="end">
-            20 บาท
+           -20 บาท
           </ion-item>
           <ion-label>
             <h3>I'm a big deal</h3>
