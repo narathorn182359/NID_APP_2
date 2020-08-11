@@ -12,6 +12,7 @@
     <ion-tab-button tab="wallet">
       <ion-icon name="wallet-outline"></ion-icon>
       เป๋าตัง
+      <ion-badge *ngIf="!!p" color="danger">{{p}}</ion-badge>
     </ion-tab-button>
     <ion-tab-button tab="chat" (click)="alert_chat_1()">
       <ion-icon name="chatbubbles-outline"></ion-icon>

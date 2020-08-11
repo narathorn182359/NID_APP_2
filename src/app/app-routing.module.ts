@@ -91,6 +91,18 @@ const routes: Routes = [
   {
     path: 'contact',
     loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'wallet-add',
+    loadChildren: () => import('./wallet-add/wallet-add.module').then( m => m.WalletAddPageModule)
+  },
+  {
+    path: 'wallet-pay',
+    loadChildren: () => import('./wallet-pay/wallet-pay.module').then( m => m.WalletPayPageModule)
+  },
+  {
+    path: 'wallet-rewards',
+    loadChildren: () => import('./wallet-rewards/wallet-rewards.module').then( m => m.WalletRewardsPageModule)
   }
 
 
