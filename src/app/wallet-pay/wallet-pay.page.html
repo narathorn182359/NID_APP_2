@@ -3,10 +3,31 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="tabss/tabs/wallet"></ion-back-button>
     </ion-buttons>
-    <ion-title>ประวัติการใช้จ่าย</ion-title>
+    <ion-title>จ่าย</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="spinner-container" *ngIf="!!loading">
+    <ion-spinner name="lines"></ion-spinner>
+  </div>
+  <ion-list>
+    <ion-list-header>
+      กิจกรรมล่าสุด จ่าย
+    </ion-list-header>
 
+    <ion-item lines="none"  *ngFor="let  item of  history_pay">
+      <ion-item slot="end" lines="none" style="color: rgb(194, 8, 8);">
+        - {{item.grandTotal}} บาท
+      </ion-item>
+      <ion-label>
+        <h3>{{item.itemDesc}} </h3>
+        <p> {{item.docDate}} {{item.docTime}} น.</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
 </ion-content>

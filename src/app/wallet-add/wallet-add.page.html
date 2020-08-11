@@ -8,5 +8,27 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="spinner-container" *ngIf="!!loading">
+    <ion-spinner name="lines"></ion-spinner>
+  </div>
+<ion-list>
+  <ion-list-header>
+     เติมเงิน
+  </ion-list-header>
 
+  <ion-item lines="none"  *ngFor="let  item of  history_add">
+    <ion-item slot="end" style="color: green;"lines="none">
+     + {{item.moveMoney}} บาท
+    </ion-item>
+    <ion-label>
+      <h3>เติมเงิน</h3>
+      <p>  {{item.docDate}} {{item.docTime}} น.</p>
+    </ion-label>
+  </ion-item>
+
+
+</ion-list>
 </ion-content>

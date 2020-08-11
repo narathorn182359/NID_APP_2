@@ -5,6 +5,9 @@ import { AuthService } from '../api/auth.service';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Tab3Page } from '../tab3/tab3.page';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Storage } from "@ionic/storage";
+import { Service } from "../../settings/Laravel";
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -26,11 +29,13 @@ m:any;
     private apidataService: ApidataService,
     private authService: AuthService,
     private router: Router,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private http: HttpClient,
+    private storage: Storage
   ) { 
 
   
-this.p=2;
+this.p=0;
 
 this.i = 1;
 this.j = 0;
@@ -47,9 +52,33 @@ this.checkAuthenticated();
 
 
 
-
+  async ionViewWillEnter() {
+  
+    let auth: any = await this.storage.get("auth");
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${auth.access_token}`
+    });
+    this.http
+      .get(`${Service.apiUrl}/get_noti_wallet`, { headers })
+      .subscribe(response => {
+        this.p =response
+        console.log(response);
+      });
+  }
  
-
+  async rmnoti(){
+    let auth: any = await this.storage.get("auth");
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${auth.access_token}`
+    });
+  
+    this.http
+      .get(`${Service.apiUrl}/rm_noti_wallet`,{ headers })
+      .subscribe(response => {
+        this.p= response;
+        console.log('ok');
+      });
+  }
 
 
 

@@ -9,10 +9,10 @@
       <ion-icon name="person-outline"></ion-icon>
       ส่วนตัว
     </ion-tab-button>
-    <ion-tab-button tab="wallet">
+    <ion-tab-button tab="wallet" (click)="rmnoti()">
       <ion-icon name="wallet-outline"></ion-icon>
       เป๋าตัง
-      <ion-badge *ngIf="!!p" color="danger">{{p}}</ion-badge>
+      <ion-badge *ngIf="p.count_noti != '0'" color="danger">{{p.count_noti}}</ion-badge>
     </ion-tab-button>
     <ion-tab-button tab="chat" (click)="alert_chat_1()">
       <ion-icon name="chatbubbles-outline"></ion-icon>
