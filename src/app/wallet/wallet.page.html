@@ -1,3 +1,9 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>NIDPAY</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
@@ -5,10 +11,10 @@
   <ion-grid class="grid1">
     <div class="row1">
       <div class="img-container">
-        <label class="head">NIDPAY</label>
+        <label class="head">Cherchim</label>
       </div>
       <div class="container_wallet" *ngIf="!!balancevalue">
-        {{balancevalue.BalanceValue}}.-
+       <label class="test2">{{balancevalue.BalanceValue}}.-</label> 
       </div>
     </div>
   </ion-grid>
@@ -95,6 +101,7 @@
  
    
       </ion-list>
+     
     </div>
   </div>
 </ion-content>

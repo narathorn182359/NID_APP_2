@@ -1,9 +1,12 @@
+ion-header {
+    background-color: none;
+}
 
 .spinner-container {
     width: 100%;
     text-align: center;
     padding: 10px;
-  }
+}
 
 
 .grid1 {
@@ -21,7 +24,9 @@
     text-align: center;
     -webkit-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.75);
     -moz-box-shadow: 0px 0px 10px 1px rgba(111, 111, 111, 0.75);
-    box-shadow: 0px 0px 10px 1px rgba(142, 142, 142, 0.75)
+    box-shadow: 0px 0px 10px 1px rgba(142, 142, 142, 0.75);
+
+
 }
 
 .contaier-paylast {
@@ -38,9 +43,8 @@
 .row1 {
 
     height: 56%;
-    background: -moz-linear-gradient(45deg, rgb(123, 15, 15) 0%, rgba(171, 21, 21, 0.8) 100%);
-    background: -webkit-linear-gradient(45deg, rgb(130, 22, 22) 0%, rgba(174, 18, 18, 0.8) 100%);
-    background: linear-gradient(45deg, rgb(136, 8, 8) 0%, rgba(171, 16, 16, 0.8) 100%);
+    background-image: url('/assets/images/X_376x246.jpg');
+    background-size: 100%;
 }
 
 .row2 {
@@ -51,24 +55,37 @@
 }
 
 .img-container {
-    color: #FFFFFF;
+    color: #5c0303;
     font-weight: bolder;
     text-align: center;
     font-size: 30px;
-   
+
 
 
 
     // align-items: center; this only if you want to vertical align it to the center too
 }
 
-.container_wallet{
-    color: #FFFFFF;
+.container_wallet {
+    color: rgb(255, 255, 255);
     font-weight: bolder;
     text-align: center;
     font-size: 50px;
-    margin-top: 60px;
+    margin-top: 20px;
+
 }
+
+.test2 {
+    padding: 5px;
+    white-space: nowrap;
+    width: 200px;
+    border: 1px solid rgb(255, 79, 91);
+    background-color: rgb(255, 79, 91);
+    border-radius: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .img-container_top {
     color: #000000;
     font-weight: bolder;
@@ -101,7 +118,28 @@ ion-slide {
 
 
 
+
+
+
+
+
+
+
+
+
 @media (max-height: 667px) {
+    .img-container {
+        color: #5c0303;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 30px;
+
+
+
+
+        // align-items: center; this only if you want to vertical align it to the center too
+    }
+
     .head {
         color: rgb(255, 255, 255);
         font-size: 20px;
@@ -117,7 +155,7 @@ ion-slide {
         padding: 0px;
     }
 
-    .container_wallet{
+    .container_wallet {
         color: #FFFFFF;
         font-weight: bolder;
         text-align: center;
@@ -151,9 +189,9 @@ ion-slide {
     .row1 {
 
         height: 50%;
-        background: -moz-linear-gradient(45deg, rgb(123, 15, 15) 0%, rgba(171, 21, 21, 0.8) 100%);
-        background: -webkit-linear-gradient(45deg, rgb(130, 22, 22) 0%, rgba(174, 18, 18, 0.8) 100%);
-        background: linear-gradient(45deg, rgb(136, 8, 8) 0%, rgba(171, 16, 16, 0.8) 100%);
+        background-image: url('/assets/images/X_376x246.jpg');
+        background-size: 100%;
+
     }
 
     .row2 {
@@ -165,6 +203,130 @@ ion-slide {
 
     .img-container {
         color: #FFFFFF;
+        font-weight: bolder;
+
+
+        text-align: center;
+        font-size: 30px;
+
+
+
+        // align-items: center; this only if you want to vertical align it to the center too
+    }
+
+    .img-container_top {
+        color: #000000;
+        font-weight: bolder;
+        margin-top: 0%;
+
+        text-align: center;
+        font-size: 30px;
+
+
+
+        // align-items: center; this only if you want to vertical align it to the center too
+    }
+
+
+    ion-icon {
+        margin-right: 15px;
+    }
+
+    ion-button {
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    ion-slide {
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: -90px !important;
+    }
+
+
+}
+
+
+@media (max-height: 736px) {
+    .img-container {
+        color: #5c0303;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 30px;
+   // align-items: center; this only if you want to vertical align it to the center too
+    }
+
+    .test2 {
+        padding: 20px;
+        white-space: nowrap; 
+        width: 200px; 
+        border: 1px solid rgb(255, 79, 91);
+        background-color: rgb(255, 79, 91);
+        border-radius: 45px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+       
+      }
+
+    .head {
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+    }
+
+    .grid1 {
+        height: 65%;
+        padding: 0px;
+    }
+
+    .container_wallet {
+        color: #FFFFFF;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 30px;
+        margin-top:40px;
+    }
+
+    .contaier-login {
+        width: 90%;
+        font-size: 15px;
+        padding: 10px;
+        background: #ffffff;
+        border-radius: 20px;
+        text-align: center;
+        -webkit-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.75);
+        -moz-box-shadow: 0px 0px 10px 1px rgba(111, 111, 111, 0.75);
+        box-shadow: 0px 0px 10px 1px rgba(142, 142, 142, 0.75);
+        margin-top: 90px;
+    }
+
+    .contaier-paylast {
+        width: 90%;
+        background: #FFFFFF;
+        padding: 10px;
+        border-radius: 20px;
+        -webkit-box-shadow: 0px 0px 10px 1px rgba(70, 69, 69, 0.75);
+        -moz-box-shadow: 0px 0px 10px 1px rgba(130, 128, 128, 0.75);
+        box-shadow: 0px 0px 10px 1px rgba(121, 121, 121, 0.75);
+        margin-top: 40px;
+    }
+
+    .row1 {
+
+        height: 60%;
+        background-image: url('/assets/images/X_376x246.jpg');
+        background-size: 100%;
+    }
+
+    .row2 {
+        background: -moz-linear-gradient(45deg, rgb(123, 15, 15) 0%, rgba(171, 21, 21, 0.8) 100%);
+        background: -webkit-linear-gradient(45deg, rgb(130, 22, 22) 0%, rgba(174, 18, 18, 0.8) 100%);
+        background: linear-gradient(45deg, rgb(136, 8, 8) 0%, rgba(171, 16, 16, 0.8) 100%);
+
+    }
+
+    .img-container {
+        color: #670000;
         font-weight: bolder;
 
 
@@ -211,6 +373,31 @@ ion-slide {
 
 
 @media (max-height: 568px) {
+    .img-container {
+        color: #5c0303;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 30px;
+
+
+
+
+        // align-items: center; this only if you want to vertical align it to the center too
+    }
+
+
+    .test2 {
+        padding: 8px;
+        white-space: nowrap; 
+        width: 200px; 
+        border: 1px solid rgb(255, 79, 91);
+        background-color: rgb(255, 79, 91);
+        border-radius: 45px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+       
+      }
     .head {
         color: rgb(255, 255, 255);
         font-size: 20px;
@@ -221,12 +408,12 @@ ion-slide {
         padding: 0px;
     }
 
-    .container_wallet{
+    .container_wallet {
         color: #FFFFFF;
         font-weight: bolder;
         text-align: center;
         font-size: 30px;
-        margin-top: -10px;
+        margin-top: 20px;
     }
 
     .contaier-login {
@@ -238,7 +425,8 @@ ion-slide {
         text-align: center;
         -webkit-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.75);
         -moz-box-shadow: 0px 0px 10px 1px rgba(111, 111, 111, 0.75);
-        box-shadow: 0px 0px 10px 1px rgba(142, 142, 142, 0.75)
+        box-shadow: 0px 0px 10px 1px rgba(142, 142, 142, 0.75);
+        margin-top: 150px;
     }
 
     .contaier-paylast {
@@ -249,15 +437,14 @@ ion-slide {
         -webkit-box-shadow: 0px 0px 10px 1px rgba(70, 69, 69, 0.75);
         -moz-box-shadow: 0px 0px 10px 1px rgba(130, 128, 128, 0.75);
         box-shadow: 0px 0px 10px 1px rgba(121, 121, 121, 0.75);
-
+        margin-top: 90px;
     }
 
     .row1 {
 
-        height: 43%;
-        background: -moz-linear-gradient(45deg, rgb(123, 15, 15) 0%, rgba(171, 21, 21, 0.8) 100%);
-        background: -webkit-linear-gradient(45deg, rgb(130, 22, 22) 0%, rgba(174, 18, 18, 0.8) 100%);
-        background: linear-gradient(45deg, rgb(136, 8, 8) 0%, rgba(171, 16, 16, 0.8) 100%);
+        height: 60%;
+        background-image: url('/assets/images/X_376x246.jpg');
+        background-size: 100%;
     }
 
     .row2 {
@@ -312,3 +499,5 @@ ion-slide {
 
 
 }
+
+

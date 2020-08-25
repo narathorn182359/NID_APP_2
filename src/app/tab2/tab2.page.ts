@@ -253,7 +253,7 @@ export class Tab2Page implements OnInit {
       this.datainfouser = response;
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl('http://18.140.109.247/kpi/KPIUnit/Index_PDF_nid?staff='+response.username);
       console.log( this.datainfouser)
-      const browser = this.iab.create('http://18.140.109.247/kpi/KPIUnit/Index_PDF_nid?staff='+response.username,'_blank',{
+      const browser = this.iab.create('http://18.140.109.247/kpi/KPIUnit/Index_PDF_nid?staff='+response.username,'_system',{
         location:'no'
       });
       
