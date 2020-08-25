@@ -8,8 +8,8 @@ export const Service: any = {
 /*   url: 'https://111loves.com/nid_deverlop/public',
   apiUrl: 'https://111loves.com/nid_deverlop/public/api', */
  
-  // url: 'http://127.0.0.1:8000',
-  // apiUrl: 'http://127.0.0.1:8000/api',
+//   url: 'http://127.0.0.1:8000',
+ //  apiUrl: 'http://127.0.0.1:8000/api',
 
 
       /**
